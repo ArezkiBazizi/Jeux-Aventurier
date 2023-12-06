@@ -10,3 +10,8 @@ Aventurier::~Aventurier()
 {
     //dtor
 }
+
+vector<unique_ptr<Equipement>> Aventurier::tabEquipement()
+{
+    return d_tabEquipement;
+}

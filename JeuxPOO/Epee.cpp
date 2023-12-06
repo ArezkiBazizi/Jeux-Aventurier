@@ -10,7 +10,7 @@ Epee::~Epee()
     //dtor
 }
 
-virtual string Epee::typeEquipement() const override;
+string Epee::typeEquipement() const override;
 {
     return "Epee";
 }

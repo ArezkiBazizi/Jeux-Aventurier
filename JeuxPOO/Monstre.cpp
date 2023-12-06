@@ -13,13 +13,14 @@ Monstre::~Monstre()
 
 void Monstre::attaquer(const Aventurier& A) const
 {
-    if A.tabEquipement[0].type() == "Armure"){
-        int x = A.tabEquipement[0]->pointDeSolidite();
+
+    if (A.tabEquipement()[0]->type() == "Armure") {
+        int x = A.tabEquipement()[0]->pointDeSolidite();
         A.encaisser(x);
     }
-    else if (A.tabEquipement[1].type() == "Armure") {
-        int x = Aventurier.tabEquipement[1]->pointDeSolidite();
-        Aventurier.encaisser(x);
+    else if (A.tabEquipement()[1]->type() == "Armure") {
+        int x = A.tabEquipement()[1]->pointDeSolidite();
+        A.encaisser(x);
     }
 }
 

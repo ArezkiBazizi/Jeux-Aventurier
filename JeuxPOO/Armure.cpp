@@ -20,8 +20,3 @@ int Armure::pointDeSolidite() const override
 {
     return d_pointDeSolidite;
 }
-
-void Armure::ModifierpointDeSolidite(int Valeur) override
-{
-    d_pointDeSolidite -= Valeur;
-}

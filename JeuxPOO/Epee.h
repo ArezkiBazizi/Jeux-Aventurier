@@ -14,7 +14,6 @@ public:
 protected:
 
 private:
-    int d_pointDeSolidite;
 };
 
 #endif // EPEE_H

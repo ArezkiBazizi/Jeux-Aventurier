@@ -6,7 +6,7 @@ Equipement::Equipement(int pointDeSolidite) :
 
 }
 
-Equipement::ModifierpointDeSolidite(int x)
+void Equipement::ModifierpointDeSolidite(int x)
 {
     d_pointDeSolidite -= x;
 }
