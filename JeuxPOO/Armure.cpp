@@ -1,22 +1,27 @@
-#ifndef ARMURE_H
-#define ARMURE_H
-#include "Equipement.h"
-#include "string"
+#include "Armure.h"
 
 
-class Armure : public Equipement
+Armure::Armure(int pointDeSolidite) : Equipement{ pointDeSolidite}
 {
-public:
-    Armure(int pointDeSolidite);
-    int pointDeSolidite() const override;
-    virtual string typeEquipement() const override;
-    void ModifierpointDeSolidite(int Valeur) override;
-    virtual ~Armure();
 
-protected:
+}
 
-private:
-    int d_pointDeSolidite;
-};
+Armure::~Armure()
+{
+    //dtor
+}
 
-#endif // ARMURE_H
+string Armure::typeEquipement() const override
+{
+    return "Armure";
+}
+
+int Armure::pointDeSolidite() const override
+{
+    return d_pointDeSolidite;
+}
+
+void Armure::ModifierpointDeSolidite(int Valeur) override
+{
+    d_pointDeSolidite -= Valeur;
+}

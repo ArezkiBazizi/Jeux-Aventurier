@@ -1,6 +1,6 @@
 #include "Epee.h"
 
-Epee::Epee(int pointDeSolidite) : d_pointDeSolidite{ pointDeSolidite }
+Epee::Epee(int pointDeSolidite) : Equipement{ pointDeSolidite }
 {
     //ctor
 }
