@@ -6,9 +6,11 @@ Personnage::Personnage(const Position& position, int pointDeVie, int pointDeForc
     //ctor
 }
 
-Personnage::~Personnage()
+void Personnage::deplacer(int x, int y)
 {
-    //dtor
+    d_position.modifierX(x);
+    d_position.modifierY(y);
+
 }
 
 void Personnage::encaisser(int x)
@@ -16,3 +18,12 @@ void Personnage::encaisser(int x)
     d_pointDeVie -= x;
 }
 
+int Personnage::pointDeVie() const
+{
+    return d_pointDeVie;
+}
+
+int Personnage::pointDeForce() const
+{
+    return d_pointDeForce;
+}

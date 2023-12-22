@@ -7,8 +7,10 @@ class Position
 {
 public:
     Position(int x, int y);
-    int x();
-    int y();
+    int x() const;
+    int y() const;
+    void modifierX(int x);
+    void modifierY(int y);
     virtual ~Position();
 
 protected:

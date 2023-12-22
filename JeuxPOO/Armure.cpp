@@ -6,17 +6,13 @@ Armure::Armure(int pointDeSolidite) : Equipement{ pointDeSolidite}
 
 }
 
-Armure::~Armure()
-{
-    //dtor
-}
-
-string Armure::typeEquipement() const override
+std::string Armure::typeEquipement() const
 {
     return "Armure";
 }
 
-int Armure::pointDeSolidite() const override
+Armure::~Armure()
 {
-    return d_pointDeSolidite;
+
 }
+

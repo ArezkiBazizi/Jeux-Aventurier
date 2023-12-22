@@ -7,11 +7,13 @@ using namespace std;
 class Equipement
 {
 public:
+
     Equipement(int pointDeSolidite);
     virtual ~Equipement() = default;
-    virtual int pointDeSolidite() const = 0;
+    int pointDeSolidite() const;
     virtual string typeEquipement() const = 0;
     void ModifierpointDeSolidite(int x);
+
 private:
     int d_pointDeSolidite;
 };

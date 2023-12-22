@@ -5,17 +5,12 @@ Epee::Epee(int pointDeSolidite) : Equipement{ pointDeSolidite }
     //ctor
 }
 
-Epee::~Epee()
-{
-    //dtor
-}
-
-string Epee::typeEquipement() const override;
+string Epee::typeEquipement() const
 {
     return "Epee";
 }
 
-void Equipement::ModifierpointDeSolidite(int Valeur)
+Epee::~Epee()
 {
-    d_pointDeSolidite -= Valeur;
+    // Implémentation du destructeur virtuel
 }

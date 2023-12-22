@@ -7,9 +7,10 @@ class Personnage
 {
 public:
     Personnage(const Position& position, int pointDeVie, int pointDeForce);
-    virtual void depalcer();
     void encaisser(int x);
-    virtual ~Personnage();
+    int pointDeVie() const;
+    int pointDeForce() const;
+    void deplacer(int x,int y);
 
 protected:
 

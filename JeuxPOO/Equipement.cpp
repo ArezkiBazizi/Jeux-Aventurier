@@ -1,7 +1,7 @@
 #include "Equipement.h"
 
 Equipement::Equipement(int pointDeSolidite) :
-    d_pointDeSolidite {poiintDeSolidite}
+    d_pointDeSolidite {pointDeSolidite}
 {
 
 }
@@ -11,9 +11,8 @@ void Equipement::ModifierpointDeSolidite(int x)
     d_pointDeSolidite -= x;
 }
 
-Equipement::~Equipement()
+
+int Equipement::pointDeSolidite() const
 {
-    //dtor
+    return d_pointDeSolidite;
 }
-
-

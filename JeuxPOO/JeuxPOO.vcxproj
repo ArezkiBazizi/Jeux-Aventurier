@@ -131,10 +131,8 @@
     <ClCompile Include="Aventurier.cpp" />
     <ClCompile Include="Epee.cpp" />
     <ClCompile Include="Equipement.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="JeuxPOO.cpp" />
     <ClCompile Include="Monstre.cpp" />
-    <ClCompile Include="MonstreA.cpp" />
-    <ClCompile Include="MonstreV.cpp" />
     <ClCompile Include="Personnage.cpp" />
     <ClCompile Include="Position.cpp" />
   </ItemGroup>
@@ -144,8 +142,6 @@
     <ClInclude Include="Epee.h" />
     <ClInclude Include="Equipement.h" />
     <ClInclude Include="Monstre.h" />
-    <ClInclude Include="MonstreA.h" />
-    <ClInclude Include="MonstreV.h" />
     <ClInclude Include="Personnage.h" />
     <ClInclude Include="Position.h" />
   </ItemGroup>
