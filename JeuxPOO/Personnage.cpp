@@ -27,3 +27,8 @@ int Personnage::pointDeForce() const
 {
     return d_pointDeForce;
 }
+
+bool Personnage::estVivant() const
+{
+    return (d_pointDeVie > 0);
+}

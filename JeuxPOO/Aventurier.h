@@ -1,6 +1,7 @@
 #ifndef AVENTURIER_H
 #define AVENTURIER_H
 #include "Personnage.h"
+#include "Monstre.h"
 #include <vector>
 #include <memory>
 #include "Armure.h"
@@ -14,7 +15,8 @@ public:
     vector<std::unique_ptr<Equipement>> const& tabEquipement() const;
     void ajouterEquipement(unique_ptr<Equipement> e);
     virtual ~Aventurier();
-
+    void deplacer();
+    void Attaquer(Monstre& M);
   
 
 protected:

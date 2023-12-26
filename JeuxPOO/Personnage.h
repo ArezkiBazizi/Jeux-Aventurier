@@ -11,6 +11,7 @@ public:
     int pointDeVie() const;
     int pointDeForce() const;
     void deplacer(int x,int y);
+    bool estVivant() const;
 
 protected:
 
