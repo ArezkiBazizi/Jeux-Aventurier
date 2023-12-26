@@ -10,7 +10,7 @@ Terrain::Terrain(int h, int l) :
     d_h{ h }, d_l{ l }, d_cases{}
 {}
 
-Terrain::Terrain(int h, int l, const vector<cases>& cases) :
+Terrain::Terrain(int h, int l, const vector<Cases>& cases) :
     d_h{ h }, d_l{ l }, d_cases{ cases }
 {
 }
@@ -54,7 +54,7 @@ void Terrain::remplirCases() {
         cout << "Entrer la case x , y et le type de case (saisir 0 en type pour fin)" << endl;
         cin >> x >> y >> a;
         if (a != "0") {
-            d_cases.push_back(cases{ x,y,a });
+            d_cases.push_back(Cases{ x,y,a });
         }
 
     } while (a != "0");

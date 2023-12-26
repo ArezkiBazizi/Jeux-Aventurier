@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\POO_aventure\goto_xy_windows.cpp" />
     <ClCompile Include="Armure.cpp" />
     <ClCompile Include="Aventurier.cpp" />
     <ClCompile Include="Cases.cpp" />
     <ClCompile Include="Epee.cpp" />
     <ClCompile Include="Equipement.cpp" />
+    <ClCompile Include="goto_xy_windows.cpp" />
     <ClCompile Include="JeuxPOO.cpp" />
     <ClCompile Include="Monstre.cpp" />
     <ClCompile Include="MonstreV.cpp" />
@@ -140,11 +142,13 @@
     <ClCompile Include="Terrain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\POO_aventure\goto_xy_windows.h" />
     <ClInclude Include="Armure.h" />
     <ClInclude Include="Aventurier.h" />
     <ClInclude Include="Cases.h" />
     <ClInclude Include="Epee.h" />
     <ClInclude Include="Equipement.h" />
+    <ClInclude Include="goto_xy_windows.h" />
     <ClInclude Include="Monstre.h" />
     <ClInclude Include="MonstreV.h" />
     <ClInclude Include="Personnage.h" />
