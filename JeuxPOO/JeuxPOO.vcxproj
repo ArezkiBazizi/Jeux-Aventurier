@@ -133,6 +133,7 @@
     <ClCompile Include="cases.cpp" />
     <ClCompile Include="Epee.cpp" />
     <ClCompile Include="Equipement.cpp" />
+    <ClCompile Include="goto_xy_windows.cpp" />
     <ClCompile Include="JeuxPOO.cpp" />
     <ClCompile Include="Monstre.cpp" />
     <ClCompile Include="Personnage.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Cases.h" />
     <ClInclude Include="Epee.h" />
     <ClInclude Include="Equipement.h" />
+    <ClInclude Include="goto_xy_windows.h" />
     <ClInclude Include="Monstre.h" />
     <ClInclude Include="Personnage.h" />
     <ClInclude Include="Position.h" />
