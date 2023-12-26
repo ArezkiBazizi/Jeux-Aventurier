@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\POO_aventure\goto_xy_windows.cpp" />
     <ClCompile Include="Armure.cpp" />
     <ClCompile Include="Aventurier.cpp" />
     <ClCompile Include="cases.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="Terrain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\POO_aventure\goto_xy_windows.h" />
     <ClInclude Include="Armure.h" />
     <ClInclude Include="Aventurier.h" />
     <ClInclude Include="Cases.h" />
