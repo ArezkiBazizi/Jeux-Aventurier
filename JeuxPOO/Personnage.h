@@ -12,6 +12,7 @@ public:
     int pointDeForce() const;
     void deplacer(int x,int y);
     bool estVivant() const;
+    Position position();
 
 protected:
 

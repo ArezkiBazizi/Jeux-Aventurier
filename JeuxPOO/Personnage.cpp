@@ -32,3 +32,8 @@ bool Personnage::estVivant() const
 {
     return (d_pointDeVie > 0);
 }
+
+Position position()
+{
+    return d_position;
+}

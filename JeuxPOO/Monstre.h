@@ -9,8 +9,9 @@ class Monstre : public Personnage
         Monstre(const Position& position, int pointDeVie,int pointDeForce, int pourcentageHabilete);
         void attaquer(Aventurier& A) const;
         int obtenirPourcentageHabilete() const;
+        virtual void trouverAventurier(Aventurier& A);
+
         virtual ~Monstre();
-     
 
     protected:
 

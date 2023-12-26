@@ -26,12 +26,12 @@ void Aventurier::ajouterEquipement(unique_ptr<Equipement> e)
     d_tabEquipement.push_back(move(e));
 }
 
-void Aventurier::deplacer() {
+void Aventurier::deplacer(sf::Event event) {
     if (event.type == sf::Event::KeyPressed) {
         switch (event.key.code) {
         case sf::Keyboard::Up:
             this.deplacer(0, 1);
-                break;
+            break;
         case sf::Keyboard::Down:
             this.deplacer(0, -1);
             break;
@@ -46,9 +46,10 @@ void Aventurier::deplacer() {
         }
     }
 
-void Aventurier::Attaquer(Monstre& M){
+    void Aventurier::Attaquer(Monstre & M) {
         if ((M.d_position.x() - this.d_position.x() = 1) || (M.d_position.y() - this.d_position.y() = 1))
         {
             M.encaisser(this.d_pointDeForce)
         }
+    }
 }

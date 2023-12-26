@@ -15,7 +15,7 @@ public:
     vector<std::unique_ptr<Equipement>> const& tabEquipement() const;
     void ajouterEquipement(unique_ptr<Equipement> e);
     virtual ~Aventurier();
-    void deplacer();
+    void deplacer(sf::Event event);
     void Attaquer(Monstre& M);
   
 
