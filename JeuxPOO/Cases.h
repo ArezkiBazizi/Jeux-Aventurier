@@ -11,6 +11,8 @@ public:
     int x() const;
     int y() const;
     string type() const;
+    bool estVide() const;
+
 private:
     int d_x;
     int d_y;
