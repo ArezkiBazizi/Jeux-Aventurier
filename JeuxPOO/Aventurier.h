@@ -16,7 +16,7 @@ public:
     void ajouterEquipement(unique_ptr<Equipement> e);
     virtual ~Aventurier();
     void deplacer(sf::Event event);
-    void Attaquer(Monstre& M);
+    void attaquer(Monstre& M);
   
 
 protected:
