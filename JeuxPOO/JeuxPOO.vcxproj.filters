@@ -80,10 +80,10 @@
     <ClInclude Include="Cases.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="goto_xy_windows.h">
+    <ClInclude Include="MonstreV.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="MonstreV.h">
+    <ClInclude Include="goto_xy_windows.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

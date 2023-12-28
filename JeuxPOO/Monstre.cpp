@@ -39,8 +39,3 @@ void Monstre::attaquer(Aventurier& A) const
    }
 }
 
-
-void Monstre::trouverAventurier(const Aventurier& A)
-{
-
-}

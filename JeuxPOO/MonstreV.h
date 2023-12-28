@@ -5,7 +5,7 @@
 class MonstreV : public Monstre
 {
 	MonstreV();
-	void trouverAventurier(const Aventurier& A) override;
+	void trouverAventurier(Aventurier& A) override;
 
 };
 
