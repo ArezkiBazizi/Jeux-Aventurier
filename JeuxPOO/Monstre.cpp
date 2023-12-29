@@ -20,8 +20,8 @@ int Monstre::obtenirPourcentageHabilete() const
 void Monstre::attaquer(Aventurier& A) const
 {
     int i = 0;
-    while (i <= A.tabEquipement()[].length())
-   {
+    while (i <= A.tabEquipement().size())
+    {
     if (A.tabEquipement()[i]->typeEquipement() == "Armure") {
         int x = A.tabEquipement()[i]->pointDeSolidite();
         if (x >= d_pourcentageHabilete*3 / 4)

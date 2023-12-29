@@ -16,6 +16,7 @@ public:
     void afficheTerrain()const;
     void litTerrain(const ofstream& ost);
     void ecritTerrain(const ifstream& ist);
+    Cases retourneCase(int x, int y) const;
 private:
     int d_h, d_l;
     vector<Cases> d_cases;

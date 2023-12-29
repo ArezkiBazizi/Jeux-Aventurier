@@ -24,33 +24,59 @@ void MonstreV::trouverAventurier(Aventurier& A)
 
 }
 
-void deplacerVersAventurier(int dx, int dy) {
+void deplacerVersAventurier(int dx, int dy, Cases m) {
+
+ 
+    bool up = retourneCase(position().x(),position().y()+1).estVide();
+    bool down = retourneCase(position().x(), position().y()-1).estVide();
+    bool right = retourneCase(position().x()+1, position().y()).estVide();
+    bool left = retourneCase(position().x()-1, position().y()).estVide();
+
+    double D = sqrt(pow((dx + 1),2) + pow(dy,2));        //droite
+    double G = sqrt(pow((dx + -1), 2) + pow(dy,2));      //gauche
+    double H = sqrt(pow((dx),2) + pow((dy + 1),2));      //haut
+    double B = sqrt(pow((dx + -1),2) + pow((dy - 1),2)); //bas
 
 
-    // Générer les 4 cases possibles en ordre décroissant de proximité
-    std::pair<int, int> casesPossibles[4] = {
-        {position().x() + 1, position().y()}, // Droite
-        {position().x() - 1, position().y()}, // Gauche
-        {position().x(), position().y() + 1}, // Haut
-        {position().x(), position().y() - 1}  // Bas
-    };
+    std::vector<double> move{ D, G, H, B };
 
-    std::sort(std::begin(casesPossibles), std::end(casesPossibles), [&](const auto& a, const auto& b) {
-        int distA = std::abs(a.first - position().x() - dx) + std::abs(a.second - position().y() - dy);
-        int distB = std::abs(b.first - position().x() - dx) + std::abs(b.second - position().y() - dy);
-        return distA < distB; // Tri croissant
-        });
+    std::sort(move.begin(), move.end());
 
+    int i = 0;
+    while (i < 4)
+    {
+        if(move[i] == D)
+        {
+            if(right)
+            {
+                deplacer(1, 0);
+            }
+            else i++;
+        }
 
-    for (const auto& casePossible : casesPossibles) {
-        int newX = casePossible.first;
-        int newY = casePossible.second;
-
-        if (Cases(newX, newY).estVide()) {
-            deplacer(newX - position().x(), newY - position().y());
-            break; // Sortir de la boucle une fois le déplacement effectué
+        if(move[i] == G)
+        {
+            if(left)
+        {
+            deplacer(-1, 0);
+        }
+            else i++;
+        }
+        if(move[i] == H)
+        {
+            if(up)
+            {
+                deplacer(0, 1);
+            }
+            else i++;
+        }
+        if(move[i] == B)
+        {
+            if(down)
+            {
+                deplacer(0, -1);
+            }
+            else i++;
         }
     }
-
-
 }

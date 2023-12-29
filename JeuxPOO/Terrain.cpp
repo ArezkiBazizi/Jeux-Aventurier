@@ -67,3 +67,19 @@ void Terrain::ecritTerrain(const ifstream& ist) {
 
 }
 
+Cases Terrain::retourneCase(int x, int y) const
+
+{
+    while (i < d_case.size())
+    {
+        if (d_case[i].x() == x && d_case[i].y() == y)
+        {
+            return d_case[i];
+            i = d_case.size();
+        }
+        else 
+        {
+            i++;
+        }
+    }
+}
