@@ -2,7 +2,6 @@
 #define PERSONNAGE_H
 #include "Position.h"
 
-
 class Personnage
 {
 public:
