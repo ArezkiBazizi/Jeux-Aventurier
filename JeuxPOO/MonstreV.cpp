@@ -24,9 +24,8 @@ void MonstreV::trouverAventurier(Aventurier& A)
 
 }
 
-void deplacerVersAventurier(int dx, int dy, Cases m) {
+void deplacerVersAventurier(int dx, int dy) {
 
- 
     bool up = retourneCase(position().x(),position().y()+1).estVide();
     bool down = retourneCase(position().x(), position().y()-1).estVide();
     bool right = retourneCase(position().x()+1, position().y()).estVide();

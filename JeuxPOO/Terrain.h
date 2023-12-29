@@ -18,6 +18,7 @@ public:
     void litTerrain(const string& nomF);
     void ecritTerrain() const;
     void ecritTerrain(const string& nomF)const;
+    Cases retourneCase(int x, int y) const;
 private:
     int d_h, d_l;
     vector<Cases> d_cases;

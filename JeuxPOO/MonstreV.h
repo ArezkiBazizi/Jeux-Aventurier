@@ -6,8 +6,8 @@
 class MonstreV : public Monstre
 {
 	MonstreV();
-	void trouverAventurier(Aventurier& A) override;
-	void deplacerVersAventurier(int dx, int dy);
+	void trouverAventurier(Aventurier& A,Terrain& T) override;
+	void deplacerVersAventurier(int dx, int dy, Terrain& T);
 
 };
 
