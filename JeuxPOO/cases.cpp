@@ -29,3 +29,4 @@ bool Cases::estVide()const {
     if (d_type == "vide" || d_type == "videC")
         return true;
     return false;
+}
