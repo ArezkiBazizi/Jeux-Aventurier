@@ -63,23 +63,32 @@ void Terrain::remplirCases() {
 }
 
 
-void Terrain::ecritTerrain(const ifstream& ist) {
+void Terrain::ecritTerrain(const string& nomF) const {
+
+    ofstream f(nomF);
+    for (int i = 0; i < d_cases.size(); i++) {
+        f << d_cases[i].x() << " " << d_cases[i].y() << " " << d_cases[i].type() << endl;
+    }
+
 
 }
 
-Cases Terrain::retourneCase(int x, int y) const
+void Terrain::ecritTerrain()const {
+    ecritTerrain("map.txt");
+}
 
-{
-    while (i < d_case.size())
-    {
-        if (d_case[i].x() == x && d_case[i].y() == y)
-        {
-            return d_case[i];
-            i = d_case.size();
-        }
-        else 
-        {
-            i++;
-        }
+void Terrain::litTerrain(const string& nomF) {
+    ifstream f(nomF);
+    int x, y;
+    string t;
+    d_cases.clear();
+    while (f) {
+        f >> x >> y >> t;
+        d_cases.push_back(Cases{ x,y,t });
     }
 }
+
+void Terrain::litTerrain() {
+    litTerrain("map.txt");
+}
+
