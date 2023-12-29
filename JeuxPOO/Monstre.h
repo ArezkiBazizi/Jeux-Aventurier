@@ -5,6 +5,7 @@
 #include <ctime>    // Pour initialiser la graine de la fonction rand()
 #include <cmath>
 #include "Personnage.h"
+#include "Terrain.h"
 #include "Aventurier.h"
 
 class Monstre : public Personnage
@@ -13,7 +14,7 @@ class Monstre : public Personnage
         Monstre(const Position& position, int pointDeVie,int pointDeForce, int pourcentageHabilete);
         void attaquer(Aventurier& A) const;
         int obtenirPourcentageHabilete() const;
-        virtual void trouverAventurier(Aventurier& A);
+        virtual void trouverAventurier(Aventurier& A, Terrain& T);
         virtual ~Monstre();
 
     protected:
