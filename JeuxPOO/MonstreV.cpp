@@ -101,7 +101,7 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
         {
             if(right)
             {
-                deplacer(1, 0);
+                this.deplacer(1, 0);
             }
             else i++;
         }
@@ -110,7 +110,7 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
         {
             if(left)
         {
-                deplacer(-1, 0);
+            deplacer(-1, 0);
         }
             else i++;
         }
@@ -118,7 +118,7 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
         {
             if(up)
             {
-                deplacer(0, 1);
+                this.deplacer(0, 1);
             }
             else i++;
         }
@@ -126,7 +126,7 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
         {
             if(down)
             {
-                deplacer(0, -1);
+                this.deplacer(0, -1);
             }
             else i++;
         }
