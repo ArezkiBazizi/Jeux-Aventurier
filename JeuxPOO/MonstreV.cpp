@@ -1,6 +1,6 @@
 #include "MonstreV.h"
 
-void MonstreV::trouverAventurier(Aventurier& A)
+void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
 {
     // Calcul des différences entre les coordonnées du monstre et de l'aventurier
     int dx = A.position().x() - position().x();
@@ -13,7 +13,7 @@ void MonstreV::trouverAventurier(Aventurier& A)
 
     else if (abs(dx) == 8 && abs(dy) == 8)
     {
-        deplacerVersAventurier(dx, dy);
+        deplacerVersAventurier(dx, dy,T);
     }
     else
     {
@@ -24,12 +24,12 @@ void MonstreV::trouverAventurier(Aventurier& A)
 
 }
 
-void deplacerVersAventurier(int dx, int dy) {
+void deplacerVersAventurier(int dx, int dy, Terrain& T) {
 
-    bool up = retourneCase(position().x(),position().y()+1).estVide();
-    bool down = retourneCase(position().x(), position().y()-1).estVide();
-    bool right = retourneCase(position().x()+1, position().y()).estVide();
-    bool left = retourneCase(position().x()-1, position().y()).estVide();
+    bool up = T.retourneCase( position().x() ,position().y()+1).estVide();
+    bool down = T.retourneCase(position().x(), position().y() - 1).estVide();
+    bool right = T.retourneCase(position().x() + 1, position().y()).estVide();
+    bool left = T.retourneCase(position().x()-1, position().y()).estVide();
 
     double D = sqrt(pow((dx + 1),2) + pow(dy,2));        //droite
     double G = sqrt(pow((dx + -1), 2) + pow(dy,2));      //gauche
