@@ -25,3 +25,4 @@ void Aventurier::ajouterEquipement(unique_ptr<Equipement> e)
 {
     d_tabEquipement.push_back(move(e));
 }
+
