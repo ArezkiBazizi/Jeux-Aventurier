@@ -14,8 +14,10 @@ public:
     Terrain(int h, int l, const vector<Cases>& cases);
     void remplirCases();
     void afficheTerrain()const;
-    void litTerrain(const ofstream& ost);
-    void ecritTerrain(const ifstream& ist);
+    void litTerrain();
+    void litTerrain(const string& nomF);
+    void ecritTerrain() const;
+    void ecritTerrain(const string& nomF)const;
 private:
     int d_h, d_l;
     vector<Cases> d_cases;
