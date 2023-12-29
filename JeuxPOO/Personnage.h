@@ -9,9 +9,12 @@ public:
     Personnage(const Position& position, int pointDeVie, int pointDeForce);
     void encaisser(int x);
     int pointDeVie() const;
+    void modifierPointDeVie(int x);
     int pointDeForce() const;
+    void modifierPointDeForce(int x);
     void deplacer(int x,int y);
     bool estVivant() const;
+    Position position() const;
 
 protected:
 

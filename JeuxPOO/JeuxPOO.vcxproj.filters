@@ -42,10 +42,10 @@
     <ClCompile Include="Terrain.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="cases.cpp">
+    <ClCompile Include="Cases.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\POO_aventure\goto_xy_windows.cpp">
+    <ClCompile Include="MonstreV.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="goto_xy_windows.cpp">
@@ -80,7 +80,7 @@
     <ClInclude Include="Cases.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\POO_aventure\goto_xy_windows.h">
+    <ClInclude Include="MonstreV.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="goto_xy_windows.h">

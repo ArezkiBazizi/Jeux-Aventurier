@@ -12,11 +12,14 @@ class Aventurier : public Personnage
 {
 public:
     Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces);
-    vector<std::unique_ptr<Equipement>> const& tabEquipement() const;
+    int bourseDePieces() const;
+    vector<unique_ptr<Equipement>> const& tabEquipement() const;
     void ajouterEquipement(unique_ptr<Equipement> e);
     virtual ~Aventurier();
-    void deplacer();
+    void deplacerA();
     void Attaquer(Monstre& M);
+    bool trouverAllumette() const;
+    void ramasserPieces();
   
 
 protected:

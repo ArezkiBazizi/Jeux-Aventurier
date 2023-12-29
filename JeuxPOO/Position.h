@@ -13,6 +13,7 @@ public:
     void modifierY(int y);
     virtual ~Position();
 
+
 protected:
 
 private:
