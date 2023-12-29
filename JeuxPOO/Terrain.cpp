@@ -42,6 +42,8 @@ void Terrain::afficheTerrain()const {
             cout << "@";
         else if (d_cases[i].type() == "aventurier")
             cout << "A";
+        else if (d_cases[i].type() == "piece")
+            cout << "P";
     }
 }
 
