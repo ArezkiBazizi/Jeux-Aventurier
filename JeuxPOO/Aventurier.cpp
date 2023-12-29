@@ -1,5 +1,5 @@
 #include "Aventurier.h"
-#include "Cases.h"
+#include "Terrain.h"
 #include "Personnage.h"
 #include "Equipement.h"
 #include "Epee.h"
@@ -38,7 +38,7 @@ void Aventurier::ajouterEquipement(unique_ptr<Equipement> e)
 }
 
 
-void Aventurier::deplacerA() {
+void Aventurier::deplacerA(Terrain& T) {
     // Tableau pour stocker l'état des touches de direction
     bool touchesDirection[4] = { false };
 
@@ -62,16 +62,16 @@ void Aventurier::deplacerA() {
     }
 
     // Appliquer la logique de déplacement en fonction de l'état des touches
-    if (Cases(position().x(), position().y() + 1).estVide()) {
+    if (T.retourneCase(position().x(), position().y() + 1).estVide()) {
         if (touchesDirection[0]) deplacer(0,1); // Up
     }
-    if (Cases(position().x(), position().y() - 1).estVide()) {
+    if (T.retourneCase(position().x(), position().y() - 1).estVide()) {
         if (touchesDirection[1]) deplacer(0,-1);  // Down
     }
-    if (Cases(position().x() - 1, position().y()).estVide()) {
+    if (T.retourneCase(position().x() - 1, position().y()).estVide()) {
         if (touchesDirection[2]) deplacer(-1,0); // Left
     }
-    if (Cases(position().x() + 1, position().y()).estVide()) {
+    if (T.retourneCase(position().x() + 1, position().y()).estVide()) {
         if (touchesDirection[3]) deplacer(1,0);  // Right
     }
 
@@ -98,8 +98,8 @@ void Aventurier::Attaquer(Monstre& M) {
 
 }
 
-bool Aventurier::trouverAllumette() const {
-    return (Cases(position().x(), position().y()).type() == "allumette");
+bool Aventurier::trouverAllumette(Terrain& T) const {
+    return (T.retourneCase(position().x(), position().y()).type() == "allumette");
 }
 
 

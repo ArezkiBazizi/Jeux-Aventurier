@@ -2,6 +2,7 @@
 #define AVENTURIER_H
 #include "Personnage.h"
 #include "Monstre.h"
+#include "Terrain.h"
 #include <vector>
 #include <memory>
 #include "Armure.h"
@@ -16,9 +17,9 @@ public:
     vector<unique_ptr<Equipement>> const& tabEquipement() const;
     void ajouterEquipement(unique_ptr<Equipement> e);
     virtual ~Aventurier();
-    void deplacerA();
+    void deplacerA(Terrain& T);
     void Attaquer(Monstre& M);
-    bool trouverAllumette() const;
+    bool trouverAllumette(Terrain& T) const;
     void ramasserPieces();
   
 
