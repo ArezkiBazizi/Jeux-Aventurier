@@ -23,5 +23,5 @@ void Position::modifierX(int x)
 }
 void Position::modifierY(int y)
 {
-    d_x += y;
+    d_y += y;
 }
