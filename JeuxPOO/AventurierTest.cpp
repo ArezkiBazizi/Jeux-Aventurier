@@ -89,10 +89,28 @@ TEST_CASE("[Aventurier] Aventurier : modifier l'aventurier ")
 }
 
 
+TEST_CASE("[Aventurier] Aventurier : Encaisser ")
+{
+	SUBCASE("Encaisser à l'aventurier un coup d'un monstre")
+	{
+		int x{ 2 };
+		int y{ 4 };
+		Position p{ x,y };
+		Aventurier a{ p };
+		a.encaisser(20);
+		REQUIRE(a.pointDeVie() == 100-20);
+
+	}
+
+
+}
+
+
+
 
 TEST_CASE("[Aventurier] Aventurier : ajouter un equipement ") 
 {
-	SUBCASE("L'eppe est contruit et ajouté correctement")
+	SUBCASE("L'epee est contruit et ajouté correctement")
 	{
 		int x{ 2 };
 		int y{ 4 };
@@ -100,7 +118,6 @@ TEST_CASE("[Aventurier] Aventurier : ajouter un equipement ")
 		Aventurier a{ p };
 		a.ajouterEquipement("Epee", 10);
 		REQUIRE(a.tabEquipement()[0]->pointDeSolidite() == 10);
-
 
 	}
 
