@@ -8,7 +8,14 @@ Equipement::Equipement(int pointDeSolidite) :
 
 void Equipement::ModifierpointDeSolidite(int x)
 {
-    d_pointDeSolidite -= x/2;
+    if (d_pointDeSolidite - x/2 >= 0)
+    {
+        d_pointDeSolidite -= x / 2;
+    }
+    else 
+    {
+        d_pointDeSolidite = 0;
+    }
 }
 
 

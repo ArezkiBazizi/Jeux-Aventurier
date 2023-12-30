@@ -19,3 +19,24 @@ TEST_CASE("[Epee] Les Epees sont bien construites") {
 
 	}
 }
+
+TEST_CASE("[Epee] : Epee : modifier les points de solidité de l'epee") {
+
+	SUBCASE("Modifier la solidité par une valeur <= à la solidité")
+	{
+		int x = { 100 };
+		Epee e1{ x };
+		e1.ModifierpointDeSolidite(100);
+		REQUIRE(e1.pointDeSolidite() == x - 50);
+		// L'epee est endomagée
+
+	}
+	SUBCASE("Modifier la solidité par une valeur > à la solidité")
+	{
+		int x = { 100 };
+		Epee e1{ x };
+		e1.ModifierpointDeSolidite(300);
+		REQUIRE(e1.pointDeSolidite() == 0);
+		//L'epee est cassé
+	}
+}
