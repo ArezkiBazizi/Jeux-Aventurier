@@ -39,3 +39,8 @@ void Monstre::attaquer(Aventurier& A) const
    }
 }
 
+void Monstre::trouverAventurier(Aventurier& aventurier, Terrain& terrain) {
+    // Implémentation de la fonction
+    // ...
+}
+

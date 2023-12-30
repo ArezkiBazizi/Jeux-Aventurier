@@ -95,7 +95,7 @@ void Terrain::litTerrain() {
 Cases Terrain::retourneCase(int x, int y) const
 
 {
-    int i;
+    int i=0;
     while (i < d_cases.size())
     {
         if (d_cases[i].x() == x && d_cases[i].y() == y)

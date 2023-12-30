@@ -7,6 +7,7 @@
 class Epee : public Equipement
 {
 public:
+    Epee();
     Epee(int pointDeSolidite);
     string typeEquipement() const override;
     virtual ~Epee();

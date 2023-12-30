@@ -1,20 +1,22 @@
 #include "Aventurier.h"
-#include "Terrain.h"
-#include "Personnage.h"
-#include "Equipement.h"
-#include "Epee.h"
-#include "Armure.h"
+
 #include <cmath>
 #include <conio.h>
 
 
 using namespace std;
 
+Aventurier::Aventurier(const Position& position) :
+    Personnage{ position,100,100}, d_bourseDePieces{0}
+{
+ 
+}
+
 Aventurier::Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces) :
     Personnage{ position,pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }
 {
     d_tabEquipement.push_back(std::make_unique<Armure>(100));
-
+    d_tabEquipement.push_back(std::make_unique<Epee>(100));
 }
 
 
@@ -32,9 +34,17 @@ std::vector<std::unique_ptr<Equipement>> const& Aventurier::tabEquipement() cons
     return d_tabEquipement;
 }
 
-void Aventurier::ajouterEquipement(unique_ptr<Equipement> e)
+void Aventurier::ajouterEquipement(const string& type, int p)
 {
-    d_tabEquipement.push_back(move(e));
+ 
+        if (type == "Epee")
+        {
+            d_tabEquipement.push_back(std::make_unique<Epee>(p));
+        }
+        else if (type == "Armure")
+        {
+            d_tabEquipement.push_back(std::make_unique<Armure>(p));
+        }
 }
 
 

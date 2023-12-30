@@ -24,6 +24,7 @@
     <ProjectGuid>{b245d07b-ffe6-48ec-8b60-7b947554d863}</ProjectGuid>
     <RootNamespace>JeuxPOO</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Jeux</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -128,12 +129,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Armure.cpp" />
+    <ClCompile Include="ArmureTest.cpp" />
     <ClCompile Include="Aventurier.cpp" />
+    <ClCompile Include="AventurierTest.cpp" />
     <ClCompile Include="Cases.cpp" />
     <ClCompile Include="Epee.cpp" />
+    <ClCompile Include="EpeeTest.cpp" />
     <ClCompile Include="Equipement.cpp" />
     <ClCompile Include="goto_xy_windows.cpp" />
-    <ClCompile Include="JeuxPOO.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainTest.cpp" />
     <ClCompile Include="Monstre.cpp" />
     <ClCompile Include="MonstreV.cpp" />
     <ClCompile Include="Personnage.cpp" />
@@ -144,6 +149,7 @@
     <ClInclude Include="Armure.h" />
     <ClInclude Include="Aventurier.h" />
     <ClInclude Include="Cases.h" />
+    <ClInclude Include="doctest.h" />
     <ClInclude Include="Epee.h" />
     <ClInclude Include="Equipement.h" />
     <ClInclude Include="goto_xy_windows.h" />

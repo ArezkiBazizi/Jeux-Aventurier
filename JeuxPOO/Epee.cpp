@@ -1,5 +1,10 @@
 #include "Epee.h"
 
+Epee::Epee() : Equipement{0}
+{
+    //ctor
+}
+
 Epee::Epee(int pointDeSolidite) : Equipement{ pointDeSolidite }
 {
     //ctor

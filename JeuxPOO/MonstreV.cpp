@@ -1,6 +1,7 @@
 #include "MonstreV.h"
 #include <algorithm>
-#include "Personnage.h"
+#include "Aventurier.h"
+#include "Monstre.h"
 
 void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
 {
@@ -101,7 +102,7 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
         {
             if(right)
             {
-                this.deplacer(1, 0);
+               deplacer(1, 0);
             }
             else i++;
         }
@@ -118,7 +119,7 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
         {
             if(up)
             {
-                this.deplacer(0, 1);
+                deplacer(0, 1);
             }
             else i++;
         }
@@ -126,7 +127,7 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
         {
             if(down)
             {
-                this.deplacer(0, -1);
+                deplacer(0, -1);
             }
             else i++;
         }

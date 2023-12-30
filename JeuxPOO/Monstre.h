@@ -4,9 +4,10 @@
 #include <cstdlib>  // Pour la fonction rand()
 #include <ctime>    // Pour initialiser la graine de la fonction rand()
 #include <cmath>
-#include "Personnage.h"
 #include "Terrain.h"
 #include "Aventurier.h"
+
+class Aventurier;
 
 class Monstre : public Personnage
 {
