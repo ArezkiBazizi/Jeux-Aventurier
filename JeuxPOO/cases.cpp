@@ -24,8 +24,19 @@ int Cases::y() const {
 string Cases::type() const {
     return d_type;
 }
+
+
 bool Cases::estVide() const {
     if (d_type == "vide" || d_type == "videC")
         return true;
     return false;
+}
+
+
+void Cases::x(int x) {
+    d_x = x;
+}
+
+void Cases::y(int y) {
+    d_y = y;
 }

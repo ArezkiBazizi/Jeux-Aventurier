@@ -1,0 +1,10 @@
+00 0 mur    5 0 mur    10 0 mur    15 0 vide    20 0 mur    25 0 mur    30 00 mur    35 0 mur    40 0 mur    45 0 mur
+00 1 mur    1 1 aventurier   2 1 vide   3 1 vide   4 1 vide   5 1 vide   6 1 vide   7 1 vide   8 1 vide   9 1 mur
+00 2 mur    7 2 vide   4 2 vide   6 2 vide   8 2 vide   10 2 vide   12 2 vide   14 2 vide   16 2 vide   18 2 mur
+00 3 mur    10 3 vide   20 3 vide   30 3 vide   40 3 vide   50 3 vide   60 3 vide   70 3 vide   80 3 vide   90 3 mur
+00 4 mur    10 4 vide   20 4 vide   30 4 vide   40 4 vide   50 4 vide   60 4 vide   70 4 vide   80 4 vide   90 4 mur
+00 5 mur    10 5 vide   20 5 vide   30 5 vide   40 5 vide   50 5 vide   60 5 monster   70 5 vide   80 5 vide   90 5 mur
+00 6 mur    10 6 vide   20 6 vide   30 6 vide   40 6 vide   50 6 vide   60 6 vide   70 6 vide   80 6 vide   90 6 mur
+00 7 mur    10 7 vide   20 7 vide   30 7 vide   40 7 vide   50 7 videC   60 7 vide   70 7 vide   80 7 vide   90 7 mur
+00 8 mur    10 8 vide   20 8 vide   30 8 allumette   40 8 vide   50 8 vide   60 8 vide   70 8 vide   80 8 vide   90 8 mur
+00 9 mur    10 9 mur    20 9 mur    30 9 mur    40 9 mur    50 9 mur    60 9 mur    70 9 mur    80 9 mur    90 9 sortie

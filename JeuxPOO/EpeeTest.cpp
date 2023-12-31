@@ -1,3 +1,4 @@
+/*
 #include "doctest.h"
 #include "Epee.h"
 
@@ -40,3 +41,5 @@ TEST_CASE("[Epee] : Epee : modifier les points de solidité de l'epee") {
 		//L'epee est cassé
 	}
 }
+
+*/

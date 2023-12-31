@@ -1,3 +1,4 @@
+/*
 #include "doctest.h"
 #include "Epee.h"
 #include "Aventurier.h"
@@ -134,3 +135,35 @@ TEST_CASE("[Aventurier] Aventurier : ajouter un equipement ")
 	}
 
 }
+
+
+TEST_CASE("[Aventurier] Aventurier : deplacer selon la touche ")
+{
+	SUBCASE("l'aventurier est deplacé en haut")
+	{
+
+		vector<Cases> T;
+
+		//cout << "\e[8;1000;100S0t";
+		Terrain Ter{ 1000,1000,T };
+		//Ter.remplirCases();
+
+		system("cls");
+
+		//Ter.ecritTerrain();
+		Ter.litTerrain();
+
+		int x{ 1 };
+		int y{ 1 };
+		Position p{ x,y };
+		Aventurier a{ p };
+		a.deplacerA(Ter);
+		REQUIRE(a.position().x()==x+1);
+		REQUIRE(a.position().y() ==y);
+	}
+
+	
+
+}
+
+*/

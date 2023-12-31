@@ -10,6 +10,8 @@ public:
     void setType(const string& type);
     int x() const;
     int y() const;
+    void x(int x);
+    void y(int y);
     string type() const;
     bool estVide() const;
 private:
