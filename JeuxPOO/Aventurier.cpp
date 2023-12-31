@@ -48,27 +48,37 @@ void Aventurier::ajouterEquipement(const string& type, int p)
 }
 
 
-void Aventurier::deplacerA(Terrain& T) {
+void Aventurier::deplacerA( Terrain& T) {
     // Tableau pour stocker l'état des touches de direction
-    bool touchesDirection[4] = { false };
+    bool touchesDirection[4];
 
-    while (_kbhit()) {
-        char key = _getch();
+    for (int i = 0; i < 4; i++)
+    {
+        touchesDirection[i] = false;
+    }
 
-        switch (key) {
-        case 72: // Flèche vers le haut
+
+    char ch;
+    int flag = 1;
+
+    while (flag) {
+        if (GetKeyState(VK_UP) & 0x8000) {
             touchesDirection[0] = true;
-            break;
-        case 80: // Flèche vers le bas
-            touchesDirection[1] = true;
-            break;
-        case 75: // Flèche vers la gauche
-            touchesDirection[2] = true;
-            break;
-        case 77: // Flèche vers la droite
-            touchesDirection[3] = true;
-            break;
+            flag = 0;
         }
+        if (GetKeyState(VK_DOWN) & 0x8000) {
+            touchesDirection[1] = true;
+            flag = 0;
+        }
+        if (GetKeyState(VK_LEFT) & 0x8000) {
+            touchesDirection[2] = true;
+            flag = 0;
+        }
+        if (GetKeyState(VK_RIGHT) & 0x8000) {
+            touchesDirection[3] = true;
+            flag = 0;
+        }
+
     }
 
     // Appliquer la logique de déplacement en fonction de l'état des touches

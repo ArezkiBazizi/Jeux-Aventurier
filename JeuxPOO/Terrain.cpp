@@ -18,16 +18,7 @@ Terrain::Terrain(int h, int l, const vector<Cases>& cases) :
 void Terrain::afficheTerrain()const {
     for (int i = 0; i < d_cases.size(); i++) {
         goto_xy(d_cases[i].x(), d_cases[i].y());
-        /* switch(d_cases[i].type()){
-             case mur : cout << "#"; break;
-             case vide : cout << "/"; break;
-             case videC : cout << "."; break;
-             case sortie : cout << "+"; break;
-             case monster : cout << "M"; break;
-             case allumette : cout << "@"; break;
-             case aventurier : cout << "A"; break;
-             default : break;
-         }*/
+     
         if (d_cases[i].type() == "mur")
             cout << "#";
         else if (d_cases[i].type() == "vide")
@@ -92,6 +83,7 @@ void Terrain::litTerrain() {
     litTerrain("map.txt");
 }
 
+
 Cases Terrain::retourneCase(int x, int y) const
 
 {
@@ -101,11 +93,33 @@ Cases Terrain::retourneCase(int x, int y) const
         if (d_cases[i].x() == x && d_cases[i].y() == y)
         {
             return d_cases[i];
-            i = d_cases.size();
         }
         else 
         {
             i++;
         }
     }
+    return  d_cases[i];
 }
+ 
+
+void Terrain::rafraichirTerrain(const Personnage& a)
+{
+    int i = 0;
+    while (i < d_cases.size())
+    {
+        if (d_cases[i].type() == "aventurier")
+        {
+
+            Cases c = retourneCase(a.position().x(), a.position().y());
+            c.setType("vide");
+
+            d_cases[i].x(a.position().x());
+            d_cases[i].y(a.position().y());
+
+        }
+        i++;
+    }
+
+}
+

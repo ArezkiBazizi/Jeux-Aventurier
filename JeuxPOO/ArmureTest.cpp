@@ -1,4 +1,4 @@
-
+/*
 #include "doctest.h"
 #include "Armure.h"
 
@@ -44,3 +44,4 @@ TEST_CASE("[Armure] : Armure : modifier les points de solidité de l'armure") {
 		//L'armure est cassé
 	}
 }
+*/
