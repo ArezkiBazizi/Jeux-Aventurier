@@ -108,11 +108,20 @@ void Aventurier::Attaquer(Monstre& M) {
 
 }
 
-bool Aventurier::trouverAllumette(Terrain& T) const {
+bool Aventurier::ramasserAllumette(Terrain& T) const {
     return (T.retourneCase(position().x(), position().y()).type() == "allumette");
 }
 
 
-void Aventurier::ramasserPieces() {
+bool Aventurier::ramasserPieces(Pieces& P) {
+    if (P.position().x() - position().x() == 0 && P.position().y() - position().y() == 0) {
+        d_bourseDePieces += P.valeur();
+        return true;
+    }
+    else return false;
 
+}
+
+bool Aventurier::estSortie(Terrain& T) const {
+    return (T.retourneCase(position().x(), position().y()).type() == "sortie");
 }
