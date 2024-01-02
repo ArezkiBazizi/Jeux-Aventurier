@@ -22,9 +22,9 @@ void Terrain::afficheTerrain()const {
         if (d_cases[i].type() == "mur")
             cout << "#";
         else if (d_cases[i].type() == "vide")
-            cout << "/";
-        else if (d_cases[i].type() == "videC")
             cout << ".";
+        else if (d_cases[i].type() == "videC")
+            cout << "/";
         else if (d_cases[i].type() == "sortie")
             cout << "+";
         else if (d_cases[i].type() == "monster")
