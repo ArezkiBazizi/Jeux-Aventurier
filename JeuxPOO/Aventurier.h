@@ -4,6 +4,7 @@
 #include "Equipement.h"
 #include "Monstre.h"
 #include "Terrain.h"
+#include "Pieces.h"
 #include <vector>
 #include <memory>
 #include "Armure.h"
@@ -20,14 +21,15 @@ class Aventurier : public Personnage
 public:
     Aventurier(const Position& position);
     Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces);
+    virtual ~Aventurier();
     int bourseDePieces() const;
     vector<unique_ptr<Equipement>> const& tabEquipement() const;
     void ajouterEquipement(const string& type, int p);
-    virtual ~Aventurier();
     void deplacerA(Terrain& T);
     void Attaquer(Monstre& M);
-    bool trouverAllumette(Terrain& T) const;
-    void ramasserPieces();
+    bool ramasserAllumette(Terrain& T) const;
+    bool ramasserPieces(Pieces& P);
+    bool estSortie(Terrain& T) const;
   
 
 protected:

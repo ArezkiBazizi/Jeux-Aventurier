@@ -142,6 +142,7 @@
     <ClCompile Include="Monstre.cpp" />
     <ClCompile Include="MonstreV.cpp" />
     <ClCompile Include="Personnage.cpp" />
+    <ClCompile Include="Pieces.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="PositionTest.cpp" />
     <ClCompile Include="Terrain.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="Monstre.h" />
     <ClInclude Include="MonstreV.h" />
     <ClInclude Include="Personnage.h" />
+    <ClInclude Include="Pieces.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Terrain.h" />
   </ItemGroup>
