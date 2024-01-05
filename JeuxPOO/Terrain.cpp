@@ -16,15 +16,15 @@ Terrain::Terrain(int h, int l, const vector<Cases>& cases) :
 }
 
 void Terrain::afficheTerrain()const {
-    for (int i = 0; i < d_cases.size(); i++) {
+    for (int i = 0; i < d_cases.size()-1; i++) {
         goto_xy(d_cases[i].x(), d_cases[i].y());
      
         if (d_cases[i].type() == "mur")
             cout << "#";
         else if (d_cases[i].type() == "vide")
-            cout << "/";
-        else if (d_cases[i].type() == "videC")
             cout << ".";
+        else if (d_cases[i].type() == "videC")
+            cout << "/";
         else if (d_cases[i].type() == "sortie")
             cout << "+";
         else if (d_cases[i].type() == "monster")
@@ -56,11 +56,12 @@ void Terrain::remplirCases() {
 
 void Terrain::ecritTerrain(const string& nomF) const {
 
-    ofstream f(nomF);
-    for (int i = 0; i < d_cases.size(); i++) {
+    ofstream f(nomF, ofstream::trunc);
+    for (int i = 0; i < d_cases.size()-1; i++) {
+
         f << d_cases[i].x() << " " << d_cases[i].y() << " " << d_cases[i].type() << endl;
     }
-
+    f.close();
 
 }
 
@@ -101,25 +102,18 @@ Cases Terrain::retourneCase(int x, int y) const
     }
     return  d_cases[i];
 }
- 
 
-void Terrain::rafraichirTerrain(const Personnage& a)
-{
-    int i = 0;
-    while (i < d_cases.size())
-    {
-        if (d_cases[i].type() == "aventurier")
-        {
 
-            Cases c = retourneCase(a.position().x(), a.position().y());
-            c.setType("vide");
 
-            d_cases[i].x(a.position().x());
-            d_cases[i].y(a.position().y());
-
+Cases& Terrain::retourneC(int x, int y) {
+    // Parcourez les cases existantes pour trouver la case correspondante.
+    for (Cases& c : d_cases) {
+        if (c.x() == x && c.y() == y) {
+            return c; // Renvoie la case existante avec les coordonnées correspondantes.
         }
-        i++;
     }
 
+    // Si aucune case correspondante n'est trouvée, lancez une exception ou faites ce qui est approprié pour votre programme.
+    throw std::runtime_error("Case non trouvée pour les coordonnées");
 }
 

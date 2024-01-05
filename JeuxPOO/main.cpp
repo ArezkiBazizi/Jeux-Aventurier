@@ -54,7 +54,6 @@ void test2()
 
     Aventurier a{ p,v,f,b };
     a.deplacerA(Ter);
-    Ter.rafraichirTerrain(a);
     system("cls");
     Ter.afficheTerrain();
 
@@ -72,13 +71,22 @@ int main() {
 
     //Ter.ecritTerrain();
     Ter.litTerrain();
-
+    Ter.afficheTerrain();
     int x{ 1 };
     int y{ 1 };
     Position p{ x,y };
     Aventurier a{ p };
-    std::cout << a.position().x();
     a.deplacerA(Ter);
-    std::cout << a.position().x();
+    cout << endl;
+    system("cls");
+    Ter.ecritTerrain();
+    Ter.afficheTerrain();
+    a.deplacerA(Ter);
+    cout << endl;
+    system("cls");
+    Ter.ecritTerrain();
+    Ter.afficheTerrain();
+    cout << endl;
+
 
  }
