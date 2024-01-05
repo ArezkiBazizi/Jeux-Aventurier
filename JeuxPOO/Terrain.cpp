@@ -33,7 +33,7 @@ void Terrain::afficheTerrain()const {
             cout << "@";
         else if (d_cases[i].type() == "aventurier")
             cout << "A";
-        else if (d_cases[i].type() == "piece")
+        else if (d_cases[i].type() == "pieces")
             cout << "P";
     }
 }
