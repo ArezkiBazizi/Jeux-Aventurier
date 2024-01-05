@@ -64,23 +64,20 @@ int main() {
     vector<Cases> T;
 
     //cout << "\e[8;1000;100S0t";
-    Terrain Ter{ 1000,1000,T};
+    Terrain Ter{ 1000,1000,T };
     system("cls");
-    Ter.litTerrain();
-    Ter.afficheTerrain();
     int x{ 1 };
     int y{ 1 };
     Position p{ x,y };
     Aventurier a{ p };
-    a.deplacerA(Ter);
-    system("cls");
-    Ter.ecritTerrain();
-    Ter.afficheTerrain();
-    a.deplacerA(Ter);
-    cout << endl;
-    system("cls");
-    Ter.ecritTerrain();
-    Ter.afficheTerrain();
-    cout << endl;
 
+    
+
+        Ter.litTerrain();
+        Ter.afficheTerrain();
+        a.deplacerA(Ter);
+
+        cout << endl;
+    
+    
  }
