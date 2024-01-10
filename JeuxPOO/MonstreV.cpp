@@ -3,14 +3,9 @@
 #include "Aventurier.h"
 #include "Monstre.h"
 
-
-
-MonstreV::MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete) :
-    Monstre{position,pointDeVie, pointDeForce,pourcentageHabilete}
+MonstreV::MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete): Monstre{ position,pointDeVie, pointDeForce, pourcentageHabilete }
 {
-
 }
-
 
 void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
 {
@@ -30,8 +25,17 @@ void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
     else
     {
         int x = (std::rand() % 3) - 1;
-        int y = (std::rand() % 3) - 1;
-        deplacer(x, y);
+        int y = (std::rand() % 2);
+
+        if (y == 0)
+        {
+            deplacer(x, 0);
+        }
+        else 
+        {
+            deplacer(0, x);
+        }
+     
     }
 
 }
