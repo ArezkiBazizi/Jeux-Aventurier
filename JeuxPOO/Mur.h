@@ -4,6 +4,6 @@
 class Mur : public Cases
 {
 	Mur();
-
+	string type() const override;
 };
 

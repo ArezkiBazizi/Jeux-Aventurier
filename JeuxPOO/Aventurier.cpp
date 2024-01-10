@@ -7,13 +7,19 @@
 using namespace std;
 
 Aventurier::Aventurier(const Position& position) :
-    Personnage{ position,100,100}, d_bourseDePieces{0}
+    
+    Personnage{Cases{position},100,100}, d_bourseDePieces{0}
 {
  
 }
 
+string Aventurier::type() const
+{
+    return "Aventurier";
+}
+
 Aventurier::Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces) :
-    Personnage{ position,pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }
+    Personnage{Cases{position},pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }
 {
     d_tabEquipement.push_back(std::make_unique<Armure>(100));
     d_tabEquipement.push_back(std::make_unique<Epee>(100));

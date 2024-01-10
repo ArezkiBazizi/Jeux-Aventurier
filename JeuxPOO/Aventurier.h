@@ -30,7 +30,8 @@ public:
     bool ramasserAllumette(Terrain& T) const;
     bool ramasserPieces(Pieces& P);
     bool estSortie(Terrain& T) const;
-   
+    string type() const override;
+  
 
 protected:
 

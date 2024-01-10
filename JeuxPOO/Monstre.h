@@ -18,7 +18,7 @@ class Monstre : public Personnage
         int obtenirPourcentageHabilete() const;
         virtual void trouverAventurier(Aventurier& A, Terrain& T);
         virtual ~Monstre();
-
+        string type() const;
     protected:
 
     private:
