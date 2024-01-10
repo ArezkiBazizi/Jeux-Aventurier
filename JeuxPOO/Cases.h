@@ -10,7 +10,10 @@ public:
     Cases(const Position& p);
     virtual string type() const;
     virtual bool estVide() const;
+    void setPosition(const Position& p);
+    void switchCases(Cases& c);
     Position position() const;
+    void deplacer(int x, int y);
 private:
     Position d_position;
 

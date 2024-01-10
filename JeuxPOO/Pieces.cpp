@@ -1,12 +1,14 @@
 #include "Pieces.h"
 
-Pieces::Pieces(int valeur, Position position): d_valeur{valeur}, d_position{position}
+Pieces::Pieces(int valeur, Position position): Cases{ position }, d_valeur{valeur}
 {}
 
 int Pieces::valeur() const{
 	return d_valeur;
 }
 
-Position Pieces::position() const{
-	return d_position;
+string Pieces::type() const
+{
+	return "Pieces";
 }
+
