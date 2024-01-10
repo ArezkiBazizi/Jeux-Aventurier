@@ -12,6 +12,7 @@ Cases::Cases(const Position& position) : d_position{position}
 }
 
 
+
 void Cases::switchCases(Cases& c)
 {
     Position aux(0,0);

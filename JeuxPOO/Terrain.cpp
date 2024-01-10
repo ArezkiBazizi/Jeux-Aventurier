@@ -17,23 +17,23 @@ Terrain::Terrain(int h, int l, const vector<Cases>& cases) :
 
 void Terrain::afficheTerrain()const {
     for (int i = 0; i < d_cases.size()-1; i++) {
-        goto_xy(d_cases[i].x(), d_cases[i].y());
+        goto_xy(d_cases[i]->position().x(), d_cases[i]->position().y());
      
-        if (d_cases[i].type() == "mur")
+        if (d_cases[i]->type() == "mur")
             cout << "#";
-        else if (d_cases[i].type() == "vide")
+        else if (d_cases[i]->type() == "vide")
             cout << ".";
-        else if (d_cases[i].type() == "videC")
+        else if (d_cases[i]->type() == "videC")
             cout << "/";
-        else if (d_cases[i].type() == "sortie")
+        else if (d_cases[i]->type() == "sortie")
             cout << "+";
-        else if (d_cases[i].type() == "monster")
+        else if (d_cases[i]->type() == "monster")
             cout << "M";
-        else if (d_cases[i].type() == "allumette")
+        else if (d_cases[i]->type() == "allumette")
             cout << "@";
-        else if (d_cases[i].type() == "aventurier")
+        else if (d_cases[i]->type() == "aventurier")
             cout << "A";
-        else if (d_cases[i].type() == "pieces")
+        else if (d_cases[i]->type() == "pieces")
             cout << "P";
     }
 }
@@ -47,7 +47,7 @@ void Terrain::remplirCases() {
         cout << "Entrer la case x , y et le type de case (saisir 0 en type pour fin)" << endl;
         cin >> x >> y >> a;
         if (a != "0") {
-            d_cases.push_back(Cases{ x,y,a });
+            d_cases.push_back(make_unique<Cases>( x,y,a ));
         }
 
     } while (a != "0");

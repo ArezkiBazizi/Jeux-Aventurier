@@ -9,7 +9,6 @@ public:
     Cases(int x, int y);
     Cases(const Position& p);
     virtual string type() const;
-    virtual bool estVide() const;
     void setPosition(const Position& p);
     void switchCases(Cases& c);
     Position position() const;

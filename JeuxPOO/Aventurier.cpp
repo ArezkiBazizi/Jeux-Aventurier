@@ -7,13 +7,19 @@
 using namespace std;
 
 Aventurier::Aventurier(const Position& position) :
-    Personnage{ position,100,100}, d_bourseDePieces{0}
+    
+    Personnage{Cases{position},100,100}, d_bourseDePieces{0}
 {
  
 }
 
+string Aventurier::type() const
+{
+    return "Aventurier";
+}
+
 Aventurier::Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces) :
-    Personnage{ position,pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }
+    Personnage{Cases{position},pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }
 {
     d_tabEquipement.push_back(std::make_unique<Armure>(100));
     d_tabEquipement.push_back(std::make_unique<Epee>(100));
@@ -57,7 +63,7 @@ void Aventurier::deplacerA( Terrain& T) {
         touchesDirection[i] = false;
     }
 
-        char ch;
+      
         int flag = 1;
 
         while (flag) {
@@ -83,43 +89,45 @@ void Aventurier::deplacerA( Terrain& T) {
 
 
         // Appliquer la logique de déplacement en fonction de l'état des touches
-        if (T.retourneCase(position().x(), position().y() + 1).estVide()) {
-            if (touchesDirection[0])
-            {
-                T.retourneC(position().x(), position().y()).setType("vide");
+        if (touchesDirection[0])
+        {
+            if (T.retourneCase(position().x(), position().y() + 1).type() == "vide" ) {
+           
+                
                 deplacer(0, 1); // Up
-                T.retourneC(position().x(), position().y()).setType("aventurier");
-
-
+                
 
             }
         }
+        if (touchesDirection[1])
+        {
         if (T.retourneCase(position().x(), position().y() - 1).estVide()) {
-            if (touchesDirection[1])
-            {
-                T.retourneC(position().x(), position().y()).setType("vide");
+            
+                
                 deplacer(0, -1);  // Down
-                T.retourneC(position().x(), position().y()).setType("aventurier");
+                
 
 
             }
         }
-        if (T.retourneCase(position().x() - 1, position().y()).estVide()) {
-            if (touchesDirection[2])
-            {
-                T.retourneC(position().x(), position().y()).setType("vide");
+        if (touchesDirection[2])
+        {
+            if (T.retourneCase(position().x() - 1, position().y()).estVide()) {
+            
+               
                 deplacer(-1, 0); // Left
-                T.retourneC(position().x(), position().y()).setType("aventurier");
+                
 
 
             }
         }
-        if (T.retourneCase(position().x() + 1, position().y()).estVide()) {
-            if (touchesDirection[3])
-            {
-                T.retourneC(position().x(), position().y()).setType("vide");
+        if (touchesDirection[3])
+        {
+            if (T.retourneCase(position().x() + 1, position().y()).estVide()) {
+            
+                
                 deplacer(1, 0);  // Right
-                T.retourneC(position().x(), position().y()).setType("aventurier");
+                
 
 
 

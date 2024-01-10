@@ -12,6 +12,11 @@ Monstre::~Monstre()
     //dtor
 }
 
+string Monstre::type() const
+{
+    return "Monstre";
+}
+
 int Monstre::obtenirPourcentageHabilete() const
 {
     return d_pourcentageHabilete;
