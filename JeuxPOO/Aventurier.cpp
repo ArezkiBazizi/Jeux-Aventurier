@@ -57,44 +57,82 @@ void Aventurier::deplacerA( Terrain& T) {
         touchesDirection[i] = false;
     }
 
+        char ch;
+        int flag = 1;
 
-    char ch;
-    int flag = 1;
+        while (flag) {
+            if (GetKeyState(VK_UP) & 0x8000) {
+                touchesDirection[0] = true;
+                flag = 0;
+            }
+            if (GetKeyState(VK_DOWN) & 0x8000) {
+                touchesDirection[1] = true;
+                flag = 0;
+            }
+            if (GetKeyState(VK_LEFT) & 0x8000) {
+                touchesDirection[2] = true;
+                flag = 0;
+            }
+            if (GetKeyState(VK_RIGHT) & 0x8000) {
+                touchesDirection[3] = true;
+                flag = 0;
+            }
 
-    while (flag) {
-        if (GetKeyState(VK_UP) & 0x8000) {
-            touchesDirection[0] = true;
-            flag = 0;
         }
-        if (GetKeyState(VK_DOWN) & 0x8000) {
-            touchesDirection[1] = true;
-            flag = 0;
+
+
+
+        // Appliquer la logique de déplacement en fonction de l'état des touches
+        if (T.retourneCase(position().x(), position().y() + 1).estVide()) {
+            if (touchesDirection[0])
+            {
+                T.retourneC(position().x(), position().y()).setType("vide");
+                deplacer(0, 1); // Up
+                T.retourneC(position().x(), position().y()).setType("aventurier");
+
+
+
+            }
         }
-        if (GetKeyState(VK_LEFT) & 0x8000) {
-            touchesDirection[2] = true;
-            flag = 0;
+        if (T.retourneCase(position().x(), position().y() - 1).estVide()) {
+            if (touchesDirection[1])
+            {
+                T.retourneC(position().x(), position().y()).setType("vide");
+                deplacer(0, -1);  // Down
+                T.retourneC(position().x(), position().y()).setType("aventurier");
+
+
+            }
         }
-        if (GetKeyState(VK_RIGHT) & 0x8000) {
-            touchesDirection[3] = true;
-            flag = 0;
+        if (T.retourneCase(position().x() - 1, position().y()).estVide()) {
+            if (touchesDirection[2])
+            {
+                T.retourneC(position().x(), position().y()).setType("vide");
+                deplacer(-1, 0); // Left
+                T.retourneC(position().x(), position().y()).setType("aventurier");
+
+
+            }
+        }
+        if (T.retourneCase(position().x() + 1, position().y()).estVide()) {
+            if (touchesDirection[3])
+            {
+                T.retourneC(position().x(), position().y()).setType("vide");
+                deplacer(1, 0);  // Right
+                T.retourneC(position().x(), position().y()).setType("aventurier");
+
+
+
+
+            }
         }
 
-    }
+        system("cls");
+        T.ecritTerrain();
+        T.afficheTerrain();
 
-    // Appliquer la logique de déplacement en fonction de l'état des touches
-    if (T.retourneCase(position().x(), position().y() + 1).estVide()) {
-        if (touchesDirection[0]) deplacer(0,1); // Up
-    }
-    if (T.retourneCase(position().x(), position().y() - 1).estVide()) {
-        if (touchesDirection[1]) deplacer(0,-1);  // Down
-    }
-    if (T.retourneCase(position().x() - 1, position().y()).estVide()) {
-        if (touchesDirection[2]) deplacer(-1,0); // Left
-    }
-    if (T.retourneCase(position().x() + 1, position().y()).estVide()) {
-        if (touchesDirection[3]) deplacer(1,0);  // Right
-    }
 
+    //cout << b.type() << endl;
 }
 
 void Aventurier::Attaquer(Monstre& M) {
