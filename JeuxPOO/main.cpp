@@ -75,7 +75,7 @@ int main() {
 
 
     int x{ 2 };
-    int y{ 1 };
+    int y{ 2 };
     Position p{ x,y };
     Aventurier a{ p };
     std::cout << a.position().x() << endl;
