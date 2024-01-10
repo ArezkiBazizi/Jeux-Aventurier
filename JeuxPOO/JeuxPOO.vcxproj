@@ -140,6 +140,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainTest.cpp" />
     <ClCompile Include="Monstre.cpp" />
+    <ClCompile Include="MonstreA.cpp" />
     <ClCompile Include="MonstreV.cpp" />
     <ClCompile Include="Mur.cpp" />
     <ClCompile Include="Personnage.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Equipement.h" />
     <ClInclude Include="goto_xy_windows.h" />
     <ClInclude Include="Monstre.h" />
+    <ClInclude Include="MonstreA.h" />
     <ClInclude Include="MonstreV.h" />
     <ClInclude Include="Mur.h" />
     <ClInclude Include="Personnage.h" />
