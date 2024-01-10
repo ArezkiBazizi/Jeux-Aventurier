@@ -3,7 +3,7 @@
 Monstre::Monstre(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete) :
     Personnage{ position,pointDeVie,pointDeForce }, d_pourcentageHabilete{ pourcentageHabilete }
 {
-    //ctor
+
 }
 
 
@@ -42,10 +42,5 @@ void Monstre::attaquer(Aventurier& A) const
     }
     i++;
    }
-}
-
-void Monstre::trouverAventurier(Aventurier& aventurier, Terrain& terrain) {
-    // Implémentation de la fonction
-    // ...
 }
 

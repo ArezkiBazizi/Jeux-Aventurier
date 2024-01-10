@@ -8,8 +8,6 @@
 #include "Personnage.h"
 #include "Aventurier.h"
 
-class Terrain;
-
 class Aventurier;
 
 class Monstre : public Personnage
@@ -18,7 +16,6 @@ class Monstre : public Personnage
         Monstre(const Position& position, int pointDeVie,int pointDeForce, int pourcentageHabilete);
         void attaquer(Aventurier& A) const;
         int obtenirPourcentageHabilete() const;
-        virtual void trouverAventurier(Aventurier& A, Terrain& T);
         virtual ~Monstre();
         string type() const;
     protected:

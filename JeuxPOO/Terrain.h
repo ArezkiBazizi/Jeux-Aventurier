@@ -10,6 +10,8 @@
 #include<fstream>
 
 class Aventurier;
+class Monstre; 
+
 using namespace std;
 
 class Terrain {

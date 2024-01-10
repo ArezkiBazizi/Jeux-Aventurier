@@ -1,7 +1,7 @@
 #include "MonstreV.h"
 #include <algorithm>
 
-MonstreV::MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete): Monstre{position,pointDeVie,pointDeForce,pourcentageHabilete}
+MonstreV::MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete) : Monstre{ position,pointDeVie,pointDeForce,pourcentageHabilete}
 {
 }
 
@@ -93,3 +93,4 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
         }
     }
 }
+
