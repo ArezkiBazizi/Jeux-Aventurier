@@ -1,9 +1,10 @@
 #ifndef PERSONNAGE_H
 #define PERSONNAGE_H
 #include "Position.h"
+#include "Cases.h"
 
 
-class Personnage
+class Personnage : public Cases
 {
 public:
     Personnage(const Position& position, int pointDeVie, int pointDeForce);
@@ -12,14 +13,11 @@ public:
     void modifierPointDeVie(int x);
     int pointDeForce() const;
     void modifierPointDeForce(int x);
-    void deplacer(int x,int y);
     bool estVivant() const;
-    Position position() const;
 
 protected:
 
 private:
-    Position d_position;
     int d_pointDeVie;
     int d_pointDeForce;
 };

@@ -6,9 +6,9 @@
 0 2 vide
 1 0 vide
 1 2 vide
-1 1 aventurier
+1 1 vide
 2 0 vide
-2 1 vide
+2 1 aventurier
 2 2 vide
 3 0 vide
 3 1 vide

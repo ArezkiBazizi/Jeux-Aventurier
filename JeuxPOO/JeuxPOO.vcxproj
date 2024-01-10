@@ -141,11 +141,13 @@
     <ClCompile Include="mainTest.cpp" />
     <ClCompile Include="Monstre.cpp" />
     <ClCompile Include="MonstreV.cpp" />
+    <ClCompile Include="Mur.cpp" />
     <ClCompile Include="Personnage.cpp" />
     <ClCompile Include="Pieces.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="PositionTest.cpp" />
     <ClCompile Include="Terrain.cpp" />
+    <ClCompile Include="Vide.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Armure.h" />
@@ -157,10 +159,12 @@
     <ClInclude Include="goto_xy_windows.h" />
     <ClInclude Include="Monstre.h" />
     <ClInclude Include="MonstreV.h" />
+    <ClInclude Include="Mur.h" />
     <ClInclude Include="Personnage.h" />
     <ClInclude Include="Pieces.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Terrain.h" />
+    <ClInclude Include="Vide.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
