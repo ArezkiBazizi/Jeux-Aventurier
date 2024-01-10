@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Amullette.cpp" />
     <ClCompile Include="Armure.cpp" />
     <ClCompile Include="ArmureTest.cpp" />
     <ClCompile Include="Aventurier.cpp" />
@@ -148,8 +149,10 @@
     <ClCompile Include="PositionTest.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Vide.cpp" />
+    <ClCompile Include="VideC.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Amullette.h" />
     <ClInclude Include="Armure.h" />
     <ClInclude Include="Aventurier.h" />
     <ClInclude Include="Cases.h" />
@@ -165,6 +168,7 @@
     <ClInclude Include="Position.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Vide.h" />
+    <ClInclude Include="VideC.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

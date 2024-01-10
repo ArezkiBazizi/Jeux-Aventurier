@@ -4,7 +4,7 @@ class Vide : public Cases
 
 {
 	Vide();
-	
+	bool estVide() const override;
 
 };
 
