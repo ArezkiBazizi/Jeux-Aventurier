@@ -12,7 +12,7 @@ class Terrain {
 public:
     Terrain();
     Terrain(int h, int l);
-    Terrain(int h, int l, const vector<Cases>& cases);
+    Terrain(int h, int l, const vector<unique_ptr<Cases>>& cases);
     void remplirCases();
     void afficheTerrain()const;
     void litTerrain();
@@ -20,7 +20,7 @@ public:
     void ecritTerrain() const;
     void ecritTerrain(const string& nomF)const;
     Cases retourneCase(int x, int y) const;
-    Cases& retourneC(int x, int y);
+   
 
 private:
     int d_h, d_l;

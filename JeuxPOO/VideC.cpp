@@ -3,7 +3,7 @@
 VideC::VideC(int x, int y) : Cases{ x,y }
 {}
 
-String VideC::type() const override
+string VideC::type() const 
 {
-	return "VideC"
+	return "VideC";
 }

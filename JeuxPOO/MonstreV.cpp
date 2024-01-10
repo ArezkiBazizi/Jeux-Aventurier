@@ -38,10 +38,10 @@ void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
 
 void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
 
-    bool up = T.retourneCase(position().x(),position().y()+1).estVide();
-    bool down = T.retourneCase(position().x(), position().y() - 1).estVide();
-    bool right = T.retourneCase(position().x() + 1, position().y()).estVide();
-    bool left = T.retourneCase(position().x()-1,position().y()).estVide();
+    bool up = T.retourneCase(position().x(),position().y()+1).type() == "vide";
+    bool down = T.retourneCase(position().x(), position().y() - 1).type() == "vide";
+    bool right = T.retourneCase(position().x() + 1, position().y()).type() == "vide";
+    bool left = T.retourneCase(position().x()-1,position().y()).type() == "vide";
 
     double D = sqrt(pow((dx + 1),2) + pow(dy,2));        //droite
     double G = sqrt(pow((dx + -1), 2) + pow(dy,2));      //gauche
