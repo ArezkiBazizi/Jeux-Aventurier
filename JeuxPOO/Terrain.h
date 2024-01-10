@@ -13,7 +13,7 @@ public:
     Terrain();
     Terrain(int h, int l);
     Terrain(int h, int l, const vector<unique_ptr<Cases>>& cases);
-    void remplirCases();
+    
     void afficheTerrain()const;
     void litTerrain();
     void litTerrain(const string& nomF);
