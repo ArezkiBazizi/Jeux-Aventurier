@@ -75,6 +75,7 @@ int main() {
 
         Ter.litTerrain();
         Ter.afficheTerrain();
+
         a.deplacerA(Ter);
 
 

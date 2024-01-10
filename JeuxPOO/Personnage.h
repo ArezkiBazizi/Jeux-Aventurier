@@ -1,9 +1,10 @@
 #ifndef PERSONNAGE_H
 #define PERSONNAGE_H
 #include "Position.h"
+#include "Cases.h"
 
 
-class Personnage
+class Personnage : public Cases
 {
 public:
     Personnage(const Position& position, int pointDeVie, int pointDeForce);
