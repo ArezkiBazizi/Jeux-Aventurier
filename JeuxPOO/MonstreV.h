@@ -4,7 +4,8 @@
 
 class MonstreV : public Monstre
 {
-	MonstreV();
+public:
+	MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete);
 	void trouverAventurier(Aventurier& A,Terrain& T) override;
 	void deplacerVersAventurier(int dx, int dy, Terrain& T);
 

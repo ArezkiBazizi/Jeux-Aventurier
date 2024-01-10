@@ -57,7 +57,7 @@ void Aventurier::deplacerA( Terrain& T) {
         touchesDirection[i] = false;
     }
 
-        char ch;
+      
         int flag = 1;
 
         while (flag) {
@@ -83,9 +83,10 @@ void Aventurier::deplacerA( Terrain& T) {
 
 
         // Appliquer la logique de déplacement en fonction de l'état des touches
+        if (touchesDirection[0])
+        {
         if (T.retourneCase(position().x(), position().y() + 1).estVide()) {
-            if (touchesDirection[0])
-            {
+           
                 T.retourneC(position().x(), position().y()).setType("vide");
                 deplacer(0, 1); // Up
                 T.retourneC(position().x(), position().y()).setType("aventurier");
@@ -94,9 +95,10 @@ void Aventurier::deplacerA( Terrain& T) {
 
             }
         }
+        if (touchesDirection[1])
+        {
         if (T.retourneCase(position().x(), position().y() - 1).estVide()) {
-            if (touchesDirection[1])
-            {
+            
                 T.retourneC(position().x(), position().y()).setType("vide");
                 deplacer(0, -1);  // Down
                 T.retourneC(position().x(), position().y()).setType("aventurier");
@@ -104,9 +106,10 @@ void Aventurier::deplacerA( Terrain& T) {
 
             }
         }
-        if (T.retourneCase(position().x() - 1, position().y()).estVide()) {
-            if (touchesDirection[2])
-            {
+        if (touchesDirection[2])
+        {
+            if (T.retourneCase(position().x() - 1, position().y()).estVide()) {
+            
                 T.retourneC(position().x(), position().y()).setType("vide");
                 deplacer(-1, 0); // Left
                 T.retourneC(position().x(), position().y()).setType("aventurier");
@@ -114,9 +117,10 @@ void Aventurier::deplacerA( Terrain& T) {
 
             }
         }
-        if (T.retourneCase(position().x() + 1, position().y()).estVide()) {
-            if (touchesDirection[3])
-            {
+        if (touchesDirection[3])
+        {
+            if (T.retourneCase(position().x() + 1, position().y()).estVide()) {
+            
                 T.retourneC(position().x(), position().y()).setType("vide");
                 deplacer(1, 0);  // Right
                 T.retourneC(position().x(), position().y()).setType("aventurier");
