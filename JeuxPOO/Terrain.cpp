@@ -9,7 +9,6 @@ Terrain::Terrain() :
 Terrain::Terrain(int h, int l) :
     d_h{ h }, d_l{ l }, d_cases{}
 {
-    litTerrain();
 }
 
 
@@ -35,6 +34,22 @@ void Terrain::afficheTerrain()const {
             cout << "P";
     }
 }
+
+
+void Terrain::remplirCases() {
+    string a;
+    do {
+        int x, y;
+
+        cout << "Entrer la case x , y et le type de case (saisir 0 en type pour fin)" << endl;
+        cin >> x >> y >> a;
+        if (a != "0") {
+            d_cases.push_back(make_unique<Cases>( x,y ));
+        }
+
+    } while (a != "0");
+}
+
 
 void Terrain::ecritTerrain(const string& nomF) const {
 
