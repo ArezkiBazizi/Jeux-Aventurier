@@ -1,5 +1,4 @@
-#ifndef MONSTREV_H
-#define MONSTREV_H
+/*
 #include "Monstre.h"
 
 class Terrain;
@@ -13,4 +12,5 @@ public:
 	void deplacerVersAventurier(int dx, int dy, Terrain& T);
 
 };
-#endif // MONSTREV_H
+
+*/

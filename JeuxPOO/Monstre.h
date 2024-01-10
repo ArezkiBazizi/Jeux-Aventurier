@@ -1,5 +1,4 @@
-#ifndef MONSTRE_H
-#define MONSTRE_H
+#pragma once
 #include <iostream>
 #include <cstdlib>  // Pour la fonction rand()
 #include <ctime>    // Pour initialiser la graine de la fonction rand()
@@ -9,6 +8,7 @@
 #include "Aventurier.h"
 
 class Aventurier;
+class Terrain;
 
 class Monstre : public Personnage
 {
@@ -24,4 +24,22 @@ class Monstre : public Personnage
         int d_pourcentageHabilete;
 };
 
-#endif // MONSTRE_H
+class MonstreV : public Monstre
+{
+public:
+    MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete);
+    void trouverAventurier(Aventurier& A, Terrain& T);
+    void deplacerVersAventurier(int dx, int dy, Terrain& T);
+
+};
+
+class MonstreA : public Monstre
+{
+public:
+    MonstreA(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete);
+    void deplaceAveugle(Terrain& T);
+};
+
+
+
+

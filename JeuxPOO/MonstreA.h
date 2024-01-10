@@ -1,5 +1,9 @@
+/*
 #pragma once
 #include "Monstre.h"
+
+class Terrain;
+
 class MonstreA : public Monstre
 {
 public: 
@@ -7,3 +11,4 @@ public:
 	void deplaceAveugle(Terrain& T);
 };
 
+*/

@@ -73,11 +73,11 @@ void Terrain::litTerrain(const string& nomF) {
         }
         else if (t == "MonstreV")
         {
-            d_cases.push_back(make_unique<MonstreV>(Position{ x,y },100, 100, 100));
+            //d_cases.push_back(make_unique<MonstreV>(Position{ x,y },100, 100, 100));
         }
         else if (t == "MonstreA")
         {
-            d_cases.push_back(make_unique<MonstreA>(Position{ x,y }, 100, 100, 100));
+            //d_cases.push_back(make_unique<MonstreA>(Position{ x,y }, 100, 100, 100));
         }
         else if (t == "Pieces")
         {

@@ -1,3 +1,5 @@
+/*
+
 #include "MonstreV.h"
 #include <algorithm>
 
@@ -93,5 +95,5 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
         }
     }
 }
-
+*/
 

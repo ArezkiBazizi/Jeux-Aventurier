@@ -1,3 +1,4 @@
+/*
 #include "MonstreA.h"
 
 
@@ -11,3 +12,4 @@ void MonstreA::deplaceAveugle(Terrain& T)
 
 	deplacer(x, y);
 }
+*/
