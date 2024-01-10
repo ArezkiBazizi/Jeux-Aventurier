@@ -6,12 +6,6 @@ Personnage::Personnage(const Position& position, int pointDeVie, int pointDeForc
     //ctor
 }
 
-void Personnage::deplacer(int x, int y)
-{
-    d_position.modifierX(x);
-    d_position.modifierY(y);
-
-}
 
 void Personnage::encaisser(int x)
 {

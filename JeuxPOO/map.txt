@@ -2,7 +2,7 @@
 -1 2 vide
 -1 1 vide
 0 0 vide
-0 1 vide
+0 1 aventurier
 0 2 vide
 1 0 vide
 1 2 vide
