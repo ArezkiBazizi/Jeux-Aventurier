@@ -10,7 +10,7 @@
 #include<fstream>
 
 class Aventurier;
-class Monstre; 
+class MonstreV; 
 
 using namespace std;
 
