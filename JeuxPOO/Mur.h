@@ -3,7 +3,7 @@
 
 class Mur : public Cases
 {
-	Mur();
+	Mur(const Position& position);
 	string type() const override;
 };
 

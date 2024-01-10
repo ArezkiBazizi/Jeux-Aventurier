@@ -7,6 +7,10 @@
 #include "Vide.h"
 #include "VideC.h"
 #include "MonstreV.h"
+#include "MonstreA.h"
+#include "Pieces.h"
+#include "Amullette.h"
+#include "Mur.h"
 #include<fstream>
 
 class Aventurier;

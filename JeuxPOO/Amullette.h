@@ -3,7 +3,8 @@
 
 class Amullette : public Cases
 {
-	Amullette();
+public:
+	Amullette(const Position& position);
 	string type() const override;
 };
 
