@@ -8,6 +8,8 @@
 #include "Personnage.h"
 #include "Aventurier.h"
 
+class Terrain;
+
 class Aventurier;
 
 class Monstre : public Personnage

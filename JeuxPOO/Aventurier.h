@@ -15,6 +15,7 @@
 using namespace std;
 
 class Monstre;
+class Terrain;
 
 class Aventurier : public Personnage
 {

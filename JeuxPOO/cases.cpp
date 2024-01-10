@@ -11,6 +11,11 @@ Cases::Cases(const Position& position) : d_position{position}
 
 }
 
+string Cases::type() const
+{
+    return "Cases";
+}
+
 
 
 void Cases::switchCases(Cases& c)

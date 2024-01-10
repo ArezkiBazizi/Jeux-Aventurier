@@ -8,51 +8,33 @@ Terrain::Terrain() :
 
 Terrain::Terrain(int h, int l) :
     d_h{ h }, d_l{ l }, d_cases{}
-{}
-
-Terrain::Terrain(int h, int l, const vector<unique_ptr<Cases>>& cases) :
-    d_h{ h }, d_l{ l }, d_cases{ cases }
 {
+    litTerrain();
 }
+
 
 void Terrain::afficheTerrain()const {
     for (int i = 0; i < d_cases.size()-1; i++) {
         goto_xy(d_cases[i]->position().x(), d_cases[i]->position().y());
      
-        if (d_cases[i]->type() == "mur")
+        if (d_cases[i]->type() == "Mur")
             cout << "#";
-        else if (d_cases[i]->type() == "vide")
+        else if (d_cases[i]->type() == "Vide")
             cout << ".";
-        else if (d_cases[i]->type() == "videC")
+        else if (d_cases[i]->type() == "VideC")
             cout << "/";
-        else if (d_cases[i]->type() == "sortie")
+        else if (d_cases[i]->type() == "Sortie")
             cout << "+";
-        else if (d_cases[i]->type() == "monster")
+        else if (d_cases[i]->type() == "Monster")
             cout << "M";
-        else if (d_cases[i]->type() == "allumette")
+        else if (d_cases[i]->type() == "Allumette")
             cout << "@";
-        else if (d_cases[i]->type() == "aventurier")
+        else if (d_cases[i]->type() == "Aventurier")
             cout << "A";
-        else if (d_cases[i]->type() == "pieces")
+        else if (d_cases[i]->type() == "Pieces")
             cout << "P";
     }
 }
-
-
-void Terrain::remplirCases() {
-    string a;
-    do {
-        int x, y;
-
-        cout << "Entrer la case x , y et le type de case (saisir 0 en type pour fin)" << endl;
-        cin >> x >> y >> a;
-        if (a != "0") {
-            d_cases.push_back(make_unique<Cases>( x,y ));
-        }
-
-    } while (a != "0");
-}
-
 
 void Terrain::ecritTerrain(const string& nomF) const {
 
@@ -76,7 +58,23 @@ void Terrain::litTerrain(const string& nomF) {
     d_cases.clear();
     while (f) {
         f >> x >> y >> t;
-        d_cases.push_back(make_unique<Cases>( x,y ));
+        if (t == "Vide")
+        {
+            d_cases.push_back(make_unique<Vide>(x, y));
+        }
+        else if (t == "VideC")
+        {
+            d_cases.push_back(make_unique<VideC>(x, y));
+        }
+        else if (t == "Aventurier")
+        {
+            d_cases.push_back(make_unique<Aventurier>( Position{x,y}));
+        }
+        else if (t == "MonstreV")
+        {
+           // d_cases.push_back(make_unique<MonstreV>(Position{ x,y },100, 100, 100));
+        }
+
     }
 }
 
@@ -84,26 +82,25 @@ void Terrain::litTerrain() {
     litTerrain("map.txt");
 }
 
-
-Cases Terrain::retourneCase(int x, int y) const
-
+std::unique_ptr<Cases> Terrain::retourneCase(int x, int y) const
 {
-    int i=0;
-    while (i < d_cases.size())
+    for (const auto& casePtr : d_cases)
     {
-        if (d_cases[i]->position().x() == x && d_cases[i]->position().y() == y)
+        if (casePtr->position().x() == x && casePtr->position().y() == y)
         {
-            return *d_cases[i];
-        }
-        else 
-        {
-            i++;
+            return std::make_unique<Cases>(*casePtr); // Retourne une nouvelle instance copiée
         }
     }
-    return  *d_cases[i];
+
+    return nullptr; // Retourne un pointeur unique vide si aucune case correspondante n'est trouvée
 }
 
 
-
-
-
+void Terrain::retourne() const
+{
+    for (int i = 0; i < d_cases.size(); i++)
+    {
+        cout << d_cases[i]->type()<<endl;
+    }
+    
+}

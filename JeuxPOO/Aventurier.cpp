@@ -1,5 +1,4 @@
 #include "Aventurier.h"
-
 #include <cmath>
 #include <conio.h>
 
@@ -91,7 +90,7 @@ void Aventurier::deplacerA( Terrain& T) {
         // Appliquer la logique de déplacement en fonction de l'état des touches
         if (touchesDirection[0])
         {
-            if (T.retourneCase(position().x(), position().y() + 1).type() == "vide" ) {
+            if (T.retourneCase(position().x(), position().y() + 1)->type() == "vide" ) {
            
                 deplacer(0, 1); // Up
 
@@ -99,7 +98,7 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         if (touchesDirection[1])
         {
-        if (T.retourneCase(position().x(), position().y() - 1).type() == "vide") {
+        if (T.retourneCase(position().x(), position().y() - 1)->type() == "vide") {
             
                 
                 deplacer(0, -1);  // Down
@@ -110,7 +109,7 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         if (touchesDirection[2])
         {
-            if (T.retourneCase(position().x() - 1, position().y()).type() == "vide") {
+            if (T.retourneCase(position().x() - 1, position().y())->type() == "vide") {
             
                
                 deplacer(-1, 0); // Left
@@ -121,7 +120,7 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         if (touchesDirection[3])
         {
-            if (T.retourneCase(position().x() + 1, position().y()).estVide()) {
+            if (T.retourneCase(position().x() + 1, position().y())->type() == "vide") {
             
                 
                 deplacer(1, 0);  // Right
@@ -160,7 +159,7 @@ void Aventurier::Attaquer(Monstre& M) {
 }
 
 bool Aventurier::ramasserAllumette(Terrain& T) const {
-    return (T.retourneCase(position().x(), position().y()).type() == "allumette");
+    return (T.retourneCase(position().x(), position().y())->type() == "allumette");
 }
 
 
@@ -174,5 +173,5 @@ bool Aventurier::ramasserPieces(Pieces& P) {
 }
 
 bool Aventurier::estSortie(Terrain& T) const {
-    return (T.retourneCase(position().x(), position().y()).type() == "sortie");
+    return (T.retourneCase(position().x(), position().y())->type() == "sortie");
 }

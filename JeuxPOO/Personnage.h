@@ -14,7 +14,6 @@ public:
     int pointDeForce() const;
     void modifierPointDeForce(int x);
     bool estVivant() const;
-    string type() const override;
 protected:
 
 private:

@@ -60,34 +60,11 @@ void test2()
 }*/
 
 int main() {
-/*
-    vector<Cases> T;
 
-    //cout << "\e[8;1000;100S0t";
-    Terrain Ter{ 1000,1000,T };
+    Terrain Ter{ 1000,1000};
     system("cls");
-    int x{ 1 };
-    int y{ 1 };
-    Position p{ x,y };
-    Aventurier a{ p };
-
-    
-
-        Ter.litTerrain();
-        Ter.afficheTerrain();
-
-        a.deplacerA(Ter);
+    Ter.afficheTerrain();
 
 
-    int x{ 2 };
-    int y{ 1 };
-    Position p{ x,y };
-    Aventurier a{ p };
-    std::cout << a.position().x() << endl;
-    std::cout << a.position().y() << endl;
-    a.deplacerA(Ter);
-    system("cls");
-    std::cout << a.position().x()<< endl;
-    std::cout << a.position().y();
-    */
+ 
  }

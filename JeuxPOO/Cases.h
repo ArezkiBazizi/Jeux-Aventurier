@@ -13,6 +13,7 @@ public:
     void switchCases(Cases& c);
     Position position() const;
     void deplacer(int x, int y);
+    virtual ~Cases() = default;
 private:
     Position d_position;
 

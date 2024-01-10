@@ -1,5 +1,6 @@
 #include "Monstre.h"
 #include "Aventurier.h"
+#include "Terrain.h"
 
 
 class MonstreV : public Monstre
