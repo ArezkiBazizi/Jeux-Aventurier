@@ -5,6 +5,7 @@
 #include <ctime>    // Pour initialiser la graine de la fonction rand()
 #include <cmath>
 #include "Terrain.h"
+#include "Personnage.h"
 #include "Aventurier.h"
 
 class Aventurier;

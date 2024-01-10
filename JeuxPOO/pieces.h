@@ -1,21 +1,20 @@
 #ifndef PIECES_H
 #define PIECES_H
 
-#include "Position.h"
+#include "Cases.h"
 
 
 
 
-class Pieces{
+class Pieces : public Cases{
 public:
 	Pieces(int valeur, Position position);
 	int valeur() const;
-	Position position() const;
+	string type() const override;
 protected:
 
 private:
 	int d_valeur;
-	Position d_position;
 
 };
 

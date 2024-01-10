@@ -3,6 +3,15 @@
 #include "Aventurier.h"
 #include "Monstre.h"
 
+
+
+MonstreV::MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete) :
+    Monstre{position,pointDeVie, pointDeForce,pourcentageHabilete}
+{
+
+}
+
+
 void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
 {
     // Calcul des différences entre les coordonnées du monstre et de l'aventurier
