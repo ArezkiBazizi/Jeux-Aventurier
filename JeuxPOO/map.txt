@@ -5,7 +5,7 @@
 0 1 aventurier
 0 2 vide
 1 0 vide
-1 2 vide
+1 2 aventurier
 1 1 vide
 2 0 vide
 2 1 aventurier
