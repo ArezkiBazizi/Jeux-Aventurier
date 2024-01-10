@@ -1,6 +1,6 @@
 #ifndef TERRAIN_H_INCLUDED
 #define TERRAIN_H_INCLUDED
-#include "cases.h"
+#include "Cases.h"
 #include "goto_xy_windows.h"
 #include <vector>
 #include "Personnage.h"
