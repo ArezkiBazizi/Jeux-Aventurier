@@ -13,6 +13,11 @@ Aventurier::Aventurier(const Position& position) :
  
 }
 
+string Aventurier::type() const
+{
+    return "Aventurier";
+}
+
 Aventurier::Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces) :
     Personnage{Cases{position},pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }
 {

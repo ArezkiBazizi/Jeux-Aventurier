@@ -4,7 +4,7 @@ class VideC :
     public Cases
 {
 
-    VideC();
-
+    VideC(int x, int y);
+    string type() const override;
 };
 

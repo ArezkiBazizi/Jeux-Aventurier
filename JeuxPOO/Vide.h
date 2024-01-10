@@ -3,8 +3,8 @@
 class Vide : public Cases
 
 {
-	Vide();
-	bool estVide() const override;
+	Vide(int x, int y);
+	string type() const override;
 
 };
 

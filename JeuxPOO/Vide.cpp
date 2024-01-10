@@ -4,7 +4,7 @@ Vide::Vide(int x, int y):
 	Cases{ x,y }
 {}
 
-Vide::estVide() const
+string Vide::type() const
 {
-	return true;
+	return "Vide";
 }
