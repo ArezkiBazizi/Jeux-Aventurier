@@ -1,24 +1,19 @@
 #ifndef CASES_H_INCLUDED
 #define CASES_H_INCLUDED
+#include"Position.h"
 #include <iostream>
 
 using namespace std;
 class Cases {
 public:
     Cases(int x, int y);
-    Cases(int x, int y, const string& type);
-    void setType(const string& type);
-    int x() const;
-    int y() const;
-    void x(int x);
-    void y(int y);
-    string type() const;
-    bool estVide() const;
+    Cases(const Position& p);
+    virtual string type() const;
+    virtual bool estVide() const;
+    Position position() const;
 private:
-    int d_x;
-    int d_y;
-    string d_type;
-};
+    Position d_position;
 
+};
 #endif // CASES_H_INCLUDED
 

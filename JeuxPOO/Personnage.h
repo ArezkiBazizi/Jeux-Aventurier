@@ -14,12 +14,10 @@ public:
     void modifierPointDeForce(int x);
     void deplacer(int x,int y);
     bool estVivant() const;
-    Position position() const;
 
 protected:
 
 private:
-    Position d_position;
     int d_pointDeVie;
     int d_pointDeForce;
 };
