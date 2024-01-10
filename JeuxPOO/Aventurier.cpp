@@ -91,13 +91,11 @@ void Aventurier::deplacerA( Terrain& T) {
         // Appliquer la logique de déplacement en fonction de l'état des touches
         if (touchesDirection[0])
         {
-        if (T.retourneCase(position().x(), position().y() + 1).estVide()) {
+            if (T.retourneCase(position().x(), position().y() + 1).type() == "vide" ) {
            
-                T.retourneC(position().x(), position().y()).setType("vide");
+                
                 deplacer(0, 1); // Up
-                T.retourneC(position().x(), position().y()).setType("aventurier");
-
-
+                
 
             }
         }
@@ -105,9 +103,9 @@ void Aventurier::deplacerA( Terrain& T) {
         {
         if (T.retourneCase(position().x(), position().y() - 1).estVide()) {
             
-                T.retourneC(position().x(), position().y()).setType("vide");
+                
                 deplacer(0, -1);  // Down
-                T.retourneC(position().x(), position().y()).setType("aventurier");
+                
 
 
             }
@@ -116,9 +114,9 @@ void Aventurier::deplacerA( Terrain& T) {
         {
             if (T.retourneCase(position().x() - 1, position().y()).estVide()) {
             
-                T.retourneC(position().x(), position().y()).setType("vide");
+               
                 deplacer(-1, 0); // Left
-                T.retourneC(position().x(), position().y()).setType("aventurier");
+                
 
 
             }
@@ -127,9 +125,9 @@ void Aventurier::deplacerA( Terrain& T) {
         {
             if (T.retourneCase(position().x() + 1, position().y()).estVide()) {
             
-                T.retourneC(position().x(), position().y()).setType("vide");
+                
                 deplacer(1, 0);  // Right
-                T.retourneC(position().x(), position().y()).setType("aventurier");
+                
 
 
 
