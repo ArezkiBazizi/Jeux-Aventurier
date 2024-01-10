@@ -8,6 +8,7 @@ class Cases {
 public:
     Cases(int x, int y);
     Cases(const Position& p);
+    virtual ~Cases() ;
     virtual string type() const;
     void setPosition(const Position& p);
     void switchCases(Cases& c);
