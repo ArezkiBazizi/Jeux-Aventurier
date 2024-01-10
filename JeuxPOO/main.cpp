@@ -77,7 +77,16 @@ int main() {
         Ter.afficheTerrain();
         a.deplacerA(Ter);
 
-        cout << endl;
-    
-    
+
+    int x{ 2 };
+    int y{ 1 };
+    Position p{ x,y };
+    Aventurier a{ p };
+    std::cout << a.position().x() << endl;
+    std::cout << a.position().y() << endl;
+    a.deplacerA(Ter);
+    system("cls");
+    std::cout << a.position().x()<< endl;
+    std::cout << a.position().y();
+
  }
