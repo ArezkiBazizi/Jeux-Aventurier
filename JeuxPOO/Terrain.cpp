@@ -17,7 +17,7 @@ Terrain::Terrain(int h, int l, const vector<Cases>& cases) :
 
 void Terrain::afficheTerrain()const {
     for (int i = 0; i < d_cases.size()-1; i++) {
-        goto_xy(d_cases[i].x(), d_cases[i].y());
+        goto_xy(d_cases[i].type(), d_cases[i].y());
      
         if (d_cases[i].type() == "mur")
             cout << "#";
@@ -47,7 +47,7 @@ void Terrain::remplirCases() {
         cout << "Entrer la case x , y et le type de case (saisir 0 en type pour fin)" << endl;
         cin >> x >> y >> a;
         if (a != "0") {
-            d_cases.push_back(Cases{ x,y,a });
+            d_cases.push_back(make_unique<Cases>( x,y,a ));
         }
 
     } while (a != "0");

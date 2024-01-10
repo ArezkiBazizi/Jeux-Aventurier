@@ -24,7 +24,7 @@ public:
 
 private:
     int d_h, d_l;
-    vector<Cases> d_cases;
+    vector<unique_ptr<Cases>> d_cases;
 
 
 };

@@ -8,7 +8,7 @@
 
 
 using namespace std;
-
+/*
 void test() {
 
     Cases A(10, 15, "mur"), B(20, 20, "monster");
@@ -57,10 +57,10 @@ void test2()
     system("cls");
     Ter.afficheTerrain();
 
-}
+}*/
 
 int main() {
-
+/*
     vector<Cases> T;
 
     //cout << "\e[8;1000;100S0t";
@@ -89,5 +89,5 @@ int main() {
     system("cls");
     std::cout << a.position().x()<< endl;
     std::cout << a.position().y();
-
+    */
  }
