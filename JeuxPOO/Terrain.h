@@ -25,8 +25,6 @@ public:
 private:
     int d_h, d_l;
     vector<unique_ptr<Cases>> d_cases;
-
-
 };
 
 #endif // TERRAIN_H_INCLUDED
