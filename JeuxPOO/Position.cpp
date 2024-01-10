@@ -5,6 +5,7 @@ Position::Position(int x, int y) : d_x{x}, d_y{y}
     //dtor
 }
 
+
 Position::~Position()
 {
     //dtor

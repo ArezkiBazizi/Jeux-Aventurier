@@ -12,7 +12,6 @@ public:
     void modifierPointDeVie(int x);
     int pointDeForce() const;
     void modifierPointDeForce(int x);
-    void deplacer(int x,int y);
     bool estVivant() const;
 
 protected:
