@@ -3,14 +3,9 @@
 #include "Aventurier.h"
 #include "Monstre.h"
 
-
-
-MonstreV::MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete) :
-    Monstre{position,pointDeVie, pointDeForce,pourcentageHabilete}
+MonstreV::MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete): Monstre{ position,pointDeVie, pointDeForce, pourcentageHabilete }
 {
-
 }
-
 
 void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
 {
