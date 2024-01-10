@@ -36,20 +36,6 @@ void Terrain::afficheTerrain()const {
 }
 
 
-void Terrain::remplirCases() {
-    string a;
-    do {
-        int x, y;
-
-        cout << "Entrer la case x , y et le type de case (saisir 0 en type pour fin)" << endl;
-        cin >> x >> y >> a;
-        if (a != "0") {
-            d_cases.push_back(make_unique<Cases>( x,y ));
-        }
-
-    } while (a != "0");
-}
-
 
 void Terrain::ecritTerrain(const string& nomF) const {
 
@@ -87,9 +73,24 @@ void Terrain::litTerrain(const string& nomF) {
         }
         else if (t == "MonstreV")
         {
-           // d_cases.push_back(make_unique<MonstreV>(Position{ x,y },100, 100, 100));
+            d_cases.push_back(make_unique<MonstreV>(Position{ x,y },100, 100, 100));
         }
-
+        else if (t == "MonstreA")
+        {
+            d_cases.push_back(make_unique<MonstreA>(Position{ x,y }, 100, 100, 100));
+        }
+        else if (t == "Pieces")
+        {
+            d_cases.push_back(make_unique<Pieces>(20,Position{ x,y }));
+        }
+        else if (t == "Amullette")
+        {
+            d_cases.push_back(make_unique<Amullette>(Position{ x,y }));
+        }
+        else if (t == "Mur")
+        {
+            d_cases.push_back(make_unique<Mur>(Position{ x,y }));
+        }
     }
 }
 
