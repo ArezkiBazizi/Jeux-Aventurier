@@ -19,6 +19,14 @@ int Monstre::obtenirPourcentageHabilete() const
     return d_pourcentageHabilete;
 }
 
+void Monstre::afficheInfoMonstre()
+{
+    cout << endl;
+    cout << "information Aventurier" << endl;
+    cout << " Point de vie : " << pointDeVie() << endl;
+    cout << " Ponit de force : " << pointDeForce() << endl;
+}
+
 void Monstre::attaquer(Aventurier& A) const
 {
     int probabilite = (static_cast<double>(rand()) / RAND_MAX)*100 ;
