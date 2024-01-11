@@ -22,8 +22,8 @@ string Aventurier::type() const
 Aventurier::Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces, int PointDeSoliditeArmure, int PointDeSoliditeEpee) :
     Personnage{position,pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }
 {
-    d_tabEquipement.push_back(std::make_unique<Armure>(PointDeSoliditeArmure));
-    d_tabEquipement.push_back(std::make_unique<Epee>(PointDeSoliditeEpee));
+    d_tabEquipement.push_back(make_unique<Armure>(100));
+    d_tabEquipement.push_back(make_unique<Epee>(100));
 }
 
 
@@ -57,12 +57,9 @@ void Aventurier::ajouterEquipement(const string& type, int p)
 
 void Aventurier::deplacerA( Terrain& T) {
     // Tableau pour stocker l'état des touches de direction
-    bool touchesDirection[4];
+    vector<bool> touchesDirection(4,false);
 
-    for (int i = 0; i < 4; i++)
-    {
-        touchesDirection[i] = false;
-    }
+   
     
     char ch;
         int flag = 1;
@@ -88,7 +85,7 @@ void Aventurier::deplacerA( Terrain& T) {
                 flag = 0;
                 
             }
-
+            
         }
 
         
@@ -96,15 +93,19 @@ void Aventurier::deplacerA( Terrain& T) {
         // Appliquer la logique de déplacement en fonction de l'état des touches
         if (touchesDirection[0])
         {
-            if (T.retourneCase(position().x(), position().y() + 1)->type() == "Vide" ) {
            
-                deplacer(0, 1); // Up
+           
+            if (T.retourneC(position().x(), position().y() + 1).type() == "Vide" ) {
+                
+                cout << "Test";
+                deplacer(0, 1);// Up
+                
 
             }
         }
         if (touchesDirection[1])
         {
-        if (T.retourneCase(position().x(), position().y() - 1)->type() == "Vide") {
+        if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
             
                 
                 deplacer(0, -1);  // Down
@@ -115,7 +116,7 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         if (touchesDirection[2])
         {
-            if (T.retourneCase(position().x() - 1, position().y())->type() == "Vide") {
+            if (T.retourneC(position().x() - 1, position().y()).type() == "Vide") {
             
                
                 deplacer(-1, 0); // Left
@@ -126,7 +127,7 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         if (touchesDirection[3])
         {
-            if (T.retourneCase(position().x() + 1, position().y())->type() == "Vide") {
+            if (T.retourneC(position().x() + 1, position().y()).type() == "Vide") {
             
                 
                 deplacer(1, 0);  // Right

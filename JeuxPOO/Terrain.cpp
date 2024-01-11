@@ -119,7 +119,7 @@ void Terrain::retourne() const
 {
     for (int i = 0; i < d_cases.size(); i++)
     {
-        cout << d_cases[i]->type()<<endl;
+        cout << d_cases[i]->type()<< " "  << d_cases[i]->position().x() << " " << d_cases[i]->position().y() << endl;
     }
     
 }
@@ -135,4 +135,17 @@ unique_ptr<Aventurier> Terrain::retourneAventurier() const
     }
 
     return nullptr; // Retourne un pointeur unique vide si aucune case correspondante n'est trouvée
+}
+
+Cases& Terrain::retourneC(int x, int y) {
+    // Parcourez les cases existantes pour trouver la case correspondante.
+    for (auto& c : d_cases) {
+        if (c->position().x() == x && c->position().y() == y) {
+            return *c; // Renvoie la case existante avec les coordonnées correspondantes.
+        }
+        
+    }
+
+    // Si aucune case correspondante n'est trouvée, lancez une exception ou faites ce qui est approprié pour votre programme.
+    throw std::runtime_error("Case non trouvée pour les coordonnées");
 }
