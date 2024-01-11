@@ -50,7 +50,7 @@
 4 5 Vide
 4 6 Vide
 4 7 Vide
-4 8 Vide
+4 8 MonstreV
 4 9 Vide
 4 10 Mur
 5 0 Mur
@@ -58,7 +58,7 @@
 5 2 Vide
 5 3 Vide
 5 4 Vide
-5 5 Vide
+5 5 Mur
 5 6 Vide
 5 7 Vide
 5 8 Vide
@@ -69,7 +69,7 @@
 6 2 Vide
 6 3 Vide
 6 4 Vide
-6 5 Vide
+6 5 Mur
 6 6 Vide
 6 7 Vide
 6 8 Vide
@@ -88,7 +88,7 @@
 7 10 Mur
 8 0 Mur
 8 1 Vide
-8 2 Vide
+8 2 MonstreV
 8 3 Vide
 8 4 Vide
 8 5 Vide
@@ -109,7 +109,7 @@
 9 9 Vide
 9 10 Mur
 10 0 Mur
-10 1 Sortie
+10 1 Mur
 10 2 Mur
 10 3 Mur
 10 4 Mur

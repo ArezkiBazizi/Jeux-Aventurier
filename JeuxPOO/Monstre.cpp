@@ -65,7 +65,7 @@ void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
         attaquer(A);
     }
 
-    else if (abs(dx) == 8 && abs(dy) == 8)
+    else if (abs(dx) <= 8 && abs(dy) <= 8)
     {
         deplacerVersAventurier(dx, dy, T);
     }
@@ -89,17 +89,17 @@ void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
 
 void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
 
-    bool up = T.retourneCase(position().x(), position().y() + 1)->type() == "vide";
-    bool down = T.retourneCase(position().x(), position().y() - 1)->type() == "vide";
-    bool right = T.retourneCase(position().x() + 1, position().y())->type() == "vide";
-    bool left = T.retourneCase(position().x() - 1, position().y())->type() == "vide";
+    bool up = T.retourneC(position().x(), position().y() + 1).type()== "Vide" || T.retourneC(position().x(), position().y() + 1).type() == "Aventurier";
+    bool down = T.retourneC(position().x(), position().y() - 1).type() == "Vide" || T.retourneC(position().x(), position().y() - 1).type() == "Aventurier";;
+    bool right = T.retourneC(position().x() + 1, position().y()).type() == "Vide" || T.retourneC(position().x()+1, position().y()).type() == "Aventurier";;
+    bool left = T.retourneC(position().x() - 1, position().y()).type() == "Vide" || T.retourneC(position().x()-1, position().y()).type() == "Aventurier";;
 
     double D = sqrt(pow((dx + 1), 2) + pow(dy, 2));        //droite
     double G = sqrt(pow((dx + -1), 2) + pow(dy, 2));      //gauche
     double H = sqrt(pow((dx), 2) + pow((dy + 1), 2));      //haut
     double B = sqrt(pow((dx + -1), 2) + pow((dy - 1), 2)); //bas
 
-
+    
     std::vector<double> move{ D, G, H, B };
 
     std::sort(move.begin(), move.end());
@@ -111,32 +111,40 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
         {
             if (right)
             {
-                deplacer(1, 0);
+                switchCases(T.retourneC(position().x()+1, position().y()));
+                i = 4;
+                right = false;
             }
             else i++;
         }
 
-        if (move[i] == G)
+        else if (move[i] == G)
         {
             if (left)
             {
-                deplacer(-1, 0);
+                switchCases(T.retourneC(position().x()-1, position().y()));
+                i = 4;
+                left = false;
             }
             else i++;
         }
-        if (move[i] == H)
+        else if (move[i] == H)
         {
             if (up)
             {
-                deplacer(0, 1);
+                switchCases(T.retourneC(position().x(), position().y() - 1));
+                i = 4;
+                up = false;
             }
             else i++;
         }
-        if (move[i] == B)
+        else if (move[i] == B)
         {
             if (down)
             {
-                deplacer(0, -1);
+                switchCases(T.retourneC(position().x(), position().y() + 1));
+                i = 4;
+                down = false;
             }
             else i++;
         }
