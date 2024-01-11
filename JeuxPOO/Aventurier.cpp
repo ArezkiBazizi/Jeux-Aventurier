@@ -21,8 +21,8 @@ string Aventurier::type() const
 Aventurier::Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces) :
     Personnage{position,pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }
 {
-    d_tabEquipement.push_back(std::make_unique<Armure>(100));
-    d_tabEquipement.push_back(std::make_unique<Epee>(100));
+    d_tabEquipement.push_back(move(make_unique<Armure>(100)));
+    d_tabEquipement.push_back(move(make_unique<Epee>(100)));
 }
 
 
@@ -35,22 +35,9 @@ int Aventurier::bourseDePieces() const {
     return d_bourseDePieces;
 }
 
-std::vector<std::unique_ptr<Equipement>> const& Aventurier::tabEquipement() const
+std::vector<std::unique_ptr<Equipement>> Aventurier::tabEquipement() const
 {
     return d_tabEquipement;
-}
-
-void Aventurier::ajouterEquipement(const string& type, int p)
-{
- 
-        if (type == "Epee")
-        {
-            d_tabEquipement.push_back(std::make_unique<Epee>(p));
-        }
-        else if (type == "Armure")
-        {
-            d_tabEquipement.push_back(std::make_unique<Armure>(p));
-        }
 }
 
 

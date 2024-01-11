@@ -14,6 +14,7 @@ public:
     virtual string typeEquipement() const = 0;
     void ModifierpointDeSolidite(int x);
 
+
 private:
     int d_pointDeSolidite;
 };

@@ -73,7 +73,6 @@ void Terrain::litTerrain(const string& nomF) {
         else if (t == "Aventurier")
         {
             d_cases.push_back(make_unique<Aventurier>( Position{x,y}));
-            return d_cases.back().get()
         }
         else if (t == "MonstreV")
         {
@@ -125,7 +124,7 @@ void Terrain::retourne() const
     
 }
 
-std::unique_ptr<Aventurier> Terrain::retourneAventurier() const
+unique_ptr<Aventurier> Terrain::retourneAventurier() const
 {
     for (const auto& casePtr : d_cases)
     {

@@ -24,8 +24,7 @@ public:
     Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces);
     virtual ~Aventurier();
     int bourseDePieces() const;
-    vector<unique_ptr<Equipement>> const& tabEquipement() const;
-    void ajouterEquipement(const string& type, int p);
+    vector<unique_ptr<Equipement>> tabEquipement() const;
     void deplacerA(Terrain& T);
     void Attaquer(Monstre& M);
     bool ramasserAllumette(Terrain& T) const;
