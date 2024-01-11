@@ -61,10 +61,11 @@ void test2()
 
 int main() {
 
-    Terrain Ter{ 1000,1000};
-    system("cls");
-    Ter.afficheTerrain();
+   // Terrain Ter{ 1000,1000};
+    //system("cls");
+    // Ter.afficheTerrain();
 
+    Monstre m{Position{1,1},100,100,100 };
 
  
  }
