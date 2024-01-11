@@ -91,6 +91,10 @@ void Terrain::litTerrain(const string& nomF) {
         {
             d_cases.push_back(make_unique<Mur>(Position{ x,y }));
         }
+        else if (t == "Mur")
+        {
+            d_cases.push_back(make_unique<Sortie>(x,y));
+        }
     }
 }
 
@@ -129,6 +133,17 @@ Aventurier* Terrain::trouverAventurier() {
         }
     }
     return nullptr;
+}
+
+vector<MonstreV*> Terrain::trouverMonstreV() {
+    vector<MonstreV*> d_monstre;
+    for (auto& c : d_cases) {
+        MonstreV* monstre = dynamic_cast<MonstreV*>(c.get());
+        if (monstre) {
+            d_monstre.push_back(monstre);
+        }
+    }
+    return d_monstre;
 }
 
 
