@@ -59,8 +59,6 @@ void Aventurier::deplacerA( Terrain& T) {
 
                     switchCases(T.retourneC(position().x(), position().y() - 1));
 
-                    
-
                 }
                 flag = false;
                

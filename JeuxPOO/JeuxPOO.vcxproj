@@ -150,6 +150,7 @@
     <ClCompile Include="Pieces.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="PositionTest.cpp" />
+    <ClCompile Include="Sortie.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Vide.cpp" />
     <ClCompile Include="VideC.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Personnage.h" />
     <ClInclude Include="Pieces.h" />
     <ClInclude Include="Position.h" />
+    <ClInclude Include="Sortie.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Vide.h" />
     <ClInclude Include="VideC.h" />
