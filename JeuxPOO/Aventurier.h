@@ -27,10 +27,11 @@ public:
     const vector<unique_ptr<Equipement>>& tabEquipement() const;
     void deplacerA(Terrain& T);
     void Attaquer(Monstre& M);
-    bool ramasserAllumette(Terrain& T) const;
-    bool ramasserPieces(Pieces& P);
+    bool TrouverAllumette(Terrain& T) const;
+    void ramasserPieces(Pieces& P, Terrain& T);
     bool estSortie(Terrain& T) const;
     string type() const override;
+    void afficheInfoAventurier();
   
 
 protected:

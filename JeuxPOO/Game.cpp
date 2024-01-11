@@ -11,7 +11,7 @@ Game::Game(const Position& posAventurier)
 
 	Ter.afficheTerrain();
 	while (a->estVivant()) {
-		
+		a->afficheInfoAventurier();
 		a->deplacerA(Ter);
 	}
 		
