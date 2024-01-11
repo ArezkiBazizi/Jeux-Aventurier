@@ -104,7 +104,7 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         if (touchesDirection[1])
         {
-        if (T.retourneCase(position().x(), position().y() - 1)->type() == "Vide") {
+        if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
             
                 
                 deplacer(0, -1);  // Down
@@ -115,7 +115,7 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         if (touchesDirection[2])
         {
-            if (T.retourneCase(position().x() - 1, position().y())->type() == "Vide") {
+            if (T.retourneC(position().x() - 1, position().y()).type() == "Vide") {
             
                
                 deplacer(-1, 0); // Left
@@ -126,7 +126,7 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         if (touchesDirection[3])
         {
-            if (T.retourneCase(position().x() + 1, position().y())->type() == "Vide") {
+            if (T.retourneC(position().x() + 1, position().y()).type() == "Vide") {
             
                 
                 deplacer(1, 0);  // Right
