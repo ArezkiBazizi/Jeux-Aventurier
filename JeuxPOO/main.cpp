@@ -61,8 +61,14 @@ void test2()
 
 int main() {
 
-    //Terrain Ter{ 1000,1000};
-    //system("cls");
-    //Ter.afficheTerrain();
-   
+   Terrain Ter{ 1000,1000};
+    system("cls");
+     Ter.afficheTerrain();
+     unique_ptr<Aventurier> aventu = Ter.retourneAventurier();
+    cout << aventu->position().x() << aventu->position().y() << endl << "////////////";
+     aventu->deplacerA(Ter);
+     cout << aventu->position().x() << aventu->position().y() << endl;
+    //Monstre m{Position{1,1},100,100,100 };
+
+ 
  }

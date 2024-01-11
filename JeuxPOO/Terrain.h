@@ -29,10 +29,12 @@ public:
     void ecritTerrain(const string& nomF)const;
     unique_ptr<Cases> retourneCase(int x, int y) const;
     void retourne() const;
+    unique_ptr<Aventurier> retourneAventurier() const;
     
 private:
     int d_h, d_l;
     vector<unique_ptr<Cases>> d_cases;
+    
 };
 
 #endif // TERRAIN_H_INCLUDED

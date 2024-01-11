@@ -15,6 +15,7 @@ public:
     void setPointDeSolidite(int x);
     void ModifierpointDeSolidite(int x);
 
+
 private:
     int d_pointDeSolidite;
 };

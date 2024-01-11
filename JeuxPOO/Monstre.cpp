@@ -1,4 +1,5 @@
 #include "Monstre.h"
+#include <algorithm>
 
 Monstre::Monstre(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete) :
     Personnage{ position,pointDeVie,pointDeForce }, d_pourcentageHabilete{ pourcentageHabilete }
@@ -12,10 +13,6 @@ Monstre::~Monstre()
     //dtor
 }
 
-string Monstre::type() const
-{
-    return "Monstre";
-}
 
 int Monstre::obtenirPourcentageHabilete() const
 {
@@ -44,11 +41,14 @@ void Monstre::attaquer(Aventurier& A) const
    }
 }
 
-#include "MonstreV.h"
-#include <algorithm>
 
 MonstreV::MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete) : Monstre{ position,pointDeVie,pointDeForce,pourcentageHabilete }
 {
+}
+
+string MonstreV::type() const
+{
+    return "MonstreV";
 }
 
 void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
@@ -150,4 +150,9 @@ void MonstreA::deplaceAveugle(Terrain& T)
     int y = (std::rand() % 3) - 1;
 
     deplacer(x, y);
+}
+
+string MonstreA::type() const
+{
+    return "MonstreA";
 }
