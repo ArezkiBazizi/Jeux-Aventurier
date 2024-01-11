@@ -10,7 +10,8 @@ Aventurier::Aventurier(const Position& position) :
     
     Personnage{position,100,100}, d_bourseDePieces{0}
 {
- 
+    d_tabEquipement.push_back(make_unique<Armure>(100));
+    d_tabEquipement.push_back(make_unique<Epee>(100));
 }
 
 string Aventurier::type() const
@@ -21,8 +22,8 @@ string Aventurier::type() const
 Aventurier::Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces) :
     Personnage{position,pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }
 {
-    d_tabEquipement.push_back(move(make_unique<Armure>(100)));
-    d_tabEquipement.push_back(move(make_unique<Epee>(100)));
+    d_tabEquipement.push_back(make_unique<Armure>(100));
+    d_tabEquipement.push_back(make_unique<Epee>(100));
 }
 
 
