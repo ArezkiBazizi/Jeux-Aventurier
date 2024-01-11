@@ -8,7 +8,7 @@ using namespace std;
 
 Aventurier::Aventurier(const Position& position) :
     
-    Personnage{position,100,100}, d_bourseDePieces{0}
+    Personnage{position,100,100}, d_bourseDePieces{0}, d_tabEquipement{}
 {
     d_tabEquipement.push_back(make_unique<Armure>(100));
     d_tabEquipement.push_back(make_unique<Epee>(100));
@@ -20,10 +20,10 @@ string Aventurier::type() const
 }
 
 Aventurier::Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces, int PointDeSoliditeArmure, int PointDeSoliditeEpee) :
-    Personnage{position,pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }
+    Personnage{position,pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }, d_tabEquipement{}
 {
-    d_tabEquipement.push_back(make_unique<Armure>(100));
-    d_tabEquipement.push_back(make_unique<Epee>(100));
+    d_tabEquipement.push_back(std::make_unique<Armure>(PointDeSoliditeArmure));
+    d_tabEquipement.push_back(std::make_unique<Epee>(PointDeSoliditeEpee));
 }
 
 
@@ -36,22 +36,9 @@ int Aventurier::bourseDePieces() const {
     return d_bourseDePieces;
 }
 
-std::vector<std::unique_ptr<Equipement>> Aventurier::tabEquipement() const
+const std::vector<std::unique_ptr<Equipement>>&  Aventurier::tabEquipement() const
 {
     return d_tabEquipement;
-}
-
-void Aventurier::ajouterEquipement(const string& type, int p)
-{
- 
-        if (type == "Epee")
-        {
-            d_tabEquipement.push_back(std::make_unique<Epee>(p));
-        }
-        else if (type == "Armure")
-        {
-            d_tabEquipement.push_back(std::make_unique<Armure>(p));
-        }
 }
 
 
