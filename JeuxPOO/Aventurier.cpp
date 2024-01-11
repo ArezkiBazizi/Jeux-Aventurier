@@ -124,7 +124,7 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         
         system("cls");
-        T.ecritTerrain();
+        //T.ecritTerrain();
         //T.litTerrain();
         T.afficheTerrain();
 

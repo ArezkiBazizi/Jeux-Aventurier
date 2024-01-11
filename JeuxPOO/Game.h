@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "MonstreV.h"
 #include "Terrain.h"
+#include "goto_xy_windows.h"
 #include "Aventurier.h"
 
 using namespace std;
