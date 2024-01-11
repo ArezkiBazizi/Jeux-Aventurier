@@ -143,6 +143,7 @@
     <ClCompile Include="mainTest.cpp" />
     <ClCompile Include="Monstre.cpp" />
     <ClCompile Include="MonstreA.cpp" />
+    <ClCompile Include="MonstreTest.cpp" />
     <ClCompile Include="MonstreV.cpp" />
     <ClCompile Include="Mur.cpp" />
     <ClCompile Include="Personnage.cpp" />

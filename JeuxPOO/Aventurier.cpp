@@ -106,7 +106,7 @@ void Aventurier::deplacerA( Terrain& T) {
             
         }
 
-        
+
 
         // Appliquer la logique de déplacement en fonction de l'état des touches
         if (touchesDirection[0])
@@ -125,10 +125,10 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         if (touchesDirection[1])
         {
-            if (T.retourneC(position().x(), position().y() + 1).type() == "Vide") {
-
-
-                switchCases(T.retourneC(position().x(), position().y() + 1));
+        if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
+            
+          
+                deplacer(0, -1);  // Down
                 
 
 
@@ -137,9 +137,9 @@ void Aventurier::deplacerA( Terrain& T) {
         if (touchesDirection[2] )
         {
             if (T.retourneC(position().x() - 1, position().y()).type() == "Vide") {
-
-
-                switchCases(T.retourneC(position().x() - 1, position().y()));
+            
+    
+                deplacer(-1, 0); // Left
                 
 
 
@@ -149,8 +149,9 @@ void Aventurier::deplacerA( Terrain& T) {
         {
             if (T.retourneC(position().x() + 1, position().y()).type() == "Vide") {
 
-                switchCases(T.retourneC(position().x() + 1, position().y()));
-                
+                deplacer(1, 0);  // Right
+               
+
             }
         }
 
@@ -166,30 +167,33 @@ void Aventurier::deplacerA( Terrain& T) {
 }
 
 void Aventurier::Attaquer(Monstre& M) {
-    int i = 0;
-    while (i < d_tabEquipement.size() && d_tabEquipement[i]->typeEquipement() != "Epee")
-        i++;
+    
+    int degat{ static_cast<int>((pointDeForce() + d_tabEquipement[1]->pointDeSolidite()) * 0.9) };
+    double probabilite = (static_cast<double>(rand()) / RAND_MAX);
 
-    if ((M.position().x() == position().x()) && (M.position().y() == position().y()))
-    {
-        M.encaisser(pointDeForce() + d_tabEquipement[i]->pointDeSolidite());
-        if (M.pointDeVie() < 0)
-            M.modifierPointDeVie(0);
+    if (probabilite <= 0.8) {
+        if ((M.position().x() == position().x()) && (M.position().y() == position().y()))
+        {
+            M.encaisser(degat);
+            if (M.pointDeVie() < 0)
+                M.modifierPointDeVie(0);
+        }
+
+        if (d_tabEquipement[1]->pointDeSolidite() > 0) {
+            d_tabEquipement[1]->setPointDeSolidite(d_tabEquipement[1]->pointDeSolidite() - 1);
+        }
+
+        if (!M.estVivant()) {
+            modifierPointDeForce(pointDeForce() + static_cast<int>(0.25 * M.pointDeForce()));
+            modifierPointDeVie(pointDeVie() + static_cast<int>(0.75 * M.pointDeForce()));
+        }
     }
-
-    if (d_tabEquipement[i]->pointDeSolidite() > 0) {
-        d_tabEquipement[i]->setPointDeSolidite(d_tabEquipement[i]->pointDeSolidite()-1);
-    }
-
-    if (!M.estVivant()) {
-        modifierPointDeForce(pointDeForce()+ static_cast<int>(0.25 * M.pointDeForce()));
-        modifierPointDeVie(pointDeVie()+ static_cast<int>(0.75 * M.pointDeForce()));
-    }
-
+    else
+        return;
 }
 
 bool Aventurier::ramasserAllumette(Terrain& T) const {
-    return (T.retourneCase(position().x(), position().y())->type() == "allumette");
+    return (T.retourneCase(position().x(), position().y())->type() == "Amullette");
 }
 
 
