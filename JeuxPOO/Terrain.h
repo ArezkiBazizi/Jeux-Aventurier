@@ -5,6 +5,7 @@
 #include <vector>
 #include "Aventurier.h"
 #include "Vide.h"
+#include "Sortie.h"
 #include "VideC.h"
 #include "MonstreV.h"
 #include "MonstreA.h"
@@ -31,8 +32,9 @@ public:
     void retourne() const;
     // std::unique_ptr<Aventurier> retourneAventurier() const;
     Cases& retourneC(int x, int y);
-    void ajoutPersonnage(unique_ptr<Cases> c);
+    //void ajoutPersonnage(unique_ptr<Cases> c);
     Aventurier* trouverAventurier();
+    vector<MonstreV*> trouverMonstreV();
     
 private:
     int d_h, d_l;

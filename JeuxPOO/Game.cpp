@@ -8,11 +8,13 @@ Game::Game(const Position& posAventurier)
 	Ter.litTerrain();
 
 	Aventurier* a = Ter.trouverAventurier();
+	vector<MonstreV*> m = Ter.trouverMonstreV();
 
 	Ter.afficheTerrain();
 	while (a->estVivant()) {
-		a->afficheInfoAventurier();
+		
 		a->deplacerA(Ter);
+		
 	}
 		
 }
