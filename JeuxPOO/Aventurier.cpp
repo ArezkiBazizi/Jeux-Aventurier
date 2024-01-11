@@ -71,8 +71,6 @@ void Aventurier::deplacerA( Terrain& T) {
             
             if (GetKeyState(VK_UP) & 0x8000) {
                 touchesDirection[0] = true;
-                cout << "test";
-                Sleep(5000);
                 flag = 0;
 
             }
@@ -87,7 +85,7 @@ void Aventurier::deplacerA( Terrain& T) {
             if (GetKeyState(VK_RIGHT) & 0x8000) {
                 touchesDirection[3] = true;
                 flag = 0;
-                cout << "test2";
+                
             }
 
         }
@@ -137,7 +135,8 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         
         system("cls");
-        //T.ecritTerrain();
+        T.ecritTerrain();
+        //T.litTerrain();
         T.afficheTerrain();
 
 
