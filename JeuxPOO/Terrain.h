@@ -30,6 +30,7 @@ public:
     unique_ptr<Cases> retourneCase(int x, int y) const;
     void retourne() const;
     std::unique_ptr<Aventurier> retourneAventurier() const;
+    Cases& retourneC(int x, int y);
     
 private:
     int d_h, d_l;
