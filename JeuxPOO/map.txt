@@ -3,7 +3,7 @@
 0 2 Vide
 1 0 Vide
 1 2 Vide
-1 1 MonstreV
+1 1 Vide
 2 0 Vide
 2 1 Aventurier
 2 2 Vide
@@ -13,7 +13,6 @@
 4 0 Vide
 4 1 Vide
 4 2 Vide
-
-
-
-
+4 2 Vide
+4 2 Vide
+4 2 Vide
