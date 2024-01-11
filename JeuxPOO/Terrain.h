@@ -31,6 +31,7 @@ public:
     void retourne() const;
     std::unique_ptr<Aventurier> retourneAventurier() const;
     Cases& retourneC(int x, int y);
+    void ajoutPersonnage(unique_ptr<Cases> c);
     
 private:
     int d_h, d_l;

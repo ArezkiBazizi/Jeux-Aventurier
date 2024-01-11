@@ -138,3 +138,14 @@ Cases& Terrain::retourneC(int x, int y) {
     // Si aucune case correspondante n'est trouvée, lancez une exception ou faites ce qui est approprié pour votre programme.
     throw std::runtime_error("Case non trouvée pour les coordonnées");
 }
+
+
+
+
+void Terrain::ajoutPersonnage(unique_ptr<Cases> c) {
+    for (int i = 0; i < d_cases.size(); i++) {
+        if (d_cases[i]->position().x() == c->position().x() && d_cases[i]->position().y() == c->position().y())
+            d_cases.erase(d_cases.begin()+i);
+    }
+    d_cases.push_back(c);
+}

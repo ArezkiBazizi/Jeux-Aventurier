@@ -84,7 +84,7 @@ void Aventurier::deplacerA( Terrain& T) {
            
             if (T.retourneC(position().x(), position().y() + 1).type() == "Vide" ) {
                 
-                cout << "Test";
+                
                 deplacer(0, 1);// Up
                 
 
