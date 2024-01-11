@@ -1,6 +1,7 @@
 #include "Aventurier.h"
 #include <cmath>
 #include <conio.h>
+#include<windows.h> 
 
 
 using namespace std;
@@ -61,14 +62,17 @@ void Aventurier::deplacerA( Terrain& T) {
     {
         touchesDirection[i] = false;
     }
-
-      
+    
+    char ch;
         int flag = 1;
 
         while (flag) {
+            
+            
             if (GetKeyState(VK_UP) & 0x8000) {
                 touchesDirection[0] = true;
                 flag = 0;
+
             }
             if (GetKeyState(VK_DOWN) & 0x8000) {
                 touchesDirection[1] = true;
@@ -81,16 +85,17 @@ void Aventurier::deplacerA( Terrain& T) {
             if (GetKeyState(VK_RIGHT) & 0x8000) {
                 touchesDirection[3] = true;
                 flag = 0;
+                
             }
 
         }
 
-
+        
 
         // Appliquer la logique de déplacement en fonction de l'état des touches
         if (touchesDirection[0])
         {
-            if (T.retourneCase(position().x(), position().y() + 1)->type() == "vide" ) {
+            if (T.retourneCase(position().x(), position().y() + 1)->type() == "Vide" ) {
            
                 deplacer(0, 1); // Up
 
@@ -98,7 +103,7 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         if (touchesDirection[1])
         {
-        if (T.retourneCase(position().x(), position().y() - 1)->type() == "vide") {
+        if (T.retourneCase(position().x(), position().y() - 1)->type() == "Vide") {
             
                 
                 deplacer(0, -1);  // Down
@@ -109,7 +114,7 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         if (touchesDirection[2])
         {
-            if (T.retourneCase(position().x() - 1, position().y())->type() == "vide") {
+            if (T.retourneCase(position().x() - 1, position().y())->type() == "Vide") {
             
                
                 deplacer(-1, 0); // Left
@@ -120,7 +125,7 @@ void Aventurier::deplacerA( Terrain& T) {
         }
         if (touchesDirection[3])
         {
-            if (T.retourneCase(position().x() + 1, position().y())->type() == "vide") {
+            if (T.retourneCase(position().x() + 1, position().y())->type() == "Vide") {
             
                 
                 deplacer(1, 0);  // Right
@@ -128,9 +133,10 @@ void Aventurier::deplacerA( Terrain& T) {
 
             }
         }
-
+        
         system("cls");
         T.ecritTerrain();
+        //T.litTerrain();
         T.afficheTerrain();
 
 
