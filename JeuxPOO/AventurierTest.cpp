@@ -2,6 +2,7 @@
 #include "doctest.h"
 #include "Epee.h"
 #include "Aventurier.h"
+#include "Monstre.h"
 
 TEST_CASE("[Aventurier] Aventurier : construire l'aventurier") 
 {
@@ -165,5 +166,21 @@ TEST_CASE("[Aventurier] Aventurier : deplacer selon la touche ")
 	
 
 }
+
+TEST_CASE("[Aventurier] Aventurier : Attaquer le monstre ")
+{
+	Aventurie a{ Position{1,1},100,100,100, 100, 100 }
+	MonstreV m{Position{1,1},100,100,100 }
+	a.Attaquer(m)
+	SUBCASE("le point de solidite de l'epee  deminue")
+	{
+		REQUIRE(a.tabEquipement()[1]->pointDeSolidite() == 100-1);
+	}
+
+	SUBCASE("le monstre subie des attaque")
+	{
+		REQUIRE(m.pointDevie() == 0);
+	}
+
 
 */

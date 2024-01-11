@@ -3,7 +3,10 @@
 Equipement::Equipement(int pointDeSolidite) :
     d_pointDeSolidite {pointDeSolidite}
 {
+}
 
+void Equipement::setPointDeSolidite(int x) {
+    d_pointDeSolidite = x;
 }
 
 void Equipement::ModifierpointDeSolidite(int x)
@@ -17,6 +20,7 @@ void Equipement::ModifierpointDeSolidite(int x)
         d_pointDeSolidite = 0;
     }
 }
+
 
 
 int Equipement::pointDeSolidite() const

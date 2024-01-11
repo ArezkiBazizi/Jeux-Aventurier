@@ -21,3 +21,15 @@ Armure::~Armure()
 
 }
 
+void Armure::ModifierpointDeSolidite(int x)
+{
+    if (pointDeSolidite() - x / 2 >= 0)
+    {
+        setPointDeSolidite( pointDeSolidite() - x / 2);
+    }
+    else
+    {
+        setPointDeSolidite (0);
+    }
+}
+

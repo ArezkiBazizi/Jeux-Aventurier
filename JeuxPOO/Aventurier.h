@@ -21,7 +21,7 @@ class Aventurier : public Personnage
 {
 public:
     Aventurier(const Position& position);
-    Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces);
+    Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces, int PointDeSoliditeArmure, int PointDeSoliditeEpee);
     virtual ~Aventurier();
     int bourseDePieces() const;
     vector<unique_ptr<Equipement>> tabEquipement() const;
