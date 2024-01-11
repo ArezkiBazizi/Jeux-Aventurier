@@ -9,8 +9,8 @@
 
 
 using namespace std;
-/*
-void test() {
+
+/*void test() {
 
     Cases A(10, 15, "mur"), B(20, 20, "monster");
 

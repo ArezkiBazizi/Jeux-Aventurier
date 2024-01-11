@@ -46,32 +46,63 @@ void Aventurier::deplacerA( Terrain& T) {
     // Tableau pour stocker l'état des touches de direction
     vector<bool> touchesDirection(4,false);
 
-   
-    
-    char ch;
-        int flag = 1;
+        bool flag = true;
+        
 
         while (flag) {
             
             
             if (GetKeyState(VK_UP) & 0x8000) {
-                touchesDirection[0] = true;
-                flag = 0;
+                if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
 
-            }
-            if (GetKeyState(VK_DOWN) & 0x8000) {
-                touchesDirection[1] = true;
-                flag = 0;
-            }
-            if (GetKeyState(VK_LEFT) & 0x8000) {
-                touchesDirection[2] = true;
-                flag = 0;
-            }
-            if (GetKeyState(VK_RIGHT) & 0x8000) {
-                touchesDirection[3] = true;
-                flag = 0;
+                    cout << "up";
+
+                    switchCases(T.retourneC(position().x(), position().y() - 1));
+
+                    
+
+                }
+                flag = false;
+               
                 
             }
+            else if (GetKeyState(VK_DOWN) & 0x8000) {
+                if (T.retourneC(position().x(), position().y() + 1).type() == "Vide") {
+
+
+                    switchCases(T.retourneC(position().x(), position().y() + 1));
+                    
+
+                }
+                flag = 0;
+               
+               
+            }
+            else if (GetKeyState(VK_LEFT) & 0x8000) {
+                if (T.retourneC(position().x() - 1, position().y()).type() == "Vide") {
+
+
+                    switchCases(T.retourneC(position().x() - 1, position().y()));
+                   
+                    
+
+                }
+                flag = 0;
+               
+                
+            }
+            else if (GetKeyState(VK_RIGHT) & 0x8000) {
+                if (T.retourneC(position().x() + 1, position().y()).type() == "Vide") {
+
+                    switchCases(T.retourneC(position().x() + 1, position().y()));
+                    
+                }
+                flag = 0;
+               
+               
+                
+            }
+            Sleep(100);
             
         }
 
@@ -82,45 +113,49 @@ void Aventurier::deplacerA( Terrain& T) {
         {
 
 
-            if (T.retourneC(position().x(), position().y() + 1).type() == "Vide") {
+            if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
 
 
 
-                switchCases(T.retourneC(position().x(), position().y() + 1));
-
+                switchCases(T.retourneC(position().x(), position().y() - 1));
+                
+                touchesDirection[0] = false;
 
             }
         }
         if (touchesDirection[1])
         {
-            if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
-
-
-                switchCases(T.retourneC(position().x(), position().y() - 1));
-
+        if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
+            
+          
+                deplacer(0, -1);  // Down
+                
 
 
             }
         }
-        if (touchesDirection[2])
+        if (touchesDirection[2] )
         {
             if (T.retourneC(position().x() - 1, position().y()).type() == "Vide") {
-
-
-                switchCases(T.retourneC(position().x() - 1, position().y()));
-
+            
+    
+                deplacer(-1, 0); // Left
+                
 
 
             }
         }
-        if (touchesDirection[3])
+        if (touchesDirection[3] )
         {
             if (T.retourneC(position().x() + 1, position().y()).type() == "Vide") {
 
-                switchCases(T.retourneC(position().x() + 1, position().y()));
+                deplacer(1, 0);  // Right
+               
 
             }
         }
+
+      
         
         system("cls");
         //T.ecritTerrain();
@@ -132,30 +167,33 @@ void Aventurier::deplacerA( Terrain& T) {
 }
 
 void Aventurier::Attaquer(Monstre& M) {
-    int i = 0;
-    while (i < d_tabEquipement.size() && d_tabEquipement[i]->typeEquipement() != "Epee")
-        i++;
+    
+    int degat{ static_cast<int>((pointDeForce() + d_tabEquipement[1]->pointDeSolidite()) * 0.9) };
+    double probabilite = (static_cast<double>(rand()) / RAND_MAX);
 
-    if ((M.position().x() == position().x()) && (M.position().y() == position().y()))
-    {
-        M.encaisser(pointDeForce() + d_tabEquipement[i]->pointDeSolidite());
-        if (M.pointDeVie() < 0)
-            M.modifierPointDeVie(0);
+    if (probabilite <= 0.8) {
+        if ((M.position().x() == position().x()) && (M.position().y() == position().y()))
+        {
+            M.encaisser(degat);
+            if (M.pointDeVie() < 0)
+                M.modifierPointDeVie(0);
+        }
+
+        if (d_tabEquipement[1]->pointDeSolidite() > 0) {
+            d_tabEquipement[1]->setPointDeSolidite(d_tabEquipement[1]->pointDeSolidite() - 1);
+        }
+
+        if (!M.estVivant()) {
+            modifierPointDeForce(pointDeForce() + static_cast<int>(0.25 * M.pointDeForce()));
+            modifierPointDeVie(pointDeVie() + static_cast<int>(0.75 * M.pointDeForce()));
+        }
     }
-
-    if (d_tabEquipement[i]->pointDeSolidite() > 0) {
-        d_tabEquipement[i]->setPointDeSolidite(d_tabEquipement[i]->pointDeSolidite()-1);
-    }
-
-    if (!M.estVivant()) {
-        modifierPointDeForce(pointDeForce()+ static_cast<int>(0.25 * M.pointDeForce()));
-        modifierPointDeVie(pointDeVie()+ static_cast<int>(0.75 * M.pointDeForce()));
-    }
-
+    else
+        return;
 }
 
 bool Aventurier::ramasserAllumette(Terrain& T) const {
-    return (T.retourneCase(position().x(), position().y())->type() == "allumette");
+    return (T.retourneCase(position().x(), position().y())->type() == "Amullette");
 }
 
 
