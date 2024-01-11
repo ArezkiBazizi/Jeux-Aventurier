@@ -9,12 +9,12 @@ Terrain::Terrain() :
 Terrain::Terrain(int h, int l) :
     d_h{ h }, d_l{ l }, d_cases{}
 {
-    litTerrain();
+    
 }
 
 
 void Terrain::afficheTerrain()const {
-    for (int i = 0; i < d_cases.size()-1; i++) {
+    for (int i = 0; i < d_cases.size(); i++) {
         goto_xy(d_cases[i]->position().x(), d_cases[i]->position().y());
      
         if (d_cases[i]->type() == "Mur")
@@ -141,3 +141,11 @@ Cases& Terrain::retourneC(int x, int y) {
 
 
 
+
+void Terrain::ajoutPersonnage(unique_ptr<Cases> c) {
+    for (int i = 0; i < d_cases.size(); i++) {
+        if (d_cases[i]->position().x() == c->position().x() && d_cases[i]->position().y() == c->position().y())
+            d_cases.erase(d_cases.begin()+i);
+    }
+    d_cases.push_back(move(c));
+}
