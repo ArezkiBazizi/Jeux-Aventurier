@@ -9,6 +9,7 @@ Terrain::Terrain() :
 Terrain::Terrain(int h, int l) :
     d_h{ h }, d_l{ l }, d_cases{}
 {
+    litTerrain();
 }
 
 
@@ -119,4 +120,17 @@ void Terrain::retourne() const
         cout << d_cases[i]->type()<<endl;
     }
     
+}
+
+std::unique_ptr<Aventurier> Terrain::retourneAventurier() const
+{
+    for (const auto& casePtr : d_cases)
+    {
+        if (casePtr->type() == "Aventurier")
+        {
+            return move(make_unique<Aventurier>(casePtr->position())); // Retourne une nouvelle instance copiée
+        }
+    }
+
+    return nullptr; // Retourne un pointeur unique vide si aucune case correspondante n'est trouvée
 }

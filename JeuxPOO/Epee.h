@@ -10,7 +10,7 @@ public:
     Epee();
     Epee(int pointDeSolidite);
     string typeEquipement() const override;
-    virtual ~Epee();
+    ~Epee();
 protected:
 
 private:
