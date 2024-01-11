@@ -9,11 +9,12 @@ Terrain::Terrain() :
 Terrain::Terrain(int h, int l) :
     d_h{ h }, d_l{ l }, d_cases{}
 {
+    litTerrain();
 }
 
 
 void Terrain::afficheTerrain()const {
-    for (int i = 0; i < d_cases.size()-1; i++) {
+    for (int i = 0; i < d_cases.size(); i++) {
         goto_xy(d_cases[i]->position().x(), d_cases[i]->position().y());
      
         if (d_cases[i]->type() == "Mur")
@@ -24,8 +25,10 @@ void Terrain::afficheTerrain()const {
             cout << "/";
         else if (d_cases[i]->type() == "Sortie")
             cout << "+";
-        else if (d_cases[i]->type() == "Monster")
+        else if (d_cases[i]->type() == "MonstreV")
             cout << "M";
+        else if (d_cases[i]->type() == "MonstreA")
+            cout << "m";
         else if (d_cases[i]->type() == "Allumette")
             cout << "@";
         else if (d_cases[i]->type() == "Aventurier")
@@ -40,7 +43,7 @@ void Terrain::afficheTerrain()const {
 void Terrain::ecritTerrain(const string& nomF) const {
 
     ofstream f(nomF, ofstream::trunc);
-    for (int i = 0; i < d_cases.size()-1; i++) {
+    for (int i = 0; i < d_cases.size(); i++) {
 
         f << d_cases[i]->position().x() << " " << d_cases[i]->position().y() << " " << d_cases[i]->type() << endl;
     }
@@ -70,14 +73,15 @@ void Terrain::litTerrain(const string& nomF) {
         else if (t == "Aventurier")
         {
             d_cases.push_back(make_unique<Aventurier>( Position{x,y}));
+            return d_cases.back().get()
         }
         else if (t == "MonstreV")
         {
-            //d_cases.push_back(make_unique<MonstreV>(Position{ x,y },100, 100, 100));
+            d_cases.push_back(make_unique<MonstreV>(Position{ x,y },100, 100, 100));
         }
         else if (t == "MonstreA")
         {
-            //d_cases.push_back(make_unique<MonstreA>(Position{ x,y }, 100, 100, 100));
+            d_cases.push_back(make_unique<MonstreA>(Position{ x,y }, 100, 100, 100));
         }
         else if (t == "Pieces")
         {
