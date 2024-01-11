@@ -62,11 +62,9 @@ void test2()
 
 int main() {
 
-   Terrain Ter{ 1000,1000};
+    Terrain Ter{ 1000,1000};
     system("cls");
     Game game{ Position{1,1} };
-    
-
     //Monstre m{Position{1,1},100,100,100 };
 
  

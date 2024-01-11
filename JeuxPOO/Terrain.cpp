@@ -70,6 +70,14 @@ void Terrain::litTerrain(const string& nomF) {
         {
             d_cases.push_back(make_unique<VideC>(x, y));
         }
+        else if (t == "Aventurier")
+        {
+            d_cases.push_back(make_unique<Aventurier>(Position{ x, y }));
+        }
+        else if (t == "MonstreV")
+        {
+            d_cases.push_back(make_unique<MonstreV>(Position{ x, y },100,100,100));
+        }
 
         else if (t == "Pieces")
         {
@@ -113,6 +121,19 @@ void Terrain::retourne() const
     
 }
 
+Aventurier* Terrain::trouverAventurier() {
+    for (auto& c : d_cases) {
+        Aventurier* aventurier = dynamic_cast<Aventurier*>(c.get());
+        if (aventurier) {
+            return aventurier;
+        }
+    }
+    return nullptr;
+}
+
+
+
+/*
 unique_ptr<Aventurier> Terrain::retourneAventurier() const
 {
     for (const auto& casePtr : d_cases)
@@ -125,6 +146,7 @@ unique_ptr<Aventurier> Terrain::retourneAventurier() const
 
     return nullptr; // Retourne un pointeur unique vide si aucune case correspondante n'est trouvée
 }
+*/
 
 Cases& Terrain::retourneC(int x, int y) {
     // Parcourez les cases existantes pour trouver la case correspondante.
@@ -140,8 +162,7 @@ Cases& Terrain::retourneC(int x, int y) {
 }
 
 
-
-
+/*
 void Terrain::ajoutPersonnage(unique_ptr<Cases> c) {
     for (int i = 0; i < d_cases.size(); i++) {
         if (d_cases[i]->position().x() == c->position().x() && d_cases[i]->position().y() == c->position().y())
@@ -149,3 +170,4 @@ void Terrain::ajoutPersonnage(unique_ptr<Cases> c) {
     }
     d_cases.push_back(move(c));
 }
+*/
