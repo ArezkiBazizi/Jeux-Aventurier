@@ -11,6 +11,7 @@ public:
     Armure(int pointDeSolidite);
     string typeEquipement() const override;
     virtual ~Armure();
+    void ModifierpointDeSolidite(int x);
 protected:
 
 private:

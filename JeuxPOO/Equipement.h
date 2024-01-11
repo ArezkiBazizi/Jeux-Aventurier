@@ -12,6 +12,7 @@ public:
     virtual ~Equipement() = default;
     int pointDeSolidite() const;
     virtual string typeEquipement() const = 0;
+    void setPointDeSolidite(int x);
     void ModifierpointDeSolidite(int x);
 
 private:
