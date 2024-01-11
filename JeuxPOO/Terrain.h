@@ -29,9 +29,10 @@ public:
     void ecritTerrain(const string& nomF)const;
     unique_ptr<Cases> retourneCase(int x, int y) const;
     void retourne() const;
-    std::unique_ptr<Aventurier> retourneAventurier() const;
+    // std::unique_ptr<Aventurier> retourneAventurier() const;
     Cases& retourneC(int x, int y);
     void ajoutPersonnage(unique_ptr<Cases> c);
+    Aventurier* trouverAventurier();
     
 private:
     int d_h, d_l;
