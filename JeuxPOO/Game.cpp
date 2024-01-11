@@ -4,20 +4,20 @@
 Game::Game(const Position& posAventurier)
 {
 
-		Terrain Ter{1000,1000};
-		//unique_ptr<Aventurier> a = make_unique<Aventurier>( posAventurier );
-		Ter.litTerrain();
+	Terrain Ter{ 1000,1000 };
+	//Ter.litTerrain();
+	//Ter.retourne();
+	Aventurier* a = Ter.trouverAventurier();
+
+	Ter.afficheTerrain();
+	while (a->estVivant()) {
 		
-		Ter.ajoutPersonnage(move(a));
-		Ter.afficheTerrain();
-		//Ter.retourne();
 		a->deplacerA(Ter);
-		Ter.afficheTerrain();
-		cout << "/////////";
-		Ter.ecritTerrain();
-		goto_xy(10, 10);
-		Ter.retourne();
+		cout << "/";
+	}
+		
 }
+			
 
 
 

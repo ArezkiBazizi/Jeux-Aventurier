@@ -46,32 +46,63 @@ void Aventurier::deplacerA( Terrain& T) {
     // Tableau pour stocker l'état des touches de direction
     vector<bool> touchesDirection(4,false);
 
-   
-    
-    char ch;
-        int flag = 1;
+        bool flag = true;
+        
 
         while (flag) {
             
             
             if (GetKeyState(VK_UP) & 0x8000) {
-                touchesDirection[0] = true;
-                flag = 0;
+                if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
 
-            }
-            if (GetKeyState(VK_DOWN) & 0x8000) {
-                touchesDirection[1] = true;
-                flag = 0;
-            }
-            if (GetKeyState(VK_LEFT) & 0x8000) {
-                touchesDirection[2] = true;
-                flag = 0;
-            }
-            if (GetKeyState(VK_RIGHT) & 0x8000) {
-                touchesDirection[3] = true;
-                flag = 0;
+                    cout << "up";
+
+                    switchCases(T.retourneC(position().x(), position().y() - 1));
+
+                    
+
+                }
+                flag = false;
+               
                 
             }
+            else if (GetKeyState(VK_DOWN) & 0x8000) {
+                if (T.retourneC(position().x(), position().y() + 1).type() == "Vide") {
+
+
+                    switchCases(T.retourneC(position().x(), position().y() + 1));
+                    
+
+                }
+                flag = 0;
+               
+               
+            }
+            else if (GetKeyState(VK_LEFT) & 0x8000) {
+                if (T.retourneC(position().x() - 1, position().y()).type() == "Vide") {
+
+
+                    switchCases(T.retourneC(position().x() - 1, position().y()));
+                   
+                    
+
+                }
+                flag = 0;
+               
+                
+            }
+            else if (GetKeyState(VK_RIGHT) & 0x8000) {
+                if (T.retourneC(position().x() + 1, position().y()).type() == "Vide") {
+
+                    switchCases(T.retourneC(position().x() + 1, position().y()));
+                    
+                }
+                flag = 0;
+               
+               
+                
+            }
+            Sleep(100);
             
         }
 
@@ -80,48 +111,50 @@ void Aventurier::deplacerA( Terrain& T) {
         // Appliquer la logique de déplacement en fonction de l'état des touches
         if (touchesDirection[0])
         {
-           
-           
-            if (T.retourneC(position().x(), position().y() + 1).type() == "Vide" ) {
-                
-  
-                deplacer(0, 1);// Up
-                
 
+
+            if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
+
+
+
+                switchCases(T.retourneC(position().x(), position().y() - 1));
+                
+                touchesDirection[0] = false;
 
             }
         }
         if (touchesDirection[1])
         {
-        if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
-            
-          
-                deplacer(0, -1);  // Down
+            if (T.retourneC(position().x(), position().y() + 1).type() == "Vide") {
+
+
+                switchCases(T.retourneC(position().x(), position().y() + 1));
                 
 
 
             }
         }
-        if (touchesDirection[2])
+        if (touchesDirection[2] )
         {
             if (T.retourneC(position().x() - 1, position().y()).type() == "Vide") {
-            
-    
-                deplacer(-1, 0); // Left
+
+
+                switchCases(T.retourneC(position().x() - 1, position().y()));
                 
 
 
             }
         }
-        if (touchesDirection[3])
+        if (touchesDirection[3] )
         {
             if (T.retourneC(position().x() + 1, position().y()).type() == "Vide") {
 
-                deplacer(1, 0);  // Right
-               
-
+                switchCases(T.retourneC(position().x() + 1, position().y()));
+                
             }
         }
+
+      
         
         system("cls");
         //T.ecritTerrain();
