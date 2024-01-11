@@ -75,28 +75,29 @@ void Aventurier::deplacerA( Terrain& T) {
             
         }
 
-        
+
 
         // Appliquer la logique de déplacement en fonction de l'état des touches
         if (touchesDirection[0])
         {
-           
-           
-            if (T.retourneC(position().x(), position().y() + 1).type() == "Vide" ) {
-                
-                cout << "Test";
-                deplacer(0, 1);// Up
-                
+
+
+            if (T.retourneC(position().x(), position().y() + 1).type() == "Vide") {
+
+
+
+                switchCases(T.retourneC(position().x(), position().y() + 1));
+
 
             }
         }
         if (touchesDirection[1])
         {
-        if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
-            
-                
-                deplacer(0, -1);  // Down
-                
+            if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
+
+
+                switchCases(T.retourneC(position().x(), position().y() - 1));
+
 
 
             }
@@ -104,10 +105,10 @@ void Aventurier::deplacerA( Terrain& T) {
         if (touchesDirection[2])
         {
             if (T.retourneC(position().x() - 1, position().y()).type() == "Vide") {
-            
-               
-                deplacer(-1, 0); // Left
-                
+
+
+                switchCases(T.retourneC(position().x() - 1, position().y()));
+
 
 
             }
@@ -115,16 +116,14 @@ void Aventurier::deplacerA( Terrain& T) {
         if (touchesDirection[3])
         {
             if (T.retourneC(position().x() + 1, position().y()).type() == "Vide") {
-            
-                
-                deplacer(1, 0);  // Right
-               
+
+                switchCases(T.retourneC(position().x() + 1, position().y()));
 
             }
         }
         
         system("cls");
-        T.ecritTerrain();
+        //T.ecritTerrain();
         //T.litTerrain();
         T.afficheTerrain();
 

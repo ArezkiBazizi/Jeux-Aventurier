@@ -5,6 +5,7 @@
 #include "Aventurier.h"
 #include <conio.h>
 #include <windows.h>
+#include "Game.h"
 
 
 using namespace std;
@@ -61,13 +62,10 @@ void test2()
 
 int main() {
 
-   Terrain Ter{ 1000,1000};
+    Terrain Ter{ 1000,1000};
     system("cls");
-     Ter.afficheTerrain();
-     unique_ptr<Aventurier> aventu = Ter.retourneAventurier();
-     aventu->deplacerA(Ter);
-     Ter.afficheTerrain();
-     //Monstre m{Position{1,1},100,100,100 };
+    Game game{ Position{1,1} };
+    //Monstre m{Position{1,1},100,100,100 };
 
  
  }

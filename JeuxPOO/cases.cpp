@@ -21,9 +21,10 @@ string Cases::type() const
 void Cases::switchCases(Cases& c)
 {
     Position aux(0,0);
-    aux = c.position();
+    aux.modifierX(c.position().x());
+    aux.modifierY(c.position().y());
     c.setPosition(d_position);
-    d_position = aux;
+    setPosition(aux);
 
 }
 

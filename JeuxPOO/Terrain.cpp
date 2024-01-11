@@ -9,7 +9,7 @@ Terrain::Terrain() :
 Terrain::Terrain(int h, int l) :
     d_h{ h }, d_l{ l }, d_cases{}
 {
-    litTerrain();
+    
 }
 
 
@@ -72,16 +72,13 @@ void Terrain::litTerrain(const string& nomF) {
         }
         else if (t == "Aventurier")
         {
-            d_cases.push_back(make_unique<Aventurier>( Position{x,y}));
+            d_cases.push_back(make_unique<Aventurier>(Position{ x, y }));
         }
         else if (t == "MonstreV")
         {
-            d_cases.push_back(make_unique<MonstreV>(Position{ x,y },100, 100, 100));
+            d_cases.push_back(make_unique<MonstreV>(Position{ x, y },100,100,100));
         }
-        else if (t == "MonstreA")
-        {
-            d_cases.push_back(make_unique<MonstreA>(Position{ x,y }, 100, 100, 100));
-        }
+
         else if (t == "Pieces")
         {
             d_cases.push_back(make_unique<Pieces>(20,Position{ x,y }));
@@ -124,6 +121,19 @@ void Terrain::retourne() const
     
 }
 
+Aventurier* Terrain::trouverAventurier() {
+    for (auto& c : d_cases) {
+        Aventurier* aventurier = dynamic_cast<Aventurier*>(c.get());
+        if (aventurier) {
+            return aventurier;
+        }
+    }
+    return nullptr;
+}
+
+
+
+/*
 unique_ptr<Aventurier> Terrain::retourneAventurier() const
 {
     for (const auto& casePtr : d_cases)
@@ -136,6 +146,7 @@ unique_ptr<Aventurier> Terrain::retourneAventurier() const
 
     return nullptr; // Retourne un pointeur unique vide si aucune case correspondante n'est trouvée
 }
+*/
 
 Cases& Terrain::retourneC(int x, int y) {
     // Parcourez les cases existantes pour trouver la case correspondante.
@@ -149,3 +160,14 @@ Cases& Terrain::retourneC(int x, int y) {
     // Si aucune case correspondante n'est trouvée, lancez une exception ou faites ce qui est approprié pour votre programme.
     throw std::runtime_error("Case non trouvée pour les coordonnées");
 }
+
+
+/*
+void Terrain::ajoutPersonnage(unique_ptr<Cases> c) {
+    for (int i = 0; i < d_cases.size(); i++) {
+        if (d_cases[i]->position().x() == c->position().x() && d_cases[i]->position().y() == c->position().y())
+            d_cases.erase(d_cases.begin()+i);
+    }
+    d_cases.push_back(move(c));
+}
+*/

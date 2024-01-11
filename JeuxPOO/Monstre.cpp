@@ -60,7 +60,7 @@ void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
     int dx = A.position().x() - position().x();
     int dy = A.position().y() - position().y();
 
-    if ((dx == 1) && (dy == 1))
+    if ((dx == 0) && (dy == 0))
     {
         attaquer(A);
     }
