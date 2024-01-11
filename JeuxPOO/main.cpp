@@ -8,8 +8,8 @@
 
 
 using namespace std;
-/*
-void test() {
+
+/*void test() {
 
     Cases A(10, 15, "mur"), B(20, 20, "monster");
 
@@ -67,7 +67,7 @@ int main() {
      unique_ptr<Aventurier> aventu = Ter.retourneAventurier();
      aventu->deplacerA(Ter);
      Ter.afficheTerrain();
-    //Monstre m{Position{1,1},100,100,100 };
+     //Monstre m{Position{1,1},100,100,100 };
 
  
  }

@@ -11,9 +11,9 @@ void Equipement::setPointDeSolidite(int x) {
 
 void Equipement::ModifierpointDeSolidite(int x)
 {
-    if (d_pointDeSolidite - x/2 >= 0)
+    if (d_pointDeSolidite - x/2 > 0)
     {
-        d_pointDeSolidite -= x / 2;
+        d_pointDeSolidite -= static_cast<int>(x / 2);
     }
     else 
     {

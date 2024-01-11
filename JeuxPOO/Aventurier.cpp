@@ -133,30 +133,33 @@ void Aventurier::deplacerA( Terrain& T) {
 }
 
 void Aventurier::Attaquer(Monstre& M) {
-    int i = 0;
-    while (i < d_tabEquipement.size() && d_tabEquipement[i]->typeEquipement() != "Epee")
-        i++;
+    
+    int degat{ static_cast<int>((pointDeForce() + d_tabEquipement[1]->pointDeSolidite()) * 0.9) };
+    double probabilite = (static_cast<double>(rand()) / RAND_MAX);
 
-    if ((M.position().x() == position().x()) && (M.position().y() == position().y()))
-    {
-        M.encaisser(pointDeForce() + d_tabEquipement[i]->pointDeSolidite());
-        if (M.pointDeVie() < 0)
-            M.modifierPointDeVie(0);
+    if (probabilite <= 0.8) {
+        if ((M.position().x() == position().x()) && (M.position().y() == position().y()))
+        {
+            M.encaisser(degat);
+            if (M.pointDeVie() < 0)
+                M.modifierPointDeVie(0);
+        }
+
+        if (d_tabEquipement[1]->pointDeSolidite() > 0) {
+            d_tabEquipement[1]->setPointDeSolidite(d_tabEquipement[1]->pointDeSolidite() - 1);
+        }
+
+        if (!M.estVivant()) {
+            modifierPointDeForce(pointDeForce() + static_cast<int>(0.25 * M.pointDeForce()));
+            modifierPointDeVie(pointDeVie() + static_cast<int>(0.75 * M.pointDeForce()));
+        }
     }
-
-    if (d_tabEquipement[i]->pointDeSolidite() > 0) {
-        d_tabEquipement[i]->setPointDeSolidite(d_tabEquipement[i]->pointDeSolidite()-1);
-    }
-
-    if (!M.estVivant()) {
-        modifierPointDeForce(pointDeForce()+ static_cast<int>(0.25 * M.pointDeForce()));
-        modifierPointDeVie(pointDeVie()+ static_cast<int>(0.75 * M.pointDeForce()));
-    }
-
+    else
+        return;
 }
 
 bool Aventurier::ramasserAllumette(Terrain& T) const {
-    return (T.retourneCase(position().x(), position().y())->type() == "allumette");
+    return (T.retourneCase(position().x(), position().y())->type() == "Amullette");
 }
 
 
