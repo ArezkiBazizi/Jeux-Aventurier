@@ -18,7 +18,7 @@ string Aventurier::type() const
     return "Aventurier";
 }
 
-Aventurier::Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces) :
+Aventurier::Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces, int PointDeSoliditeArmure, int PointDeSoliditeEpee) :
     Personnage{position,pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }
 {
     d_tabEquipement.push_back(make_unique<Armure>(100));
@@ -35,7 +35,7 @@ int Aventurier::bourseDePieces() const {
     return d_bourseDePieces;
 }
 
-std::vector<std::unique_ptr<Equipement>> const& Aventurier::tabEquipement() const
+std::vector<std::unique_ptr<Equipement>> Aventurier::tabEquipement() const
 {
     return d_tabEquipement;
 }
@@ -149,18 +149,20 @@ void Aventurier::Attaquer(Monstre& M) {
     while (i < d_tabEquipement.size() && d_tabEquipement[i]->typeEquipement() != "Epee")
         i++;
 
-    if ((abs(M.position().x() - position().x()) == 1) && (abs(M.position().y() - position().y()) == 1))
+    if ((M.position().x() == position().x()) && (M.position().y() == position().y()))
     {
         M.encaisser(pointDeForce() + d_tabEquipement[i]->pointDeSolidite());
+        if (M.pointDeVie() < 0)
+            M.modifierPointDeVie(0);
     }
 
     if (d_tabEquipement[i]->pointDeSolidite() > 0) {
-        d_tabEquipement[i]->ModifierpointDeSolidite(-1);
+        d_tabEquipement[i]->setPointDeSolidite(d_tabEquipement[i]->pointDeSolidite()-1);
     }
 
     if (!M.estVivant()) {
         modifierPointDeForce(pointDeForce()+ static_cast<int>(0.25 * M.pointDeForce()));
-        modifierPointDeVie(pointDeForce()+ static_cast<int>(0.75 * M.pointDeForce()));
+        modifierPointDeVie(pointDeVie()+ static_cast<int>(0.75 * M.pointDeForce()));
     }
 
 }
