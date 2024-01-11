@@ -14,7 +14,7 @@ Terrain::Terrain(int h, int l) :
 
 
 void Terrain::afficheTerrain()const {
-    for (int i = 0; i < d_cases.size(); i++) {
+    for (int i = 0; i < d_cases.size()-1; i++) {
         goto_xy(d_cases[i]->position().x(), d_cases[i]->position().y());
      
         if (d_cases[i]->type() == "Mur")
@@ -43,7 +43,7 @@ void Terrain::afficheTerrain()const {
 void Terrain::ecritTerrain(const string& nomF) const {
 
     ofstream f(nomF, ofstream::trunc);
-    for (int i = 0; i < d_cases.size(); i++) {
+    for (int i = 0; i < d_cases.size()-1; i++) {
 
         f << d_cases[i]->position().x() << " " << d_cases[i]->position().y() << " " << d_cases[i]->type() << endl;
     }
@@ -70,18 +70,7 @@ void Terrain::litTerrain(const string& nomF) {
         {
             d_cases.push_back(make_unique<VideC>(x, y));
         }
-        else if (t == "Aventurier")
-        {
-            d_cases.push_back(make_unique<Aventurier>( Position{x,y}));
-        }
-        else if (t == "MonstreV")
-        {
-            d_cases.push_back(make_unique<MonstreV>(Position{ x,y },100, 100, 100));
-        }
-        else if (t == "MonstreA")
-        {
-            d_cases.push_back(make_unique<MonstreA>(Position{ x,y }, 100, 100, 100));
-        }
+
         else if (t == "Pieces")
         {
             d_cases.push_back(make_unique<Pieces>(20,Position{ x,y }));

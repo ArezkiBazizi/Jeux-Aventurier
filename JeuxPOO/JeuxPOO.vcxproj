@@ -137,6 +137,7 @@
     <ClCompile Include="Epee.cpp" />
     <ClCompile Include="EpeeTest.cpp" />
     <ClCompile Include="Equipement.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="goto_xy_windows.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainTest.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="doctest.h" />
     <ClInclude Include="Epee.h" />
     <ClInclude Include="Equipement.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="goto_xy_windows.h" />
     <ClInclude Include="Monstre.h" />
     <ClInclude Include="MonstreA.h" />
