@@ -186,3 +186,12 @@ void Terrain::ajoutPersonnage(unique_ptr<Cases> c) {
     d_cases.push_back(move(c));
 }
 */
+
+void Terrain::remplaceCase(Cases& ancienneCase) {
+    std::for_each(d_cases.begin(), d_cases.end(), [&ancienneCase](unique_ptr<Cases>& casePtr) {
+        if (*casePtr == ancienneCase) {
+        
+            casePtr = std::make_unique<Vide>(ancienneCase.position().x(), ancienneCase.position().y());
+        }
+        });
+}
