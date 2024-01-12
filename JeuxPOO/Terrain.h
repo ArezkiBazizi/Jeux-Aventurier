@@ -13,6 +13,7 @@
 #include "Amullette.h"
 #include "Mur.h"
 #include<fstream>
+#include<algorithm>
 
 class Aventurier;
 class MonstreV; 
@@ -28,6 +29,7 @@ public:
     void litTerrain(const string& nomF);
     void ecritTerrain() const;
     void ecritTerrain(const string& nomF)const;
+    void remplaceCase(Cases& ancienneCase);
     unique_ptr<Cases> retourneCase(int x, int y) const;
     void retourne() const;
     // std::unique_ptr<Aventurier> retourneAventurier() const;

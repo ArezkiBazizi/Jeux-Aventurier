@@ -194,19 +194,21 @@ void Aventurier::Attaquer(Monstre& M) {
         return;
 }
 
-bool Aventurier::TrouverAllumette(Terrain& T) const {
-    return (T.retourneCase(position().x(), position().y())->type() == "Amullette");
+bool Aventurier::ramasserAllumette(Amullette& A, Terrain& T) {
+    if ((A.position().x() == position().x()) && (A.position().y() == position().y())) {
+        switchCases(A);
+        T.remplaceCase(A);
+        return true;
+    }
 }
 
 
 void Aventurier::ramasserPieces(Pieces& P, Terrain& T) {
     if ((P.position().x() == position().x() ) && (P.position().y() == position().y() )) {
         d_bourseDePieces += P.valeur(); 
-        Vide V{P.position().x(), position().y()};
         switchCases(P);
-       // P = V;
-        
-        
+        T.remplaceCase(P);
+      
     }
     
 
