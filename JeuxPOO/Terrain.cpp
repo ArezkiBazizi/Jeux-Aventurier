@@ -146,6 +146,17 @@ vector<MonstreV*> Terrain::trouverMonstreV() {
     return d_monstre;
 }
 
+vector<Pieces*> Terrain::trouverPieces() {
+    vector<Pieces*> d_pieces;
+    for (auto& c : d_cases) {
+        Pieces* pieces = dynamic_cast<Pieces*>(c.get());
+        if (pieces) {
+            d_pieces.push_back(pieces);
+        }
+    }
+    return d_pieces;
+}
+
 Sortie* Terrain::trouverSortie() {
     for (auto& c : d_cases) {
         Sortie* sortie = dynamic_cast<Sortie*>(c.get());

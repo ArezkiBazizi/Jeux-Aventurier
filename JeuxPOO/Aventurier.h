@@ -30,7 +30,7 @@ public:
     void deplacerA(Terrain& T);
     void Attaquer(Monstre& M);
     void ramasserAmullette(Terrain& ,Cases& C);
-    void ramasserPieces(Pieces& P, Terrain& T);
+    void ramasserPieces(Terrain& T,Cases& C);
     string type() const override;
     void afficheInfoAventurier();
     void combat(Cases& c, Terrain& T);

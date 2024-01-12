@@ -38,7 +38,8 @@ public:
     vector<MonstreV*> trouverMonstreV();
     Sortie* trouverSortie();
     Amullette* trouverAmullette();
-  
+    vector<Pieces*> trouverPieces();
+
 private:
     int d_h, d_l;
     vector<unique_ptr<Cases>> d_cases;
