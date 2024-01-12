@@ -76,11 +76,11 @@ void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
 
         if (y == 0)
         {
-            deplacer(x, 0);
+            switchCases(T.retourneC(position().x() + x, position().y()));
         }
         else
         {
-            deplacer(0, x);
+            switchCases(T.retourneC(position().x(), position().y()+x));
         }
 
     }
@@ -109,42 +109,42 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
     {
         if (move[i] == D)
         {
-            if (right)
+            if (T.retourneC(position().x() + 1, position().y()).type() == "Vide")
             {
-                switchCases(T.retourneC(position().x()+1, position().y()));
+                switchCases(T.retourneC(position().x() + 1, position().y()));
                 i = 4;
-                right = false;
+
             }
             else i++;
         }
 
         else if (move[i] == G)
         {
-            if (left)
+            if (T.retourneC(position().x() - 1, position().y()).type() == "Vide")
             {
-                switchCases(T.retourneC(position().x()-1, position().y()));
+                switchCases(T.retourneC(position().x() - 1, position().y()));
                 i = 4;
-                left = false;
+
             }
             else i++;
         }
         else if (move[i] == H)
         {
-            if (up)
+            if (T.retourneC(position().x(), position().y() - 1).type() == "Vide")
             {
                 switchCases(T.retourneC(position().x(), position().y() - 1));
                 i = 4;
-                up = false;
+
             }
             else i++;
         }
         else if (move[i] == B)
         {
-            if (down)
+            if (T.retourneC(position().x(), position().y() + 1).type() == "Vide")
             {
                 switchCases(T.retourneC(position().x(), position().y() + 1));
                 i = 4;
-                down = false;
+
             }
             else i++;
         }
