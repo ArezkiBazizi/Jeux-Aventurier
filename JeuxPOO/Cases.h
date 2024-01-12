@@ -14,6 +14,7 @@ public:
     Position position() const;
     void deplacer(int x, int y);
     bool operator==(const Cases& other) const;
+    Cases& operator=(const Cases& c);
     virtual ~Cases() = default;
 private:
     Position d_position;

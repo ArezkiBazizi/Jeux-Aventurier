@@ -29,7 +29,7 @@ void Terrain::afficheTerrain()const {
             cout << "M";
         else if (d_cases[i]->type() == "MonstreA")
             cout << "m";
-        else if (d_cases[i]->type() == "Allumette")
+        else if (d_cases[i]->type() == "Amullette")
             cout << "@";
         else if (d_cases[i]->type() == "Aventurier")
             cout << "A";
@@ -91,7 +91,7 @@ void Terrain::litTerrain(const string& nomF) {
         {
             d_cases.push_back(make_unique<Mur>(Position{ x,y }));
         }
-        else if (t == "Mur")
+        else if (t == "Sortie")
         {
             d_cases.push_back(make_unique<Sortie>(x,y));
         }
@@ -146,22 +146,26 @@ vector<MonstreV*> Terrain::trouverMonstreV() {
     return d_monstre;
 }
 
-
-
-/*
-unique_ptr<Aventurier> Terrain::retourneAventurier() const
-{
-    for (const auto& casePtr : d_cases)
-    {
-        if (casePtr->type() == "Aventurier")
-        {
-            return move(make_unique<Aventurier>(casePtr->position())); // Retourne une nouvelle instance copiée
+Sortie* Terrain::trouverSortie() {
+    for (auto& c : d_cases) {
+        Sortie* sortie = dynamic_cast<Sortie*>(c.get());
+        if (sortie) {
+            return sortie;
         }
     }
-
-    return nullptr; // Retourne un pointeur unique vide si aucune case correspondante n'est trouvée
+    return nullptr;
 }
-*/
+
+Amullette* Terrain::trouverAmullette() {
+    for (auto& c : d_cases) {
+        Amullette* amul = dynamic_cast<Amullette*>(c.get());
+        if (amul) {
+            return amul;
+        }
+    }
+    return nullptr;
+}
+
 
 Cases& Terrain::retourneC(int x, int y) {
     // Parcourez les cases existantes pour trouver la case correspondante.
@@ -177,20 +181,11 @@ Cases& Terrain::retourneC(int x, int y) {
 }
 
 
-/*
-void Terrain::ajoutPersonnage(unique_ptr<Cases> c) {
-    for (int i = 0; i < d_cases.size(); i++) {
-        if (d_cases[i]->position().x() == c->position().x() && d_cases[i]->position().y() == c->position().y())
-            d_cases.erase(d_cases.begin()+i);
-    }
-    d_cases.push_back(move(c));
-}
-*/
-
 void Terrain::remplaceCase(Cases& ancienneCase) {
     std::for_each(d_cases.begin(), d_cases.end(), [&ancienneCase](unique_ptr<Cases>& casePtr) {
+
         if (*casePtr == ancienneCase) {
-        
+
             casePtr = std::make_unique<Vide>(ancienneCase.position().x(), ancienneCase.position().y());
         }
         });

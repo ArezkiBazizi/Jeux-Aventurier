@@ -13,7 +13,7 @@ class Monstre : public Personnage
 {
     public:
         Monstre(const Position& position, int pointDeVie,int pointDeForce, int pourcentageHabilete);
-        void attaquer(Aventurier& A) const;
+        void attaquer(Terrain& T);
         int obtenirPourcentageHabilete() const;
         void afficheInfoMonstre();
         virtual ~Monstre();
@@ -27,7 +27,7 @@ class MonstreV : public Monstre
 {
 public:
     MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete);
-    void trouverAventurier(Aventurier& A, Terrain& T);
+    void trouverAventurier(Terrain& T);
     void deplacerVersAventurier(int dx, int dy, Terrain& T);
     string type() const override;
     

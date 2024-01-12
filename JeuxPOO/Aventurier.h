@@ -2,7 +2,9 @@
 #define AVENTURIER_H
 #include "Personnage.h"
 #include "Equipement.h"
+#include "Amullette.h"
 #include "Monstre.h"
+#include "Sortie.h"
 #include "Terrain.h"
 #include "Pieces.h"
 #include <vector>
@@ -27,18 +29,20 @@ public:
     const vector<unique_ptr<Equipement>>& tabEquipement() const;
     void deplacerA(Terrain& T);
     void Attaquer(Monstre& M);
-    bool ramasserAllumette(Amullette& A, Terrain& T) ;
+    void ramasserAmullette(Terrain& ,Cases& C);
     void ramasserPieces(Pieces& P, Terrain& T);
-    bool estSortie(Terrain& T) const;
     string type() const override;
     void afficheInfoAventurier();
     void combat(Cases& c, Terrain& T);
+    void sortir(Terrain& T, Cases& C);
+    bool estSortie() const;
   
 
 protected:
 
 private:
     int d_bourseDePieces;
+    bool d_sortir{ false };
     vector<unique_ptr<Equipement>> d_tabEquipement;
 };
 

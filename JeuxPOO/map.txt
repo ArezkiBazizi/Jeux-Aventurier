@@ -1,5 +1,5 @@
 0 0 Mur
-0 1 Mur
+0 1 Sortie
 0 2 Mur
 0 3 Mur
 0 4 Mur
@@ -43,7 +43,7 @@
 3 9 Vide
 3 10 Mur
 4 0 Mur
-4 1 Vide
+4 1 Amullette
 4 2 Vide
 4 3 Aventurier
 4 4 Vide
@@ -60,7 +60,7 @@
 5 4 Vide
 5 5 Mur
 5 6 Vide
-5 7 Vide
+5 7 Pieces
 5 8 Vide
 5 9 Vide
 5 10 Mur
@@ -80,7 +80,7 @@
 7 2 Vide
 7 3 Vide
 7 4 Vide
-7 5 Vide
+7 5 vide
 7 6 Vide
 7 7 Vide
 7 8 Vide

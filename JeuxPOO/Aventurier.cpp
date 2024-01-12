@@ -25,7 +25,7 @@ void Aventurier::afficheInfoAventurier()
     cout << "information Aventurier" << endl;
     cout << " Point de vie : " << pointDeVie() << endl;
     cout << " Ponit de force : " << pointDeForce() << endl;
-    cout << " bourse : " << bourseDePieces() << endl;
+    cout << " Bourse : " << bourseDePieces() << endl;
 
 
 }
@@ -63,9 +63,8 @@ void Aventurier::deplacerA( Terrain& T) {
             
             
             if (GetKeyState(VK_UP) & 0x8000) {
-                if (T.retourneC(position().x(), position().y() - 1).type() == "Vide") {
+                if (T.retourneC(position().x(), position().y() - 1).type() == "Vide"){
 
-                    cout << "up";
 
                     switchCases(T.retourneC(position().x(), position().y() - 1));
 
@@ -73,9 +72,20 @@ void Aventurier::deplacerA( Terrain& T) {
                 else if (T.retourneC(position().x(), position().y() - 1).type() == "MonstreV")
                 {
                     
-                    combat(T.retourneC(position().x() , position().y()-1), T);
+                    combat(T.retourneC(position().x() , position().y() -1 ), T);
                    
                 }
+                else if (T.retourneC(position().x(), position().y() - 1).type() == "Amullette") {
+
+                    ramasserAmullette(T, T.retourneC(position().x(), position().y() - 1));
+                }
+                else if (T.retourneC(position().x(), position().y() - 1).type() == "Sortie") {
+
+                    sortir(T, T.retourneC(position().x(), position().y() - 1));
+
+                }
+
+
 
                 flag = false;
                
@@ -92,9 +102,20 @@ void Aventurier::deplacerA( Terrain& T) {
                 else if (T.retourneC(position().x(), position().y() + 1).type() == "MonstreV")
                 {
 
-                    combat(T.retourneC(position().x(), position().y()+1), T);
+                    combat(T.retourneC(position().x(), position().y() + 1), T);
 
                 }
+                else if (T.retourneC(position().x(), position().y()+1).type() == "Amullette") {
+
+                    ramasserAmullette(T, T.retourneC(position().x(), position().y() + 1));
+                }
+                else if (T.retourneC(position().x(), position().y() + 1).type() == "Sortie") {
+
+                    sortir(T, T.retourneC(position().x(), position().y() + 1));
+
+                }
+
+
                 flag = 0;
                
                
@@ -111,10 +132,18 @@ void Aventurier::deplacerA( Terrain& T) {
                 else if (T.retourneC(position().x()-1, position().y()).type() == "MonstreV")
                 {
 
-
                     combat(T.retourneC(position().x() - 1, position().y()), T);
 
                 }
+                else if (T.retourneC(position().x() - 1, position().y()).type() == "Amullette") {
+
+                    ramasserAmullette(T, T.retourneC(position().x()-1, position().y()));
+                }
+                else if (T.retourneC(position().x()-1, position().y()).type() == "Sortie") {
+
+                    sortir(T, T.retourneC(position().x() - 1, position().y()));
+                }
+
                 flag = 0;
                
                 
@@ -128,9 +157,19 @@ void Aventurier::deplacerA( Terrain& T) {
                 else if (T.retourneC(position().x()+1, position().y()).type() == "MonstreV")
                 {
 
-                    combat(T.retourneC(position().x() + 1, position().y()),T);
+                    combat(T.retourneC(position().x() +1, position().y()), T);
 
                 }
+                else if (T.retourneC(position().x() + 1, position().y()).type() == "Amullette") {
+
+                    ramasserAmullette(T, T.retourneC(position().x()+1, position().y()));
+                }
+                else if (T.retourneC(position().x()+1, position().y()).type() == "Sortie") {
+
+                    sortir(T, T.retourneC(position().x()+1, position().y() ));
+
+                }
+
                 flag = 0;
                
                
@@ -155,9 +194,11 @@ void Aventurier::deplacerA( Terrain& T) {
 void Aventurier::combat(Cases& c, Terrain& T)
 {
     vector<MonstreV*> m = T.trouverMonstreV();
+
     for (int i = 0; i < m.size(); i++)
     {
-        Attaquer(*m[i]);
+        if(m[i]->position().x()==c.position().x() && m[i]->position().y() == c.position().y())
+            Attaquer(*m[i]);
     }
     
 }
@@ -169,17 +210,17 @@ void Aventurier::Attaquer(Monstre& M) {
     int degat{ static_cast<int>((pointDeForce() + d_tabEquipement[1]->pointDeSolidite()) * 0.9) };
     double probabilite = (static_cast<double>(rand()) / RAND_MAX);
 
+    cout << "degat : "<< degat;
 
     if (probabilite <= 0.8) {
-        cout << abs(M.position().x() - position().x()) << abs(M.position().y() - position().y()) <<endl;
-        if ((abs(M.position().x() - position().x()) == 1) && (abs(M.position().y() - position().y()) == 1)) 
-        {
-            cout << degat;
-            M.encaisser(degat);
-            if (M.pointDeVie() < 0)
-                M.modifierPointDeVie(0);
 
-        }
+        M.encaisser(50);
+         if (M.pointDeVie() < 0)
+         {
+             M.modifierPointDeVie(0);
+         }
+
+        
 
         if (d_tabEquipement[1]->pointDeSolidite() > 0) {
             d_tabEquipement[1]->setPointDeSolidite(d_tabEquipement[1]->pointDeSolidite() - 1);
@@ -194,11 +235,36 @@ void Aventurier::Attaquer(Monstre& M) {
         return;
 }
 
-bool Aventurier::ramasserAllumette(Amullette& A, Terrain& T) {
-    if ((A.position().x() == position().x()) && (A.position().y() == position().y())) {
-        switchCases(A);
-        T.remplaceCase(A);
-        return true;
+void Aventurier::ramasserAmullette(Terrain& T,Cases& C) {
+
+    Amullette* A = T.trouverAmullette();
+
+ 
+
+    if ((A->position().x() == C.position().x()) && (A->position().y() == C.position().y())) {
+
+      
+        switchCases(*A);
+        T.remplaceCase(*A);
+        A->changeEtatAllumettes(true);
+       
+    }
+}
+
+void Aventurier::sortir(Terrain& T, Cases& C) {
+
+    Sortie* S = T.trouverSortie();
+
+
+
+    if ((S->position().x() == C.position().x()) && (S->position().y() == C.position().y())) {
+
+
+        switchCases(*S);
+        T.remplaceCase(*S);
+        T.remplaceCase(*this);
+        d_sortir = true;
+
     }
 }
 
@@ -206,14 +272,18 @@ bool Aventurier::ramasserAllumette(Amullette& A, Terrain& T) {
 void Aventurier::ramasserPieces(Pieces& P, Terrain& T) {
     if ((P.position().x() == position().x() ) && (P.position().y() == position().y() )) {
         d_bourseDePieces += P.valeur(); 
+
+      
         switchCases(P);
         T.remplaceCase(P);
+       
       
     }
     
 
 }
 
-bool Aventurier::estSortie(Terrain& T) const {
-    return (T.retourneCase(position().x(), position().y())->type() == "sortie");
+bool Aventurier::estSortie() const 
+{
+    return d_sortir;
 }
