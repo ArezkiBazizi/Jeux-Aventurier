@@ -32,6 +32,7 @@ public:
     bool estSortie(Terrain& T) const;
     string type() const override;
     void afficheInfoAventurier();
+    void combat(Cases& c, Terrain& T);
   
 
 protected:

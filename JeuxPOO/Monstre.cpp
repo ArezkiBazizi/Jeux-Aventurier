@@ -22,7 +22,7 @@ int Monstre::obtenirPourcentageHabilete() const
 void Monstre::afficheInfoMonstre()
 {
     cout << endl;
-    cout << "information Aventurier" << endl;
+    cout << "information Monstre" << endl;
     cout << " Point de vie : " << pointDeVie() << endl;
     cout << " Ponit de force : " << pointDeForce() << endl;
 }
@@ -106,11 +106,7 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
     double G = sqrt(pow((dx + -1), 2) + pow(dy, 2));      //gauche
     double H = sqrt(pow((dx), 2) + pow((dy + 1), 2));      //haut
     double B = sqrt(pow((dx + -1), 2) + pow((dy - 1), 2)); //bas
-    cout << endl << D << " " << G << " " << H << " " << B << "/" << endl;
-    if (up) cout << "up vide" << endl;
-    if (down) cout << "down vide" << endl;
-    if (right) cout << "right vide" << endl;
-    if (left) cout << "left vide" << endl;
+   
     
     std::vector<double> move{ D, G, H, B };
 
