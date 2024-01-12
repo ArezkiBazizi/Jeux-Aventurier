@@ -58,7 +58,7 @@ void Aventurier::deplacerA( Terrain& T) {
     vector<bool> touchesDirection(4,false);
 
         bool flag = true;
-        
+        vector<MonstreV*> m = T.trouverMonstreV();
 
         while (flag) {
             
@@ -71,6 +71,19 @@ void Aventurier::deplacerA( Terrain& T) {
                     switchCases(T.retourneC(position().x(), position().y() - 1));
 
                 }
+                else if (T.retourneC(position().x(), position().y() - 1).type() == "MonstreV")
+                {
+                    
+                    for (int i = 0; i < m.size(); i++)
+                    {
+                        if (m[i]->position().x() == position().x() || m[i]->position().y() == position().y()-1)
+                        {
+                            Attaquer(*m[i]);
+                        }
+                    }
+                   
+                }
+
                 flag = false;
                
                 
@@ -81,6 +94,18 @@ void Aventurier::deplacerA( Terrain& T) {
 
                     switchCases(T.retourneC(position().x(), position().y() + 1));
                     
+
+                }
+                else if (T.retourneC(position().x(), position().y() + 1).type() == "MonstreV")
+                {
+
+                    for (int i = 0; i < m.size(); i++)
+                    {
+                        if (m[i]->position().x() == position().x() || m[i]->position().y() == position().y() + 1)
+                        {
+                            Attaquer(*m[i]);
+                        }
+                    }
 
                 }
                 flag = 0;
@@ -96,6 +121,18 @@ void Aventurier::deplacerA( Terrain& T) {
                     
 
                 }
+                else if (T.retourneC(position().x()-1, position().y()).type() == "MonstreV")
+                {
+
+                    for (int i = 0; i < m.size(); i++)
+                    {
+                        if (m[i]->position().x() == position().x()-1 || m[i]->position().y() == position().y() )
+                        {
+                            Attaquer(*m[i]);
+                        }
+                    }
+
+                }
                 flag = 0;
                
                 
@@ -105,6 +142,18 @@ void Aventurier::deplacerA( Terrain& T) {
 
                     switchCases(T.retourneC(position().x() + 1, position().y()));
                     
+                }
+                else if (T.retourneC(position().x()+1, position().y()).type() == "MonstreV")
+                {
+
+                    for (int i = 0; i < m.size(); i++)
+                    {
+                        if (m[i]->position().x() == position().x()+1 || m[i]->position().y() == position().y())
+                        {
+                            Attaquer(*m[i]);
+                        }
+                    }
+
                 }
                 flag = 0;
                
