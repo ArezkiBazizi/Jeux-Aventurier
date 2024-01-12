@@ -22,7 +22,7 @@
 1 10 Mur
 2 0 Mur
 2 1 Vide
-2 2 Aventurier
+2 2 Vide
 2 3 Vide
 2 4 Vide
 2 5 Vide
@@ -45,13 +45,13 @@
 4 0 Mur
 4 1 Vide
 4 2 Vide
-4 3 Vide
+4 3 Aventurier
 4 4 Vide
 4 5 Vide
 4 6 Vide
 4 7 Vide
-4 8 MonstreV
-4 9 Vide
+4 8 Vide
+4 9 MonstreV
 4 10 Mur
 5 0 Mur
 5 1 Vide
@@ -120,5 +120,3 @@
 10 8 Mur
 10 9 Mur
 10 10 Mur
-
-

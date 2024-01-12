@@ -42,3 +42,10 @@ void Cases::deplacer(int x, int y)
     d_position.modifierX(x);
     d_position.modifierY(y);
 }
+
+Cases& Cases::operator=(const Cases& c) {
+    if (this != &c) {
+        d_position = c.d_position;
+    }
+    return *this;
+}

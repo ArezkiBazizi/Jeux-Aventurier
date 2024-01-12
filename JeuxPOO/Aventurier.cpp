@@ -19,6 +19,17 @@ string Aventurier::type() const
     return "Aventurier";
 }
 
+void Aventurier::afficheInfoAventurier()
+{
+    cout << endl;
+    cout << "information Aventurier" << endl;
+    cout << " Point de vie : " << pointDeVie() << endl;
+    cout << " Ponit de force : " << pointDeForce() << endl;
+    cout << " bourse : " << bourseDePieces() << endl;
+
+
+}
+
 Aventurier::Aventurier(const Position& position, int pointDeVie, int pointDeForce, int bourseDePieces, int PointDeSoliditeArmure, int PointDeSoliditeEpee) :
     Personnage{position,pointDeVie,pointDeForce }, d_bourseDePieces{ bourseDePieces }, d_tabEquipement{}
 {
@@ -219,7 +230,7 @@ void Aventurier::Attaquer(Monstre& M) {
     double probabilite = (static_cast<double>(rand()) / RAND_MAX);
 
     if (probabilite <= 0.8) {
-        if ((M.position().x() == position().x()) && (M.position().y() == position().y()))
+        if (((M.position().x() - position().x()) == 1) && ((M.position().y() - position().y()) == 1)) 
         {
             M.encaisser(degat);
             if (M.pointDeVie() < 0)
@@ -239,17 +250,21 @@ void Aventurier::Attaquer(Monstre& M) {
         return;
 }
 
-bool Aventurier::ramasserAllumette(Terrain& T) const {
+bool Aventurier::TrouverAllumette(Terrain& T) const {
     return (T.retourneCase(position().x(), position().y())->type() == "Amullette");
 }
 
 
-bool Aventurier::ramasserPieces(Pieces& P) {
-    if (P.position().x() - position().x() == 0 && P.position().y() - position().y() == 0) {
-        d_bourseDePieces += P.valeur();
-        return true;
+void Aventurier::ramasserPieces(Pieces& P, Terrain& T) {
+    if ((P.position().x() == position().x() ) && (P.position().y() == position().y() )) {
+        d_bourseDePieces += P.valeur(); 
+        Vide V{P.position().x(), position().y()};
+        switchCases(P);
+       // P = V;
+        
+        
     }
-    else return false;
+    
 
 }
 
