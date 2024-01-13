@@ -79,57 +79,77 @@ void MonstreV::trouverAventurier(Terrain& T)
     if (!estVivant()){
         T.remplaceCase(*this);
     }
-    else{
-    
-    }
+    else {
+        // Calcul des différences entre les coordonnées du monstre et de l'aventurier
+        int dx = A->position().x() - position().x();
+        int dy = A->position().y() - position().y();
 
-    // Calcul des différences entre les coordonnées du monstre et de l'aventurier
-    int dx = A->position().x() - position().x();
-    int dy = A->position().y() - position().y();
-
-    if (abs(dx) == 1 && abs(dy) == 1)
-    {
-        attaquer(T);
-    }
-
-    else if (abs(dx) <= 8 && abs(dy) <= 8)
-    {
-        deplacerVersAventurier(dx, dy, T);
-    }
-    else
-    {
-        int x = (std::rand() % 3) - 1;
-        int y = (std::rand() % 2);
-
-        if (y == 1)
+        if (abs(dx) <= 8 && abs(dy) <= 8)
         {
-            switchCases(T.retourneC(position().x() + x, position().y()));
+            if (dx == 1 && dy == 1)
+            {
+                attaquer(T);
+            }
+            deplacerVersAventurier(dx, dy, T);
+
+
         }
         else
         {
-            switchCases(T.retourneC(position().x(), position().y()+x));
-        }
+            int x = (std::rand() % 3) - 1;
+            int y = (std::rand() % 2);
 
+            if (y == 1)
+            {
+                switchCases(T.retourneC(position().x() + x, position().y()));
+            }
+            else
+            {
+                switchCases(T.retourneC(position().x(), position().y() + x));
+            }
+
+        }
     }
 
 }
 
 void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
 
+    double D, G, B, H;
 
-    double D = sqrt(pow((dx + 1), 2) + pow(dy, 2));        //droite
-    double G = sqrt(pow((dx + -1), 2) + pow(dy, 2));      //gauche
-    double H = sqrt(pow((dx), 2) + pow((dy + 1), 2));      //haut
-    double B = sqrt(pow((dx + -1), 2) + pow((dy - 1), 2)); //bas
-   
+    if (dx >= 0)
+    {
+        D = sqrt(pow(dx - 1, 2) + pow(abs(dy), 2));        //droite
+        G = sqrt(pow(dx + 1, 2) + pow(abs(dy), 2));
+    }
+    else
+    { 
+         D = sqrt(pow(abs(dx) + 1, 2) + pow(abs(dy), 2));        //droite
+         G = sqrt(pow(abs(dx) - 1, 2) + pow(abs(dy), 2));
+    }
+
+
+    if (dy >= 0)
+    {
+         H = sqrt(pow(abs(dx), 2) + pow(dy+ 1, 2));
+         B = sqrt(pow(abs(dx), 2) + pow(dy - 1, 2));
+
+    }
+    else
+    {
+         H = sqrt(pow(abs(dx), 2) + pow(abs(dy) - 1, 2));
+         B = sqrt(pow(abs(dx), 2) + pow(abs(dy) + 1, 2));
+
+    }
     
-    std::vector<double> move{ D, G, H, B };
+    std::vector<double> move{ G, D, H, B };
 
     std::sort(move.begin(), move.end());
 
     int i = 0;
     while (i < 4)
     {
+      
         if (move[i] == D)
         {
             if (T.retourneC(position().x() + 1, position().y()).type() == "Vide")
