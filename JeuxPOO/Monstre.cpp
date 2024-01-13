@@ -21,10 +21,15 @@ int Monstre::obtenirPourcentageHabilete() const
 
 void Monstre::afficheInfoMonstre()
 {
-    cout << endl;
-    cout << "information Monstre" << endl;
-    cout << " Point de vie : " << pointDeVie() << endl;
-    cout << " Ponit de force : " << pointDeForce() << endl;
+    if (estVivant())
+    {
+        cout << endl;
+        cout << "information Monstre" << endl;
+        cout << " Point de vie : " << pointDeVie() << endl;
+        cout << " Ponit de force : " << pointDeForce() << endl;
+
+
+    }
 }
 
 void Monstre::attaquer(Terrain& T) 

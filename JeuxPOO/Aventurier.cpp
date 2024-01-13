@@ -225,22 +225,16 @@ void Aventurier::combat(Cases& c, Terrain& T)
 
 
 
-void Aventurier::Attaquer(Monstre& M) {
+void Aventurier::Attaquer( Monstre& M) {
     
-    int degat{ static_cast<int>((pointDeForce() + d_tabEquipement[1]->pointDeSolidite()) * 0.9) };
+    int degat{ static_cast<int>((pointDeForce() + d_tabEquipement[1]->pointDeSolidite())*0.9) };
     double probabilite = (static_cast<double>(rand()) / RAND_MAX);
 
-    cout << "degat : "<< degat;
+    cout << endl<< "degat : "<< degat;
 
     if (probabilite <= 0.8) {
 
-        M.encaisser(50);
-         if (M.pointDeVie() < 0)
-         {
-             M.modifierPointDeVie(0);
-         }
-
-        
+        M.encaisser(degat);
 
         if (d_tabEquipement[1]->pointDeSolidite() > 0) {
             d_tabEquipement[1]->setPointDeSolidite(d_tabEquipement[1]->pointDeSolidite() - 1);
@@ -249,7 +243,9 @@ void Aventurier::Attaquer(Monstre& M) {
         if (!M.estVivant()) {
             modifierPointDeForce(pointDeForce() + static_cast<int>(0.25 * M.pointDeForce()));
             modifierPointDeVie(pointDeVie() + static_cast<int>(0.75 * M.pointDeForce()));
+            
         }
+        
     }
     else
         return;

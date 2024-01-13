@@ -9,7 +9,14 @@ Personnage::Personnage(const Position& position, int pointDeVie, int pointDeForc
 
 void Personnage::encaisser(int x)
 {
-    d_pointDeVie -= x;
+    if ( x > d_pointDeVie)
+    {
+        d_pointDeVie = 0;
+    }
+    else 
+    {
+        d_pointDeVie -= x;
+    }
 }
 
 int Personnage::pointDeVie() const
