@@ -9,6 +9,7 @@
 #include "VideC.h"
 #include "MonstreV.h"
 #include "MonstreA.h"
+#include "MonstreA.h"
 #include "Pieces.h"
 #include "Sortie.h"
 #include "Amullette.h"
@@ -18,6 +19,7 @@
 
 class Aventurier;
 class MonstreV; 
+class MonstreA;
 
 using namespace std;
 
@@ -36,6 +38,7 @@ public:
     Cases& retourneC(int x, int y);
     Aventurier* trouverAventurier();
     vector<MonstreV*> trouverMonstreV();
+    vector<MonstreA*> trouverMonstreA();
     Sortie* trouverSortie();
     Amullette* trouverAmullette();
     vector<Pieces*> trouverPieces();

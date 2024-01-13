@@ -205,10 +205,43 @@ MonstreA::MonstreA(const Position& position, int pointDeVie, int pointDeForce, i
 
 void MonstreA::deplaceAveugle(Terrain& T)
 {
-    int x = (std::rand() % 3) - 1;
-    int y = (std::rand() % 3) - 1;
+    int x = (std::rand() % 2) * 2 - 1;
+    int z = (std::rand() % 3) - 1;
+    int y = (std::rand() % 3);
 
-    deplacer(x, y);
+
+    if (y == 0)
+    {
+        if (T.retourneC(position().x()+x, position().y()).type() == "Vide") 
+        {
+            switchCases(T.retourneC(position().x() + x, position().y()));
+        }
+        else {
+            switchCases(T.retourneC(position().x() - x, position().y()));
+        }
+    }
+    else if (y == 1)
+    {
+        if (T.retourneC(position().x(), position().y() + x).type() == "Vide")
+        {
+            switchCases(T.retourneC(position().x(), position().y() + x));
+        }
+        else
+        {
+            switchCases(T.retourneC(position().x(), position().y() - x));
+        }
+       
+    }
+    else if (y == 2)
+    {
+        if (T.retourneC(position().x()+z, position().y()+x).type() == "Vide")
+        {
+            switchCases(T.retourneC(position().x() + z, position().y() + x));
+        }
+        else {
+            switchCases(T.retourneC(position().x() - z, position().y() - x));
+        }
+    }
 }
 
 string MonstreA::type() const

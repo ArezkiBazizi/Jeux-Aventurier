@@ -8,7 +8,8 @@ Game::Game(const Position& posAventurier)
     Ter.litTerrain();
 
     Aventurier* a = Ter.trouverAventurier();
-    vector<MonstreV*> m = Ter.trouverMonstreV();
+    vector<MonstreV*> mv = Ter.trouverMonstreV();
+    vector<MonstreA*> ma = Ter.trouverMonstreA();
     Sortie* s = Ter.trouverSortie();
     Amullette* amul = Ter.trouverAmullette();
 
@@ -16,10 +17,16 @@ Game::Game(const Position& posAventurier)
     while (a->estVivant() && d_partieEnCours) {
 
   
-            for (int i = 0; i < m.size(); i++)
+            for (int i = 0; i < mv.size(); i++)
             {
-                m[i]->trouverAventurier(Ter);
-                m[i]->afficheInfoMonstre();
+                mv[i]->trouverAventurier(Ter);
+                mv[i]->afficheInfoMonstre();
+            }
+
+            for (int i = 0; i < ma.size(); i++)
+            {
+                ma[i]->deplaceAveugle(Ter);
+                ma[i]->afficheInfoMonstre();
             }
             a->deplacerA(Ter);
             a->afficheInfoAventurier();
