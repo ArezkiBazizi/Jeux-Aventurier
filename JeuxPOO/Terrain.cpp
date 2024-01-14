@@ -127,16 +127,12 @@ void Terrain::creerTerrain(const string& nomF)  {
     ofstream f(nomF);
     string line;
     int i = 1;
-    do {
-        cout << "Entrer la ligne numero " << i << "(Ecrit 0 pour terminer la creation)" << endl;
+    while (line != "0") {
+        cout << "Entrer la ligne numero et tapez Entrer pour rentrer la ligne suivante " << i << " (Entrez 0 pour terminer la creation du terrain)" << endl;
         cin >> line;
         f << line << endl;
         i++;
-    }while (line != "0");
-    f.close();
-    litTerrain(nomF);
-
-}
+    }
 
 
 void Terrain::creerTerrain()  {

@@ -15,56 +15,65 @@ int main() {
     do {
         std::cout << "\n Menu :\n"
             << "1. Jouer avec un terrain par default\n"
-            << "2. Créer un terrain et le sauvegarder\n"
+            << "2. Creer un terrain et le sauvegarder\n"
             << "3. Charger la configuration d'un terrain\n"
             << "0. Quitter\n"
             << "Choix : ";
         std::cin >> choice;
 
-        switch (choice) {
+        switch(choice){
         case 1:
+            T.litTerrain();
             Game{ T };
             break;
         case 2:
-            cout << "Entrez le nom du terrain (terrain.txt)" << endl";
+            cout << "Entrez le nom du terrain (terrain.txt)" << endl;
             cin >> filename;
             T.creerTerrain(filename);
-            T.litTerrain(filename);
+
+            cout << "1. Organiser une partie de jeu avec le nouveau terrain creer\n";
+            cout << "0. Quitter\n";
+            cin >> choice;
+            switch(choice)
+            {   
+                case 1:
+                    T.litTerrain(filename);
+                    Game{ T };
+                    break;
+                case 0: 
+                    std::cout << "Au revoir !" << std::endl;
+                    break;
+            }
             break;
         case 3:
             cout << "Entrez le nom du fichier à charger : ";
             cin >> filename;
-            Terrain T{ 1000,1000 };
             T.litTerrain(filename);
             cout << "1. Organiser une partie de jeu avec le terrain\n";
             //cout << "2. Editer le terrain\n";
             cout << "0. Quitter\n";
             cin >> choice;
-                switch (choice) {
-                case 1:
-                    Game(T);
-                    break;
+            switch (choice) {
+            case 1:
+                Game{ T };
+                break;
                 //case 2: 
-                    //break
-                case 0:
-                    std::cout << "Au revoir !" << std::endl;
-                    break;
-
-
-            break;
+                //break
+            case 0:
+                std::cout << "Au revoir !" << std::endl;
+                break;
+            }
+        break;
         case 0:
-            std::cout << "Au revoir !" << std::endl;
-            break;
+                std::cout << "Au revoir !" << std::endl;
+                break;
         default:
-            std::cout << "Choix invalide. Réessayez." << std::endl;
-            break;
+                std::cout << "Choix invalide. Réessayez." << std::endl;
+                break;
         }
 
-    } while (choice != 0);
+        } while (choice != 0);
 
-    return 0;
+        return 0;
+
 }
-    Game game();
-
- 
- }
