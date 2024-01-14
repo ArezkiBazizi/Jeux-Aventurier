@@ -1,7 +1,7 @@
 #include "game.h"
 
 
-Game::Game(const Position& posAventurier)
+Game::Game(Terrain& Ter)
 {
     bool d_partieEnCours{ true };
     Terrain Ter{ 1000,1000 };
@@ -41,9 +41,15 @@ Game::Game(const Position& posAventurier)
             if (a->estSortie() && amul->etatAmullette())
             {
                 system("cls");
-                Ter.afficheTerrain();
                 d_partieEnCours = false;
-                cout <<endl << endl << "BRAVO ! Vous avez gagne";
+                cout << endl;
+                cout << "________________________________________" << endl;
+                cout << "|                                       |" << endl;
+                cout << "|       BRAVO ! Vous avez gagne         |" << endl;
+                cout << "|                                       |" << endl;
+                cout << "|_______________________________________|" << endl;
+
+                system("pause = null");
             }
     }
 }
