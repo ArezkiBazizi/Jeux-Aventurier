@@ -5,13 +5,10 @@ Game::Game(Terrain& Ter)
 {
     system("cls");
     bool d_partieEnCours{ true };
-    Terrain Ter{ 1000,1000 };
-    Ter.creerTerrain("test.txt");
-    system("cls");
-    Ter.retourne();
    
-    Ter.modifierTerrain();
-    //Ter.litTerrain("test.txt");
+   
+   
+
     Ter.afficheTerrain();
 
 
@@ -23,7 +20,7 @@ Game::Game(Terrain& Ter)
 
     Ter.afficheTerrain();
     while (a->estVivant() && d_partieEnCours) {
-
+        
         a->afficheInfoAventurier();
 
             for (int i = 0; i < mv.size(); i++)
@@ -40,7 +37,6 @@ Game::Game(Terrain& Ter)
             a->deplacerA(Ter);
 
             if (a->estSortie()){
-
                 if (amul->etatAmullette())
                 {
                     system("cls");

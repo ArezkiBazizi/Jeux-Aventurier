@@ -123,7 +123,7 @@ void Terrain::litTerrain() {
 
 
 
-void Terrain::creerTerrain(const string& nomF)  {
+void Terrain::creerTerrain(const string& nomF) {
     ofstream f(nomF);
     string line;
     int i = 1;
@@ -133,6 +133,8 @@ void Terrain::creerTerrain(const string& nomF)  {
         f << line << endl;
         i++;
     }
+    ecritTerrain(nomF);
+}
 
 
 void Terrain::creerTerrain()  {

@@ -9,6 +9,6 @@ int Pieces::valeur() const{
 
 string Pieces::type() const
 {
-	return "Piece";
+	return "Pieces";
 }
 
