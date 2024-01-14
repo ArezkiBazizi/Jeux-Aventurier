@@ -25,12 +25,18 @@ Game::Game(Terrain& Ter)
 
             for (int i = 0; i < mv.size(); i++)
             {
+                if(abs(a->position().x()-mv[i]->position().x()) <= 3 && abs(a->position().y() - mv[i]->position().y()) <=3)
+                    mv[i]->afficheInfoMonstre(i);
+
                 mv[i]->trouverAventurier(Ter);
 
             }
 
             for (int i = 0; i < ma.size(); i++)
             {
+                if (abs(a->position().x() - mv[i]->position().x()) <= 3 && abs(a->position().y() - mv[i]->position().y()) <= 3)
+                    mv[i]->afficheInfoMonstre(i);
+
                 ma[i]->deplaceAveugle(Ter);
 
             }
@@ -67,7 +73,7 @@ Game::Game(Terrain& Ter)
             }
     }
 
-    if (!a->estVivant())
+    if (!a->estVivant() && d_partieEnCours)
     {
         system("cls");
         cout << endl;
@@ -77,6 +83,8 @@ Game::Game(Terrain& Ter)
         cout << "|                                       |" << endl;
         cout << "|_______________________________________|" << endl;
     }
+
+    FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
 }
 			
 

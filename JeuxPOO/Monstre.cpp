@@ -19,30 +19,35 @@ int Monstre::obtenirPourcentageHabilete() const
     return d_pourcentageHabilete;
 }
 
-void Monstre::afficheInfoMonstre()
+void Monstre::afficheInfoMonstre(int i)
 {
     if (estVivant())
-    {
-        cout << endl;
-        cout << "information Monstre" << endl;
-        cout << " Point de vie : " << pointDeVie() << endl;
-        cout << " Ponit de force : " << pointDeForce() << endl;
-
-
+    {   
+        std::cout << "\x1b[" << i*5+1 << ";50H";
+        cout << "************************" << endl;
+        std::cout << "\x1b[" << i*5+2 << ";50H";
+        cout << "* information Monstre  *" << endl;
+        std::cout << "\x1b[" << i * 5+3 << ";50H";
+        cout << "* Point de vie : " << pointDeVie() <<"   *" << endl;
+        std::cout << "\x1b[" << i * 5+4 << ";50H";
+        cout << "* Ponit de force : " << pointDeForce() <<" *" << endl;
+        std::cout << "\x1b[" << i * 5+5 << ";50H";
+        cout << "************************" << endl;
     }
 }
 
-void Monstre::attaquer(Terrain& T) 
+void Monstre::attaquer(Terrain& T)
 {
 
     Aventurier* A = T.trouverAventurier();
 
-    double probabilite = (static_cast<double>(rand()) / RAND_MAX)*100 ;
+    double probabilite = (static_cast<double>(rand()) / RAND_MAX) * 100;
+    double attaque{ static_cast<double>(pointDeForce()) * 0.9 };
 
-    if (probabilite <= d_pourcentageHabilete){
+    if (probabilite <= d_pourcentageHabilete) {
         if (A->tabEquipement()[0]->typeEquipement() == "Armure") {
 
-            cout << "ATTAAAAAQUE";
+
             int x = A->tabEquipement()[0]->pointDeSolidite();
             if (x > static_cast<int>((attaque * 3 / 4) / 2))
             {
@@ -55,13 +60,13 @@ void Monstre::attaquer(Terrain& T)
                 A->tabEquipement()[0]->setPointDeSolidite(0);
                 A->encaisser(static_cast<int>(attaque - x));
             }
-    }
-    else
-        return;
-        
-   
-}
+        }
+        else
+            return;
 
+
+    }
+}
 
 MonstreV::MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete) : Monstre{ position,pointDeVie,pointDeForce,pourcentageHabilete }
 {
@@ -89,6 +94,8 @@ void MonstreV::trouverAventurier(Terrain& T)
 
         if (abs(dx) <= 8 && abs(dy) <= 8)
         {
+
+
             if (abs(dx) <= 1 && abs(dy) <= 1)
             {
                 attaquer(T);
@@ -223,6 +230,12 @@ void MonstreA::deplaceAveugle(Terrain& T)
         int dx = A->position().x() - position().x();
         int dy = A->position().y() - position().y();
 
+
+
+        if (abs(dx) <= 3 && abs(dy) <= 3)
+        {
+            afficheInfoMonstre(5);
+        }
 
         if (abs(dx) <= 1 && abs(dy) <= 1)
         {

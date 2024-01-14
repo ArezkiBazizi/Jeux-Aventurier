@@ -46,6 +46,7 @@ public:
     Sortie* trouverSortie();
     Amullette* trouverAmullette();
     vector<Pieces*> trouverPieces();
+    void chercheMonstreProche();
 
 private:
     int d_h, d_l;
