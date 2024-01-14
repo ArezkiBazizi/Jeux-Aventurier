@@ -25,7 +25,7 @@ Game::Game(Terrain& Ter)
 
             for (int i = 0; i < mv.size(); i++)
             {
-                if(mv[i]->dis)
+                if(mv[i]->distance
                     mv[i]->afficheInfoMonstre(i);
 
                 mv[i]->trouverAventurier(Ter);
