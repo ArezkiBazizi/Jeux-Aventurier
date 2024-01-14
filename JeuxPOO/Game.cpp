@@ -7,7 +7,12 @@ Game::Game(const Position& posAventurier)
     Terrain Ter{ 1000,1000 };
     Ter.creerTerrain("test.txt");
     system("cls");
-    Ter.litTerrain("test.txt");
+    Ter.retourne();
+   
+    Ter.modifierTerrain();
+    //Ter.litTerrain("test.txt");
+    Ter.afficheTerrain();
+
 
     Aventurier* a = Ter.trouverAventurier();
     vector<MonstreV*> mv = Ter.trouverMonstreV();

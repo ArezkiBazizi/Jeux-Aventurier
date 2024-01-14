@@ -50,6 +50,8 @@ Cases& Cases::operator=(const Cases& c) {
     return *this;
 }
 
+
+
 bool Cases::operator==(const Cases& other) const {
     return (position().x() == other.position().x()) && (position().y() == other.position().y());
 }

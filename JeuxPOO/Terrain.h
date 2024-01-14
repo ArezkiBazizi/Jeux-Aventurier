@@ -28,13 +28,15 @@ public:
     Terrain();
     Terrain(int h, int l);
     void afficheTerrain()const;
-    void creerTerrain() const;
+    void creerTerrain() ;
     void creerTerrain(const string& nomF) ;
+    void modifierTerrain();
     void litTerrain();
     void litTerrain(const string& nomF);
     void ecritTerrain() const;
     void ecritTerrain(const string& nomF)const;
     void remplaceCase(Cases& ancienneCase);
+    void remplaceCase(unique_ptr<Cases> &ancienneCase, const string& type);
     unique_ptr<Cases> retourneCase(int x, int y) const;
     void retourne() const;
     Cases& retourneC(int x, int y);

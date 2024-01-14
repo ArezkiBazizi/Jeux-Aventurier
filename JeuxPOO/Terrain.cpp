@@ -45,7 +45,24 @@ void Terrain::ecritTerrain(const string& nomF) const {
     ofstream f(nomF, ofstream::trunc);
     for (int i = 0; i < d_cases.size(); i++) {
 
-        f << d_cases[i]->position().x() << " " << d_cases[i]->position().y() << " " << d_cases[i]->type() << endl;
+        if (d_cases[i]->type() == "Mur")
+            f << "#";
+        else if (d_cases[i]->type() == "Vide")
+            f << ".";
+        else if (d_cases[i]->type() == "VideC")
+            f << "/";
+        else if (d_cases[i]->type() == "Sortie")
+            f << "+";
+        else if (d_cases[i]->type() == "MonstreV")
+            f << "M";
+        else if (d_cases[i]->type() == "MonstreA")
+            f << "m";
+        else if (d_cases[i]->type() == "Amullette")
+            f << "@";
+        else if (d_cases[i]->type() == "Aventurier")
+            f << "A";
+        else if (d_cases[i]->type() == "Pieces")
+            f << "P";
     }
     f.close();
 
@@ -110,15 +127,40 @@ void Terrain::creerTerrain(const string& nomF)  {
     ofstream f(nomF);
     string line;
     int i = 1;
-    while (line != "0") {
+    do {
         cout << "Entrer la ligne numero " << i << "(Ecrit 0 pour terminer la creation)" << endl;
         cin >> line;
         f << line << endl;
         i++;
-    }
+    }while (line != "0");
+    f.close();
+    litTerrain(nomF);
 
 }
 
+
+void Terrain::creerTerrain()  {
+    creerTerrain("TerrainCreer.txt");
+}
+
+void Terrain::modifierTerrain() {
+    int i, j;
+    string t;
+    do {
+        cout << "Entrer la case souhaiter et le nouveau type (example : 10 15 Vide) :" << endl;
+        cin >> i >> j >> t;
+        for (auto& casePtr : d_cases)
+        {
+            
+            if (casePtr->position().x() == i && casePtr->position().y() == j)
+            {
+                
+                 remplaceCase(casePtr, t); break;
+               
+            }
+        }
+    } while (t != "0");
+}
 
 std::unique_ptr<Cases> Terrain::retourneCase(int x, int y) const
 {
@@ -229,4 +271,45 @@ void Terrain::remplaceCase(Cases& ancienneCase) {
             casePtr = std::make_unique<Vide>(ancienneCase.position().x(), ancienneCase.position().y());
         }
         });
+}
+
+void Terrain::remplaceCase(unique_ptr<Cases> &ancienneCase,const string &type) {
+   
+    
+        if (type == "Vide") {
+           
+
+            ancienneCase = std::make_unique<Vide>(ancienneCase->position().x(), ancienneCase->position().y());
+            
+        }
+        else if (type == "VideC") {
+
+            ancienneCase = std::make_unique<VideC>(ancienneCase->position().x(), ancienneCase->position().y());
+        }
+        else if (type == "MonstreV") {
+
+            ancienneCase = std::make_unique<MonstreV>(Position{ ancienneCase->position().x(), ancienneCase->position().y() },100 , 100,100);
+        }
+        else if (type == "MonstreA") {
+
+            ancienneCase = std::make_unique<MonstreA>(Position{ ancienneCase->position().x(), ancienneCase->position().y() }, 100, 100, 100);
+        }
+        else if (type == "Amullette") {
+
+            ancienneCase = std::make_unique<Amullette>(Position{ ancienneCase->position().x(), ancienneCase->position().y() });
+        }
+        else if (type == "Aventurier") {
+
+            ancienneCase = std::make_unique<Aventurier>(Position{ ancienneCase->position().x(), ancienneCase->position().y() });
+        }
+        else if (type == "Piece") {
+
+            ancienneCase = std::make_unique<Pieces>(20, Position{ ancienneCase->position().x(), ancienneCase->position().y() });
+        }
+        else if (type == "Sortie") {
+
+            ancienneCase = std::make_unique<Sortie>( ancienneCase->position().x(), ancienneCase->position().y() );
+        }
+       
+
 }
