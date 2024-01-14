@@ -97,10 +97,10 @@ void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
 
 void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
 
-    bool up = T.retourneC(position().x(), position().y() + 1).type()== "Vide";
-    bool down = T.retourneC(position().x(), position().y() - 1).type() == "Vide" ;
-    bool right = T.retourneC(position().x() + 1, position().y()).type() == "Vide";
-    bool left = T.retourneC(position().x() - 1, position().y()).type() == "Vide" ;
+    bool up = T.retourneC(position().x(), position().y() + 1).type()== "Vide" || T.retourneC(position().x(), position().y() + 1).type() == "Vide";
+    bool down = T.retourneC(position().x(), position().y() - 1).type() == "Vide" || T.retourneC(position().x(), position().y() + 1).type() == "Vide";
+    bool right = T.retourneC(position().x() + 1, position().y()).type() == "Vide" || T.retourneC(position().x(), position().y() + 1).type() == "Vide";
+    bool left = T.retourneC(position().x() - 1, position().y()).type() == "Vide" || T.retourneC(position().x(), position().y() + 1).type() == "Vide";
 
     double D = sqrt(pow((dx + 1), 2) + pow(dy, 2));        //droite
     double G = sqrt(pow((dx + -1), 2) + pow(dy, 2));      //gauche
