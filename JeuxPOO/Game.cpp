@@ -25,7 +25,7 @@ Game::Game(Terrain& Ter)
 
             for (int i = 0; i < mv.size(); i++)
             {
-                if(abs(a->position().x()-mv[i]->position().x()) <= 3 && abs(a->position().y() - mv[i]->position().y()) <=3)
+                if(mv[i]->dis)
                     mv[i]->afficheInfoMonstre(i);
 
                 mv[i]->trouverAventurier(Ter);
@@ -34,8 +34,8 @@ Game::Game(Terrain& Ter)
 
             for (int i = 0; i < ma.size(); i++)
             {
-                if (abs(a->position().x() - mv[i]->position().x()) <= 3 && abs(a->position().y() - mv[i]->position().y()) <= 3)
-                    mv[i]->afficheInfoMonstre(i);
+                if (abs(a->position().x() - ma[i]->position().x()) <= 3 && abs(a->position().y() - ma[i]->position().y()) <= 3)
+                    ma[i]->afficheInfoMonstre(i);
 
                 ma[i]->deplaceAveugle(Ter);
 

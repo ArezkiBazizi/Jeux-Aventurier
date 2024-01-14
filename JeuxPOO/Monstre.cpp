@@ -19,22 +19,6 @@ int Monstre::obtenirPourcentageHabilete() const
     return d_pourcentageHabilete;
 }
 
-void Monstre::afficheInfoMonstre(int i)
-{
-    if (estVivant())
-    {   
-        std::cout << "\x1b[" << i*5+1 << ";50H";
-        cout << "************************" << endl;
-        std::cout << "\x1b[" << i*5+2 << ";50H";
-        cout << "* information Monstre  *" << endl;
-        std::cout << "\x1b[" << i * 5+3 << ";50H";
-        cout << "* Point de vie : " << pointDeVie() <<"   *" << endl;
-        std::cout << "\x1b[" << i * 5+4 << ";50H";
-        cout << "* Ponit de force : " << pointDeForce() <<" *" << endl;
-        std::cout << "\x1b[" << i * 5+5 << ";50H";
-        cout << "************************" << endl;
-    }
-}
 
 void Monstre::attaquer(Terrain& T)
 {
@@ -76,6 +60,25 @@ string MonstreV::type() const
 {
     return "MonstreV";
 }
+
+void MonstreV::afficheInfoMonstre(int i) const {
+
+    if (estVivant())
+    {
+        std::cout << "\x1b[" << i * 5 + 1 << ";50H";
+        cout << "************************" << endl;
+        std::cout << "\x1b[" << i * 5 + 2 << ";50H";
+        cout << "* information Monstre  *" << endl;
+        std::cout << "\x1b[" << i * 5 + 3 << ";50H";
+        cout << "* Point de vie : " << pointDeVie() << "   *" << endl;
+        std::cout << "\x1b[" << i * 5 + 4 << ";50H";
+        cout << "* Ponit de force : " << pointDeForce() << " *" << endl;
+        std::cout << "\x1b[" << i * 5 + 5 << ";50H";
+        cout << "************************" << endl;
+    }
+
+}
+
 
 void MonstreV::trouverAventurier(Terrain& T)
 {
@@ -279,4 +282,22 @@ void MonstreA::deplaceAveugle(Terrain& T)
 string MonstreA::type() const
 {
     return "MonstreA";
+}
+
+void MonstreA::afficheInfoMonstre(int i) const
+{
+        if (estVivant())
+        {
+            cout << i<<endl;
+            std::cout << "\x1b[" << (i * 5) + 1 << ";75H";
+            cout << "************************" << endl;
+            std::cout << "\x1b[" << (i * 5) + 2 << ";75H";
+            cout << "* information Monstre Aveugle "<< i<< " * " << endl;
+            std::cout << "\x1b[" << (i * 5) + 3 << ";75H";
+            cout << "* Point de vie : " << pointDeVie() << "   *" << endl;
+            std::cout << "\x1b[" << (i * 5) + 4 << ";75H";
+            cout << "* Ponit de force : " << pointDeForce() << " *" << endl;
+            std::cout << "\x1b[" << (i * 5) + 5 << ";75H";
+            cout << "************************" << endl;
+        }
 }
