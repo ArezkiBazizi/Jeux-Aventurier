@@ -75,6 +75,12 @@ void Aventurier::deplacerA( Terrain& T) {
                     combat(T.retourneC(position().x() , position().y() -1 ), T);
                    
                 }
+                else if (T.retourneC(position().x(), position().y() - 1).type() == "MonstreA")
+                {
+
+                    combat(T.retourneC(position().x(), position().y() - 1), T);
+
+                }
                 else if (T.retourneC(position().x(), position().y() - 1).type() == "Amullette") {
 
                     ramasserAmullette(T, T.retourneC(position().x(), position().y() - 1));
@@ -105,6 +111,12 @@ void Aventurier::deplacerA( Terrain& T) {
 
                 }
                 else if (T.retourneC(position().x(), position().y() + 1).type() == "MonstreV")
+                {
+
+                    combat(T.retourneC(position().x(), position().y() + 1), T);
+
+                }
+                else if (T.retourneC(position().x(), position().y() + 1).type() == "MonstreA")
                 {
 
                     combat(T.retourneC(position().x(), position().y() + 1), T);
@@ -145,6 +157,12 @@ void Aventurier::deplacerA( Terrain& T) {
                     combat(T.retourneC(position().x() - 1, position().y()), T);
 
                 }
+                else if (T.retourneC(position().x() - 1, position().y()).type() == "MonstreA")
+                {
+
+                    combat(T.retourneC(position().x() - 1, position().y()), T);
+
+                }
                 else if (T.retourneC(position().x() - 1, position().y()).type() == "Amullette") {
 
                     ramasserAmullette(T, T.retourneC(position().x()-1, position().y()));
@@ -173,6 +191,12 @@ void Aventurier::deplacerA( Terrain& T) {
                 {
 
                     combat(T.retourneC(position().x() +1, position().y()), T);
+
+                }
+                else if (T.retourneC(position().x() + 1, position().y()).type() == "MonstreA")
+                {
+
+                    combat(T.retourneC(position().x() + 1, position().y()), T);
 
                 }
                 else if (T.retourneC(position().x() + 1, position().y()).type() == "Amullette") {
@@ -214,13 +238,25 @@ void Aventurier::deplacerA( Terrain& T) {
 void Aventurier::combat(Cases& c, Terrain& T)
 {
     vector<MonstreV*> m = T.trouverMonstreV();
-
-    for (int i = 0; i < m.size(); i++)
+    vector<MonstreA*> ma = T.trouverMonstreA();
+     
+    if (c.type() == "MonstreV")
     {
-        if(m[i]->position().x()==c.position().x() && m[i]->position().y() == c.position().y())
-            Attaquer(*m[i]);
+        for (int i = 0; i < m.size(); i++)
+        {
+            if (m[i]->position().x() == c.position().x() && m[i]->position().y() == c.position().y())
+                Attaquer(*m[i]);
+        }
+
     }
-    
+    else
+    {
+        for (int i = 0; i < ma.size(); i++)
+        {
+            if (ma[i]->position().x() == c.position().x() && ma[i]->position().y() == c.position().y())
+                Attaquer(*ma[i]);
+        }
+    }
 }
 
 

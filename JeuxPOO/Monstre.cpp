@@ -42,6 +42,8 @@ void Monstre::attaquer(Terrain& T)
 
     if (probabilite <= d_pourcentageHabilete){
         if (A->tabEquipement()[0]->typeEquipement() == "Armure") {
+
+            cout << "ATTAAAAAQUE";
             int x = A->tabEquipement()[0]->pointDeSolidite();
             if (x > static_cast<int>((attaque*3 / 4)/2))
             {
@@ -58,10 +60,6 @@ void Monstre::attaquer(Terrain& T)
     else
         return;
    
-    if (!estVivant())
-    {
-        T.remplaceCase(*this);
-    }
 }
 
 
@@ -77,7 +75,6 @@ string MonstreV::type() const
 void MonstreV::trouverAventurier(Terrain& T)
 {
 
-
     Aventurier* A = T.trouverAventurier();
 
 
@@ -91,12 +88,13 @@ void MonstreV::trouverAventurier(Terrain& T)
 
         if (abs(dx) <= 8 && abs(dy) <= 8)
         {
-            if (dx == 1 && dy == 1)
+            if (dx <= 1 && dy <= 1)
             {
                 attaquer(T);
             }
-            deplacerVersAventurier(dx, dy, T);
-
+            else {
+                deplacerVersAventurier(dx, dy, T);
+            }
 
         }
         else
@@ -104,14 +102,23 @@ void MonstreV::trouverAventurier(Terrain& T)
             int x = (std::rand() % 3) - 1;
             int y = (std::rand() % 2);
 
-            if (y == 1)
-            {
+            if (y == 0) {
+
+                while ((T.retourneC(position().x() + x, position().y()).type() != "Vide"))
+                {
+                    x = (std::rand() % 2) * 2 - 1;
+                };
                 switchCases(T.retourneC(position().x() + x, position().y()));
             }
-            else
-            {
+            else{
+                while ((T.retourneC(position().x(), position().y() + x).type() != "Vide"))
+                {
+                    x = (std::rand() % 2) * 2 - 1;
+                };
                 switchCases(T.retourneC(position().x(), position().y() + x));
             }
+
+          
 
         }
     }
@@ -205,41 +212,37 @@ MonstreA::MonstreA(const Position& position, int pointDeVie, int pointDeForce, i
 
 void MonstreA::deplaceAveugle(Terrain& T)
 {
-    int x = (std::rand() % 2) * 2 - 1;
-    int z = (std::rand() % 3) - 1;
-    int y = (std::rand() % 3);
+    if (!estVivant()) {
+        T.remplaceCase(*this);
+    }
+    else {
+        int x = (std::rand() % 2) * 2 - 1;
+        int z = (std::rand() % 2) * 2 - 1;
+        int y = (std::rand() % 3);
 
 
-    if (y == 0)
-    {
-        if (T.retourneC(position().x()+x, position().y()).type() == "Vide") 
-        {
+        if (y == 0) {
+
+            while ((T.retourneC(position().x() + x, position().y()).type() != "Vide"))
+            {
+                x = (std::rand() % 2) * 2 - 1;
+            };
             switchCases(T.retourneC(position().x() + x, position().y()));
         }
-        else {
-            switchCases(T.retourneC(position().x() - x, position().y()));
-        }
-    }
-    else if (y == 1)
-    {
-        if (T.retourneC(position().x(), position().y() + x).type() == "Vide")
-        {
+        else if (y == 1) {
+            while ((T.retourneC(position().x(), position().y() + x).type() != "Vide"))
+            {
+                x = (std::rand() % 2) * 2 - 1;
+            };
             switchCases(T.retourneC(position().x(), position().y() + x));
         }
-        else
-        {
-            switchCases(T.retourneC(position().x(), position().y() - x));
-        }
-       
-    }
-    else if (y == 2)
-    {
-        if (T.retourneC(position().x()+z, position().y()+x).type() == "Vide")
-        {
+        else{
+            while ((T.retourneC(position().x() + z, position().y() + x).type() != "Vide"))
+            {
+                x = (std::rand() % 2) * 2 - 1;
+                z = (std::rand() % 2) * 2 - 1;
+            };
             switchCases(T.retourneC(position().x() + z, position().y() + x));
-        }
-        else {
-            switchCases(T.retourneC(position().x() - z, position().y() - x));
         }
     }
 }

@@ -3,8 +3,8 @@
 
 Game::Game(Terrain& Ter)
 {
+    system("cls");
     bool d_partieEnCours{ true };
-    Ter.litTerrain();
 
     Aventurier* a = Ter.trouverAventurier();
     vector<MonstreV*> mv = Ter.trouverMonstreV();
@@ -15,33 +15,49 @@ Game::Game(Terrain& Ter)
     Ter.afficheTerrain();
     while (a->estVivant() && d_partieEnCours) {
 
-  
+        a->afficheInfoAventurier();
+
             for (int i = 0; i < mv.size(); i++)
             {
                 mv[i]->trouverAventurier(Ter);
-                mv[i]->afficheInfoMonstre();
+
             }
 
             for (int i = 0; i < ma.size(); i++)
             {
                 ma[i]->deplaceAveugle(Ter);
-                ma[i]->afficheInfoMonstre();
+
             }
             a->deplacerA(Ter);
-            a->afficheInfoAventurier();
 
-            if (a->estSortie() && amul->etatAmullette())
-            {
-                system("cls");
-                d_partieEnCours = false;
-                cout << endl;
-                cout << "________________________________________" << endl;
-                cout << "|                                       |" << endl;
-                cout << "|       BRAVO ! Vous avez gagne         |" << endl;
-                cout << "|                                       |" << endl;
-                cout << "|_______________________________________|" << endl;
+            if (a->estSortie()){
 
-                system("pause = null");
+                if (amul->etatAmullette())
+                {
+                    system("cls");
+                    d_partieEnCours = false;
+                    cout << endl;
+                    cout << "________________________________________" << endl;
+                    cout << "|                                       |" << endl;
+                    cout << "|       BRAVO ! Vous avez gagne         |" << endl;
+                    cout << "|                                       |" << endl;
+                    cout << "|_______________________________________|" << endl;
+
+                    system("pause > null");
+                }
+                else {
+                    system("cls");
+                    d_partieEnCours = false;
+                    cout << endl;
+                    cout << "________________________________________" << endl;
+                    cout << "|                                       |" << endl;
+                    cout << "|     PERDU ! Vous avez oublier         |" << endl;
+                    cout << "|      de recuperer l'amullette         |" << endl;
+                    cout << "|_______________________________________|" << endl;
+
+                    system("pause > null");
+
+                }
             }
     }
 }
