@@ -37,13 +37,13 @@ void Monstre::attaquer(Terrain& T)
 
     Aventurier* A = T.trouverAventurier();
 
-    int probabilite = (static_cast<double>(rand()) / RAND_MAX)*100 ;
-    double attaque{ pointDeForce() * 0.9 };
+    double probabilite = (static_cast<double>(rand()) / RAND_MAX)*100 ;
+
+    double attaque{ static_cast<double>(pointDeForce() * 0.9)};
+
 
     if (probabilite <= d_pourcentageHabilete){
-        if (A->tabEquipement()[0]->typeEquipement() == "Armure") {
 
-            cout << "ATTAAAAAQUE";
             int x = A->tabEquipement()[0]->pointDeSolidite();
             if (x > static_cast<int>((attaque*3 / 4)/2))
             {
@@ -55,7 +55,6 @@ void Monstre::attaquer(Terrain& T)
                 A->tabEquipement()[0]->setPointDeSolidite(0);
                 A->encaisser(static_cast<int>(attaque-x));
             }
-        }
     }
     else
         return;
@@ -81,6 +80,7 @@ void MonstreV::trouverAventurier(Terrain& T)
     if (!estVivant()){
         T.remplaceCase(*this);
     }
+
     else {
         // Calcul des différences entre les coordonnées du monstre et de l'aventurier
         int dx = A->position().x() - position().x();
@@ -88,7 +88,7 @@ void MonstreV::trouverAventurier(Terrain& T)
 
         if (abs(dx) <= 8 && abs(dy) <= 8)
         {
-            if (dx <= 1 && dy <= 1)
+            if (abs(dx) <= 1 && abs(dy) <= 1)
             {
                 attaquer(T);
             }
@@ -216,33 +216,48 @@ void MonstreA::deplaceAveugle(Terrain& T)
         T.remplaceCase(*this);
     }
     else {
-        int x = (std::rand() % 2) * 2 - 1;
-        int z = (std::rand() % 2) * 2 - 1;
-        int y = (std::rand() % 3);
+
+        Aventurier* A = T.trouverAventurier();
+
+        int dx = A->position().x() - position().x();
+        int dy = A->position().y() - position().y();
 
 
-        if (y == 0) {
-
-            while ((T.retourneC(position().x() + x, position().y()).type() != "Vide"))
-            {
-                x = (std::rand() % 2) * 2 - 1;
-            };
-            switchCases(T.retourneC(position().x() + x, position().y()));
+        if (abs(dx) <= 1 && abs(dy) <= 1)
+        {
+            attaquer(T);
         }
-        else if (y == 1) {
-            while ((T.retourneC(position().x(), position().y() + x).type() != "Vide"))
-            {
-                x = (std::rand() % 2) * 2 - 1;
-            };
-            switchCases(T.retourneC(position().x(), position().y() + x));
-        }
-        else{
-            while ((T.retourneC(position().x() + z, position().y() + x).type() != "Vide"))
-            {
-                x = (std::rand() % 2) * 2 - 1;
-                z = (std::rand() % 2) * 2 - 1;
-            };
-            switchCases(T.retourneC(position().x() + z, position().y() + x));
+        else {
+
+
+            int x = (std::rand() % 2) * 2 - 1;
+            int z = (std::rand() % 2) * 2 - 1;
+            int y = (std::rand() % 3);
+
+
+            if (y == 0) {
+
+                while ((T.retourneC(position().x() + x, position().y()).type() != "Vide"))
+                {
+                    x = (std::rand() % 2) * 2 - 1;
+                };
+                switchCases(T.retourneC(position().x() + x, position().y()));
+            }
+            else if (y == 1) {
+                while ((T.retourneC(position().x(), position().y() + x).type() != "Vide"))
+                {
+                    x = (std::rand() % 2) * 2 - 1;
+                };
+                switchCases(T.retourneC(position().x(), position().y() + x));
+            }
+            else {
+                while ((T.retourneC(position().x() + z, position().y() + x).type() != "Vide"))
+                {
+                    x = (std::rand() % 2) * 2 - 1;
+                    z = (std::rand() % 2) * 2 - 1;
+                };
+                switchCases(T.retourneC(position().x() + z, position().y() + x));
+            }
         }
     }
 }

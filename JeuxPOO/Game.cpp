@@ -15,7 +15,7 @@ Game::Game(Terrain& Ter)
     Ter.afficheTerrain();
     while (a->estVivant() && d_partieEnCours) {
 
-        a->afficheInfoAventurier();
+             a->afficheInfoAventurier();
 
             for (int i = 0; i < mv.size(); i++)
             {
@@ -29,6 +29,7 @@ Game::Game(Terrain& Ter)
 
             }
             a->deplacerA(Ter);
+
 
             if (a->estSortie()){
 
@@ -59,6 +60,17 @@ Game::Game(Terrain& Ter)
 
                 }
             }
+    }
+
+    if (!a->estVivant())
+    {
+        system("cls");
+        cout << endl;
+        cout << "________________________________________" << endl;
+        cout << "|                                       |" << endl;
+        cout << "|       PERDU ! VOUS ETES MORT          |" << endl;
+        cout << "|                                       |" << endl;
+        cout << "|_______________________________________|" << endl;
     }
 }
 			
