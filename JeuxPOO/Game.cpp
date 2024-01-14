@@ -5,7 +5,9 @@ Game::Game(const Position& posAventurier)
 {
     bool d_partieEnCours{ true };
     Terrain Ter{ 1000,1000 };
-    Ter.litTerrain();
+    Ter.creerTerrain("test.txt");
+    system("cls");
+    Ter.litTerrain("test.txt");
 
     Aventurier* a = Ter.trouverAventurier();
     vector<MonstreV*> mv = Ter.trouverMonstreV();
