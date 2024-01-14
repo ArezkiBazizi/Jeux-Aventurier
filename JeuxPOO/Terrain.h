@@ -28,6 +28,8 @@ public:
     Terrain();
     Terrain(int h, int l);
     void afficheTerrain()const;
+    void creerTerrain() const;
+    void creerTerrain(const string& nomF) ;
     void litTerrain();
     void litTerrain(const string& nomF);
     void ecritTerrain() const;

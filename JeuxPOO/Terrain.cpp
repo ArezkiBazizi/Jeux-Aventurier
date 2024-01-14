@@ -55,56 +55,70 @@ void Terrain::ecritTerrain()const {
     ecritTerrain("map.txt");
 }
 
-void Terrain::litTerrain(const string& nomF) {
-    ifstream f(nomF);
-    int x, y;
-    string t;
-    d_cases.clear();
-    while (f) {
-        f >> x >> y >> t;
-        if (t == "Vide")
-        {
-            d_cases.push_back(make_unique<Vide>(x, y));
-        }
-        else if (t == "VideC")
-        {
-            d_cases.push_back(make_unique<VideC>(x, y));
-        }
-        else if (t == "Aventurier")
-        {
-            d_cases.push_back(make_unique<Aventurier>(Position{ x, y }));
-        }
-        else if (t == "MonstreV")
-        {
-            d_cases.push_back(make_unique<MonstreV>(Position{ x, y },100,100,100));
-        }
-        else if (t == "MonstreA")
-        {
-            d_cases.push_back(make_unique<MonstreA>(Position{ x, y }, 100, 100, 100));
-        }
 
-        else if (t == "Pieces")
-        {
-            d_cases.push_back(make_unique<Pieces>(20,Position{ x,y }));
-        }
-        else if (t == "Amullette")
-        {
-            d_cases.push_back(make_unique<Amullette>(Position{ x,y }));
-        }
-        else if (t == "Mur")
-        {
+void Terrain::litTerrain(const string& nomF) {
+    ifstream f(nomF, fstream::in);
+    int  x =0 , y=0;
+    char t;
+    d_cases.clear();
+    while (f >> noskipws >> t) {
+        if (t == '#') {
             d_cases.push_back(make_unique<Mur>(Position{ x,y }));
         }
-        else if (t == "Sortie")
-        {
-            d_cases.push_back(make_unique<Sortie>(x,y));
+        else if (t == '.') {
+            d_cases.push_back(make_unique<Vide>(x, y));
+        }
+        else if (t == '/') {
+            d_cases.push_back(make_unique<VideC>(x, y));
+        }
+        else if (t == 'A') {
+            d_cases.push_back(make_unique<Aventurier>(Position{ x, y }));
+        }
+        else if (t == '@') {
+            d_cases.push_back(make_unique<Amullette>(Position{ x,y }));
+        }
+        else if (t == 'M') {
+            d_cases.push_back(make_unique<MonstreV>(Position{ x, y }, 100, 100, 100));
+        }
+        else if (t == 'm') {
+            d_cases.push_back(make_unique<MonstreA>(Position{ x, y }, 100, 100, 100));
+        }
+        else if (t == '+') {
+            d_cases.push_back(make_unique<Sortie>(x, y));
+        }
+        else if (t == 'P') {
+            d_cases.push_back(make_unique<Pieces>(20, Position{ x,y }));
+        }
+        x++;
+        if (t == '\n') {
+            y++;
+            x = 0;
         }
     }
+   
+
+
 }
 
 void Terrain::litTerrain() {
     litTerrain("map.txt");
 }
+
+
+
+void Terrain::creerTerrain(const string& nomF)  {
+    ofstream f(nomF);
+    string line;
+    int i = 1;
+    while (line != "0") {
+        cout << "Entrer la ligne numero " << i << "(Ecrit 0 pour terminer la creation)" << endl;
+        cin >> line;
+        f << line << endl;
+        i++;
+    }
+
+}
+
 
 std::unique_ptr<Cases> Terrain::retourneCase(int x, int y) const
 {
