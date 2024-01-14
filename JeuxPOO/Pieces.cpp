@@ -12,3 +12,6 @@ string Pieces::type() const
 	return "Pieces";
 }
 
+void Pieces::valeur(int i) {
+	d_valeur = i;
+}

@@ -134,9 +134,11 @@
     <ClCompile Include="Aventurier.cpp" />
     <ClCompile Include="AventurierTest.cpp" />
     <ClCompile Include="Cases.cpp" />
+    <ClCompile Include="CasesTest.cpp" />
     <ClCompile Include="Epee.cpp" />
     <ClCompile Include="EpeeTest.cpp" />
     <ClCompile Include="Equipement.cpp" />
+    <ClCompile Include="EquipementTest.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="goto_xy_windows.cpp" />
     <ClCompile Include="main.cpp" />

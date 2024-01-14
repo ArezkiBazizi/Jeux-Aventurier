@@ -32,17 +32,18 @@ void Monstre::afficheInfoMonstre()
     }
 }
 
-void Monstre::attaquer(Terrain& T) 
+void Monstre::attaquer(Terrain& T)
 {
 
     Aventurier* A = T.trouverAventurier();
 
-    double probabilite = (static_cast<double>(rand()) / RAND_MAX)*100 ;
+    double probabilite = (static_cast<double>(rand()) / RAND_MAX) * 100;
+    double attaque{ (static_cast<double>(pointDeForce()) * 0.9) };
 
-    if (probabilite <= d_pourcentageHabilete){
+    if (probabilite <= d_pourcentageHabilete) {
         if (A->tabEquipement()[0]->typeEquipement() == "Armure") {
 
-            cout << "ATTAAAAAQUE";
+            
             int x = A->tabEquipement()[0]->pointDeSolidite();
             if (x > static_cast<int>((attaque * 3 / 4) / 2))
             {
@@ -55,13 +56,13 @@ void Monstre::attaquer(Terrain& T)
                 A->tabEquipement()[0]->setPointDeSolidite(0);
                 A->encaisser(static_cast<int>(attaque - x));
             }
-    }
-    else
-        return;
-        
-   
-}
+        }
+        else
+            return;
 
+
+    }
+}
 
 MonstreV::MonstreV(const Position& position, int pointDeVie, int pointDeForce, int pourcentageHabilete) : Monstre{ position,pointDeVie,pointDeForce,pourcentageHabilete }
 {
@@ -266,4 +267,9 @@ void MonstreA::deplaceAveugle(Terrain& T)
 string MonstreA::type() const
 {
     return "MonstreA";
+}
+
+
+bool Monstre::distance(const Personnage& perso, int dist) const {
+    return abs(perso.position().x() - position().x()) <= dist && abs(perso.position().y() - position().y()) <= dist;
 }

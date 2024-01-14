@@ -3,6 +3,7 @@
 
 Game::Game(Terrain& Ter)
 {
+
     system("cls");
     bool d_partieEnCours{ true };
    
@@ -11,6 +12,7 @@ Game::Game(Terrain& Ter)
 
     Ter.afficheTerrain();
 
+  
 
     Aventurier* a = Ter.trouverAventurier();
     vector<MonstreV*> mv = Ter.trouverMonstreV();
@@ -63,20 +65,23 @@ Game::Game(Terrain& Ter)
 
                     system("pause > null");
 
+                }   
                 }
+            else if (!a->estVivant())
+            {
+                system("cls");
+                cout << endl;
+                cout << "________________________________________" << endl;
+                cout << "|                                       |" << endl;
+                cout << "|       PERDU ! VOUS ETES MORT          |" << endl;
+                cout << "|                                       |" << endl;
+                cout << "|_______________________________________|" << endl;
+
             }
     }
 
-    if (!a->estVivant())
-    {
-        system("cls");
-        cout << endl;
-        cout << "________________________________________" << endl;
-        cout << "|                                       |" << endl;
-        cout << "|       PERDU ! VOUS ETES MORT          |" << endl;
-        cout << "|                                       |" << endl;
-        cout << "|_______________________________________|" << endl;
-    }
+    FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+
 }
 			
 

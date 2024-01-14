@@ -16,6 +16,7 @@ class Monstre : public Personnage
         void attaquer(Terrain& T);
         int obtenirPourcentageHabilete() const;
         void afficheInfoMonstre();
+        bool distance(const Personnage& perso, int dist) const;
         virtual ~Monstre();
     protected:
 

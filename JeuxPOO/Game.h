@@ -6,6 +6,7 @@
 #include "goto_xy_windows.h"
 #include "Aventurier.h"
 
+
 using namespace std;
 
 class Game {

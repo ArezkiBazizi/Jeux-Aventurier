@@ -41,3 +41,4 @@ bool Personnage::estVivant() const
 {
     return (d_pointDeVie > 0);
 }
+

@@ -11,6 +11,7 @@ public:
 	Pieces(int valeur, Position position);
 	int valeur() const;
 	string type() const override;
+	void valeur(int i);
 protected:
 
 private:

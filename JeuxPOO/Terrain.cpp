@@ -77,6 +77,7 @@ void Terrain::litTerrain(const string& nomF) {
     ifstream f(nomF, fstream::in);
     int  x =0 , y=0;
     char t;
+    
     d_cases.clear();
     while (f >> noskipws >> t) {
         if (t == '#') {
@@ -104,7 +105,9 @@ void Terrain::litTerrain(const string& nomF) {
             d_cases.push_back(make_unique<Sortie>(x, y));
         }
         else if (t == 'P') {
-            d_cases.push_back(make_unique<Pieces>(20, Position{ x,y }));
+          
+           d_cases.push_back(make_unique<Pieces>(100,Position{ x, y }));
+            
         }
         x++;
         if (t == '\n') {
@@ -127,13 +130,13 @@ void Terrain::creerTerrain(const string& nomF) {
     ofstream f(nomF);
     string line;
     int i = 1;
-    while (line != "0") {
+    do {
         cout << "Entrer la ligne numero et tapez Entrer pour rentrer la ligne suivante " << i << " (Entrez 0 pour terminer la creation du terrain)" << endl;
         cin >> line;
         f << line << endl;
         i++;
-    }
-    ecritTerrain(nomF);
+    } while (line != "0");
+  
 }
 
 
@@ -158,6 +161,7 @@ void Terrain::modifierTerrain() {
             }
         }
     } while (t != "0");
+    
 }
 
 std::unique_ptr<Cases> Terrain::retourneCase(int x, int y) const
