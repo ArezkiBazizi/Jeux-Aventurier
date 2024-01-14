@@ -62,7 +62,7 @@ void Aventurier::deplacerA( Terrain& T) {
         while (flag) {
             
             
-            if (GetKeyState(VK_UP) & 0x8000) {
+            if (GetKeyState('W') & 0x8000) {
                 if (T.retourneC(position().x(), position().y() - 1).type() == "Vide"){
 
 
@@ -102,7 +102,7 @@ void Aventurier::deplacerA( Terrain& T) {
                
                 
             }
-            else if (GetKeyState(VK_DOWN) & 0x8000) {
+            else if (GetKeyState('S') & 0x8000) {
                 if (T.retourneC(position().x(), position().y() + 1).type() == "Vide") {
 
 
@@ -142,7 +142,7 @@ void Aventurier::deplacerA( Terrain& T) {
                
                
             }
-            else if (GetKeyState(VK_LEFT) & 0x8000) {
+            else if (GetKeyState('A') & 0x8000) {
                 if (T.retourneC(position().x() - 1, position().y()).type() == "Vide") {
 
 
@@ -181,7 +181,7 @@ void Aventurier::deplacerA( Terrain& T) {
                
                 
             }
-            else if (GetKeyState(VK_RIGHT) & 0x8000) {
+            else if (GetKeyState('D') & 0x8000) {
                 if (T.retourneC(position().x() + 1, position().y()).type() == "Vide") {
 
                     switchCases(T.retourneC(position().x() + 1, position().y()));
@@ -219,6 +219,160 @@ void Aventurier::deplacerA( Terrain& T) {
                
                 
             }
+            else if (GetKeyState('Q') & 0x8000) {
+                if (T.retourneC(position().x() - 1, position().y() -1).type() == "Vide") {
+
+                    switchCases(T.retourneC(position().x() - 1, position().y() - 1));
+
+                }
+                else if (T.retourneC(position().x() - 1, position().y() - 1).type() == "MonstreV")
+                {
+
+                    combat(T.retourneC(position().x() - 1, position().y() - 1), T);
+
+                }
+                else if (T.retourneC(position().x() - 1, position().y() - 1).type() == "MonstreA")
+                {
+
+                    combat(T.retourneC(position().x() - 1, position().y() - 1), T);
+
+                }
+                else if (T.retourneC(position().x() - 1, position().y() - 1).type() == "Amullette") {
+
+                    ramasserAmullette(T, T.retourneC(position().x() - 1, position().y() - 1));
+                }
+                else if (T.retourneC(position().x() - 1, position().y() - 1).type() == "Sortie") {
+
+                    sortir(T, T.retourneC(position().x() - 1, position().y() - 1));
+
+                }
+                else if (T.retourneC(position().x() - 1, position().y() - 1).type() == "Pieces") {
+
+                    ramasserPieces(T, T.retourneC(position().x() - 1, position().y() - 1));
+
+                }
+
+                flag = 0;
+
+
+
+                }
+            else if (GetKeyState('E') & 0x8000) {
+                if (T.retourneC(position().x() + 1, position().y() - 1).type() == "Vide") {
+
+                    switchCases(T.retourneC(position().x() + 1, position().y() - 1));
+
+                }
+                else if (T.retourneC(position().x() + 1, position().y() - 1).type() == "MonstreV")
+                {
+
+                    combat(T.retourneC(position().x() + 1, position().y() - 1), T);
+
+                }
+                else if (T.retourneC(position().x() + 1, position().y() - 1).type() == "MonstreA")
+                {
+
+                    combat(T.retourneC(position().x() + 1, position().y() - 1), T);
+
+                }
+                else if (T.retourneC(position().x() + 1, position().y() - 1).type() == "Amullette") {
+
+                    ramasserAmullette(T, T.retourneC(position().x() + 1, position().y() - 1));
+                }
+                else if (T.retourneC(position().x() + 1, position().y() - 1).type() == "Sortie") {
+
+                    sortir(T, T.retourneC(position().x() + 1, position().y() - 1));
+
+                }
+                else if (T.retourneC(position().x() + 1, position().y() - 1).type() == "Pieces") {
+
+                    ramasserPieces(T, T.retourneC(position().x() + 1, position().y() - 1));
+
+                }
+
+                flag = 0;
+
+
+
+                }
+            else if (GetKeyState('Z') & 0x8000) {
+                if (T.retourneC(position().x() - 1, position().y() + 1).type() == "Vide") {
+
+                    switchCases(T.retourneC(position().x() - 1, position().y() + 1));
+
+                }
+                else if (T.retourneC(position().x() - 1, position().y() + 1).type() == "MonstreV")
+                {
+
+                    combat(T.retourneC(position().x() - 1, position().y() + 1), T);
+
+                }
+                else if (T.retourneC(position().x() - 1, position().y() + 1).type() == "MonstreA")
+                {
+
+                    combat(T.retourneC(position().x() - 1, position().y() + 1), T);
+
+                }
+                else if (T.retourneC(position().x() - 1, position().y() + 1).type() == "Amullette") {
+
+                    ramasserAmullette(T, T.retourneC(position().x() - 1, position().y() + 1));
+                }
+                else if (T.retourneC(position().x() - 1, position().y() + 1).type() == "Sortie") {
+
+                    sortir(T, T.retourneC(position().x() - 1, position().y() + 1));
+
+                }
+                else if (T.retourneC(position().x() - 1, position().y() + 1).type() == "Pieces") {
+
+                    ramasserPieces(T, T.retourneC(position().x() - 1, position().y() + 1));
+
+                }
+
+                flag = 0;
+
+
+
+                }
+            else if (GetKeyState('C') & 0x8000) {
+                if (T.retourneC(position().x() + 1, position().y() + 1).type() == "Vide") {
+
+                    switchCases(T.retourneC(position().x() + 1, position().y() + 1));
+
+                }
+                else if (T.retourneC(position().x() + 1, position().y() + 1).type() == "MonstreV")
+                {
+
+                    combat(T.retourneC(position().x() + 1, position().y() + 1), T);
+
+                }
+                else if (T.retourneC(position().x() + 1, position().y() + 1).type() == "MonstreA")
+                {
+
+                    combat(T.retourneC(position().x() + 1, position().y() + 1), T);
+
+                }
+                else if (T.retourneC(position().x() + 1, position().y() + 1).type() == "Amullette") {
+
+                    ramasserAmullette(T, T.retourneC(position().x() + 1, position().y() + 1));
+                }
+                else if (T.retourneC(position().x() + 1, position().y() + 1).type() == "Sortie") {
+
+                    sortir(T, T.retourneC(position().x() + 1, position().y() + 1));
+
+                }
+                else if (T.retourneC(position().x() + 1, position().y() + 1).type() == "Pieces") {
+
+                    ramasserPieces(T, T.retourneC(position().x() + 1, position().y() + 1));
+
+                }
+
+                flag = 0;
+
+
+
+                }
+            else if((GetKeyState('X') & 0x8000))
+                flag = 0;
             Sleep(100);
             
         }

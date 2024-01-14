@@ -5,6 +5,12 @@ Game::Game(Terrain& Ter)
 {
     system("cls");
     bool d_partieEnCours{ true };
+   
+   
+   
+
+    Ter.afficheTerrain();
+
 
     Aventurier* a = Ter.trouverAventurier();
     vector<MonstreV*> mv = Ter.trouverMonstreV();
@@ -32,7 +38,6 @@ Game::Game(Terrain& Ter)
 
 
             if (a->estSortie()){
-
                 if (amul->etatAmullette())
                 {
                     system("cls");

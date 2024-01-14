@@ -39,25 +39,26 @@ void Monstre::attaquer(Terrain& T)
 
     double probabilite = (static_cast<double>(rand()) / RAND_MAX)*100 ;
 
-    double attaque{ static_cast<double>(pointDeForce() * 0.9)};
-
-
     if (probabilite <= d_pourcentageHabilete){
+        if (A->tabEquipement()[0]->typeEquipement() == "Armure") {
 
+            cout << "ATTAAAAAQUE";
             int x = A->tabEquipement()[0]->pointDeSolidite();
-            if (x > static_cast<int>((attaque*3 / 4)/2))
+            if (x > static_cast<int>((attaque * 3 / 4) / 2))
             {
-                A->tabEquipement()[0]->ModifierpointDeSolidite(static_cast<int>(attaque* 3 / 4));
-                A->encaisser(static_cast<int>(attaque*1 / 4));
+
+                A->tabEquipement()[0]->ModifierpointDeSolidite(static_cast<int>(attaque * 3 / 4));
+                A->encaisser(static_cast<int>(attaque * 1 / 4));
             }
             else
-            { 
+            {
                 A->tabEquipement()[0]->setPointDeSolidite(0);
-                A->encaisser(static_cast<int>(attaque-x));
+                A->encaisser(static_cast<int>(attaque - x));
             }
     }
     else
         return;
+        
    
 }
 
