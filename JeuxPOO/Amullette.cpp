@@ -9,4 +9,12 @@ string Amullette::type() const
 	return "Amullette";
 }
 
+bool Amullette::etatAmullette() const
+{
+	return d_etat;
+}
+void Amullette::changeEtatAllumettes(bool e)
+{
+	d_etat = e;
+}
 

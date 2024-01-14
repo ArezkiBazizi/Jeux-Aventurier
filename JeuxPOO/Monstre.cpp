@@ -21,35 +21,47 @@ int Monstre::obtenirPourcentageHabilete() const
 
 void Monstre::afficheInfoMonstre()
 {
-    cout << endl;
-    cout << "information Aventurier" << endl;
-    cout << " Point de vie : " << pointDeVie() << endl;
-    cout << " Ponit de force : " << pointDeForce() << endl;
+    if (estVivant())
+    {
+        cout << endl;
+        cout << "information Monstre" << endl;
+        cout << " Point de vie : " << pointDeVie() << endl;
+        cout << " Ponit de force : " << pointDeForce() << endl;
+
+
+    }
 }
 
-void Monstre::attaquer(Aventurier& A) const
+void Monstre::attaquer(Terrain& T) 
 {
+
+    Aventurier* A = T.trouverAventurier();
+
     int probabilite = (static_cast<double>(rand()) / RAND_MAX)*100 ;
     double attaque{ pointDeForce() * 0.9 };
 
     if (probabilite <= d_pourcentageHabilete){
-        if (A.tabEquipement()[0]->typeEquipement() == "Armure") {
-            int x = A.tabEquipement()[0]->pointDeSolidite();
+        if (A->tabEquipement()[0]->typeEquipement() == "Armure") {
+            int x = A->tabEquipement()[0]->pointDeSolidite();
             if (x > static_cast<int>((attaque*3 / 4)/2))
             {
-                A.tabEquipement()[0]->ModifierpointDeSolidite(static_cast<int>(attaque* 3 / 4));
-                A.encaisser(static_cast<int>(attaque*1 / 4));
+                A->tabEquipement()[0]->ModifierpointDeSolidite(static_cast<int>(attaque* 3 / 4));
+                A->encaisser(static_cast<int>(attaque*1 / 4));
             }
             else
             { 
-                A.tabEquipement()[0]->setPointDeSolidite(0);
-                A.encaisser(static_cast<int>(attaque-x));
+                A->tabEquipement()[0]->setPointDeSolidite(0);
+                A->encaisser(static_cast<int>(attaque-x));
             }
         }
     }
     else
         return;
    
+    if (!estVivant())
+    {
+        T.remplaceCase(*this);
+    }
 }
 
 
@@ -62,68 +74,92 @@ string MonstreV::type() const
     return "MonstreV";
 }
 
-void MonstreV::trouverAventurier(Aventurier& A, Terrain& T)
+void MonstreV::trouverAventurier(Terrain& T)
 {
-    // Calcul des différences entre les coordonnées du monstre et de l'aventurier
-    int dx = A.position().x() - position().x();
-    int dy = A.position().y() - position().y();
 
-    if (abs(dx) == 1 && abs(dy) == 1)
-    {
-        attaquer(A);
+
+    Aventurier* A = T.trouverAventurier();
+
+
+    if (!estVivant()){
+        T.remplaceCase(*this);
     }
+    else {
+        // Calcul des différences entre les coordonnées du monstre et de l'aventurier
+        int dx = A->position().x() - position().x();
+        int dy = A->position().y() - position().y();
 
-    else if (abs(dx) <= 8 && abs(dy) <= 8)
-    {
-        deplacerVersAventurier(dx, dy, T);
-    }
-    else
-    {
-        int x = (std::rand() % 3) - 1;
-        int y = (std::rand() % 2);
-
-        if (y == 1)
+        if (abs(dx) <= 8 && abs(dy) <= 8)
         {
-            switchCases(T.retourneC(position().x() + x, position().y()));
+            if (dx == 1 && dy == 1)
+            {
+                attaquer(T);
+            }
+            deplacerVersAventurier(dx, dy, T);
+
+
         }
         else
         {
-            switchCases(T.retourneC(position().x(), position().y()+x));
-        }
+            int x = (std::rand() % 3) - 1;
+            int y = (std::rand() % 2);
 
+            if (y == 1)
+            {
+                switchCases(T.retourneC(position().x() + x, position().y()));
+            }
+            else
+            {
+                switchCases(T.retourneC(position().x(), position().y() + x));
+            }
+
+        }
     }
 
 }
 
 void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
 
-    bool up = T.retourneC(position().x(), position().y() + 1).type()== "Vide" || T.retourneC(position().x(), position().y() + 1).type() == "Vide";
-    bool down = T.retourneC(position().x(), position().y() - 1).type() == "Vide" || T.retourneC(position().x(), position().y() + 1).type() == "Vide";
-    bool right = T.retourneC(position().x() + 1, position().y()).type() == "Vide" || T.retourneC(position().x(), position().y() + 1).type() == "Vide";
-    bool left = T.retourneC(position().x() - 1, position().y()).type() == "Vide" || T.retourneC(position().x(), position().y() + 1).type() == "Vide";
+    double D, G, B, H;
 
-    double D = sqrt(pow((dx + 1), 2) + pow(dy, 2));        //droite
-    double G = sqrt(pow((dx + -1), 2) + pow(dy, 2));      //gauche
-    double H = sqrt(pow((dx), 2) + pow((dy + 1), 2));      //haut
-    double B = sqrt(pow((dx + -1), 2) + pow((dy - 1), 2)); //bas
-    cout << endl << D << " " << G << " " << H << " " << B << "/" << endl;
-    if (up) cout << "up vide" << endl;
-    if (down) cout << "down vide" << endl;
-    if (right) cout << "right vide" << endl;
-    if (left) cout << "left vide" << endl;
+    if (dx >= 0)
+    {
+        D = sqrt(pow(dx - 1, 2) + pow(abs(dy), 2));        //droite
+        G = sqrt(pow(dx + 1, 2) + pow(abs(dy), 2));
+    }
+    else
+    { 
+         D = sqrt(pow(abs(dx) + 1, 2) + pow(abs(dy), 2));        //droite
+         G = sqrt(pow(abs(dx) - 1, 2) + pow(abs(dy), 2));
+    }
+
+
+    if (dy >= 0)
+    {
+         H = sqrt(pow(abs(dx), 2) + pow(dy+ 1, 2));
+         B = sqrt(pow(abs(dx), 2) + pow(dy - 1, 2));
+
+    }
+    else
+    {
+         H = sqrt(pow(abs(dx), 2) + pow(abs(dy) - 1, 2));
+         B = sqrt(pow(abs(dx), 2) + pow(abs(dy) + 1, 2));
+
+    }
     
-    std::vector<double> move{ D, G, H, B };
+    std::vector<double> move{ G, D, H, B };
 
     std::sort(move.begin(), move.end());
 
     int i = 0;
     while (i < 4)
     {
+      
         if (move[i] == D)
         {
-            if (T.retourneC(position().x()+1, position().y() ).type() == "Vide")
+            if (T.retourneC(position().x() + 1, position().y()).type() == "Vide")
             {
-                switchCases(T.retourneC(position().x()+1, position().y()));
+                switchCases(T.retourneC(position().x() + 1, position().y()));
                 i = 4;
                 
             }
@@ -132,11 +168,11 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
 
         else if (move[i] == G)
         {
-            if (T.retourneC(position().x() -1, position().y()).type() == "Vide")
+            if (T.retourneC(position().x()-1, position().y()).type() == "Vide")
             {
-                switchCases(T.retourneC(position().x()-1, position().y()));
+                switchCases(T.retourneC(position().x() - 1, position().y()));
                 i = 4;
-                
+               
             }
             else i++;
         }
@@ -146,17 +182,17 @@ void MonstreV::deplacerVersAventurier(int dx, int dy, Terrain& T) {
             {
                 switchCases(T.retourneC(position().x(), position().y() - 1));
                 i = 4;
-                
+               
             }
             else i++;
         }
         else if (move[i] == B)
         {
-            if (T.retourneC(position().x(), position().y() +1).type() == "Vide")
+            if (T.retourneC(position().x(), position().y() + 1).type() == "Vide")
             {
                 switchCases(T.retourneC(position().x(), position().y() + 1));
                 i = 4;
-                
+               
             }
             else i++;
         }
@@ -169,10 +205,43 @@ MonstreA::MonstreA(const Position& position, int pointDeVie, int pointDeForce, i
 
 void MonstreA::deplaceAveugle(Terrain& T)
 {
-    int x = (std::rand() % 3) - 1;
-    int y = (std::rand() % 3) - 1;
+    int x = (std::rand() % 2) * 2 - 1;
+    int z = (std::rand() % 3) - 1;
+    int y = (std::rand() % 3);
 
-    deplacer(x, y);
+
+    if (y == 0)
+    {
+        if (T.retourneC(position().x()+x, position().y()).type() == "Vide") 
+        {
+            switchCases(T.retourneC(position().x() + x, position().y()));
+        }
+        else {
+            switchCases(T.retourneC(position().x() - x, position().y()));
+        }
+    }
+    else if (y == 1)
+    {
+        if (T.retourneC(position().x(), position().y() + x).type() == "Vide")
+        {
+            switchCases(T.retourneC(position().x(), position().y() + x));
+        }
+        else
+        {
+            switchCases(T.retourneC(position().x(), position().y() - x));
+        }
+       
+    }
+    else if (y == 2)
+    {
+        if (T.retourneC(position().x()+z, position().y()+x).type() == "Vide")
+        {
+            switchCases(T.retourneC(position().x() + z, position().y() + x));
+        }
+        else {
+            switchCases(T.retourneC(position().x() - z, position().y() - x));
+        }
+    }
 }
 
 string MonstreA::type() const

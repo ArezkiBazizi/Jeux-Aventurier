@@ -43,3 +43,13 @@ void Cases::deplacer(int x, int y)
     d_position.modifierY(y);
 }
 
+Cases& Cases::operator=(const Cases& c) {
+    if (this != &c) {
+        d_position = c.d_position;
+    }
+    return *this;
+}
+
+bool Cases::operator==(const Cases& other) const {
+    return (position().x() == other.position().x()) && (position().y() == other.position().y());
+}
