@@ -10,7 +10,7 @@ using namespace std;
 
 class Game {
 public:
-	Game(const Position& posAventurier);
+	Game(Terrain& T);
 	
 private:
 	
