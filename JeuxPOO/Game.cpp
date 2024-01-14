@@ -27,12 +27,18 @@ Game::Game(Terrain& Ter)
 
             for (int i = 0; i < mv.size(); i++)
             {
+                if(abs(a->position().x()-mv[i]->position().x()) <= 3 && abs(a->position().y() - mv[i]->position().y()) <=3)
+                    mv[i]->afficheInfoMonstre(i);
+
                 mv[i]->trouverAventurier(Ter);
 
             }
 
             for (int i = 0; i < ma.size(); i++)
             {
+                if (abs(a->position().x() - mv[i]->position().x()) <= 3 && abs(a->position().y() - mv[i]->position().y()) <= 3)
+                    mv[i]->afficheInfoMonstre(i);
+
                 ma[i]->deplaceAveugle(Ter);
 
             }
@@ -65,23 +71,20 @@ Game::Game(Terrain& Ter)
 
                     system("pause > null");
 
-                }   
                 }
-            else if (!a->estVivant())
-            {
-                system("cls");
-                cout << endl;
-                cout << "________________________________________" << endl;
-                cout << "|                                       |" << endl;
-                cout << "|       PERDU ! VOUS ETES MORT          |" << endl;
-                cout << "|                                       |" << endl;
-                cout << "|_______________________________________|" << endl;
-
             }
     }
 
-    FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
-
+    if (!a->estVivant() && d_partieEnCours)
+    {
+        system("cls");
+        cout << endl;
+        cout << "________________________________________" << endl;
+        cout << "|                                       |" << endl;
+        cout << "|       PERDU ! VOUS ETES MORT          |" << endl;
+        cout << "|                                       |" << endl;
+        cout << "|_______________________________________|" << endl;
+    }
 }
 			
 

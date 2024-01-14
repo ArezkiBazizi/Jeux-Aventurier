@@ -133,10 +133,10 @@ void Terrain::creerTerrain(const string& nomF) {
     do {
         cout << "Entrer la ligne numero et tapez Entrer pour rentrer la ligne suivante " << i << " (Entrez 0 pour terminer la creation du terrain)" << endl;
         cin >> line;
+        if(line!="0")
         f << line << endl;
         i++;
     } while (line != "0");
-  
 }
 
 
@@ -313,5 +313,15 @@ void Terrain::remplaceCase(unique_ptr<Cases> &ancienneCase,const string &type) {
             ancienneCase = std::make_unique<Sortie>( ancienneCase->position().x(), ancienneCase->position().y() );
         }
        
+
+}
+
+void Terrain::chercheMonstreProche()
+{
+    Aventurier* A = trouverAventurier();
+    vector<MonstreA*> ma = trouverMonstreA();
+
+
+
 
 }
