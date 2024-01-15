@@ -284,6 +284,12 @@ string MonstreA::type() const
     return "MonstreA";
 }
 
+
+bool Monstre::distance(const Personnage& perso, int dist) const {
+    return abs(perso.position().x() - position().x()) <= dist && abs(perso.position().y() - position().y()) <= dist;
+}
+}
+
 void MonstreA::afficheInfoMonstre(int i) const
 {
         if (estVivant())

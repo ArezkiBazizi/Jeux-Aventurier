@@ -3,6 +3,7 @@
 
 Game::Game(Terrain& Ter)
 {
+
     system("cls");
     bool d_partieEnCours{ true };
    
@@ -11,6 +12,7 @@ Game::Game(Terrain& Ter)
 
     Ter.afficheTerrain();
 
+  
 
     Aventurier* a = Ter.trouverAventurier();
     vector<MonstreV*> mv = Ter.trouverMonstreV();
@@ -83,8 +85,6 @@ Game::Game(Terrain& Ter)
         cout << "|                                       |" << endl;
         cout << "|_______________________________________|" << endl;
     }
-
-    FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
 }
 			
 

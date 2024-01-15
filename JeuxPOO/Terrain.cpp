@@ -77,6 +77,7 @@ void Terrain::litTerrain(const string& nomF) {
     ifstream f(nomF, fstream::in);
     int  x =0 , y=0;
     char t;
+    
     d_cases.clear();
     while (f >> noskipws >> t) {
         if (t == '#') {
@@ -104,7 +105,9 @@ void Terrain::litTerrain(const string& nomF) {
             d_cases.push_back(make_unique<Sortie>(x, y));
         }
         else if (t == 'P') {
-            d_cases.push_back(make_unique<Pieces>(20, Position{ x,y }));
+          
+           d_cases.push_back(make_unique<Pieces>(100,Position{ x, y }));
+            
         }
         x++;
         if (t == '\n') {
@@ -158,6 +161,7 @@ void Terrain::modifierTerrain() {
             }
         }
     } while (t != "0");
+    
 }
 
 std::unique_ptr<Cases> Terrain::retourneCase(int x, int y) const
