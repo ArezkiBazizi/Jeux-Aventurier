@@ -66,15 +66,15 @@ void MonstreV::afficheInfoMonstre(int i) const {
     if (estVivant())
     {
         std::cout << "\x1b[" << i * 5 + 1 << ";50H";
-        cout << "************************" << endl;
+        cout << "********************************" << endl;
         std::cout << "\x1b[" << i * 5 + 2 << ";50H";
-        cout << "* information Monstre  *" << endl;
+        cout << "* information Monstre voyant "<<i+1<<" *" << endl;
         std::cout << "\x1b[" << i * 5 + 3 << ";50H";
-        cout << "* Point de vie : " << pointDeVie() << "   *" << endl;
+        cout << "* Point de vie : " << pointDeVie() << "           *" << endl;
         std::cout << "\x1b[" << i * 5 + 4 << ";50H";
-        cout << "* Ponit de force : " << pointDeForce() << " *" << endl;
+        cout << "* Ponit de force : " << pointDeForce() << "         *" << endl;
         std::cout << "\x1b[" << i * 5 + 5 << ";50H";
-        cout << "************************" << endl;
+        cout << "********************************" << endl;
     }
 
 }
@@ -234,12 +234,6 @@ void MonstreA::deplaceAveugle(Terrain& T)
         int dy = A->position().y() - position().y();
 
 
-
-        if (abs(dx) <= 3 && abs(dy) <= 3)
-        {
-            afficheInfoMonstre(5);
-        }
-
         if (abs(dx) <= 1 && abs(dy) <= 1)
         {
             attaquer(T);
@@ -288,22 +282,20 @@ string MonstreA::type() const
 bool Monstre::distance(const Personnage& perso, int dist) const {
     return abs(perso.position().x() - position().x()) <= dist && abs(perso.position().y() - position().y()) <= dist;
 }
-}
 
 void MonstreA::afficheInfoMonstre(int i) const
 {
         if (estVivant())
         {
-            cout << i<<endl;
-            std::cout << "\x1b[" << (i * 5) + 1 << ";75H";
-            cout << "************************" << endl;
-            std::cout << "\x1b[" << (i * 5) + 2 << ";75H";
-            cout << "* information Monstre Aveugle "<< i<< " * " << endl;
-            std::cout << "\x1b[" << (i * 5) + 3 << ";75H";
-            cout << "* Point de vie : " << pointDeVie() << "   *" << endl;
-            std::cout << "\x1b[" << (i * 5) + 4 << ";75H";
-            cout << "* Ponit de force : " << pointDeForce() << " *" << endl;
-            std::cout << "\x1b[" << (i * 5) + 5 << ";75H";
-            cout << "************************" << endl;
+            std::cout << "\x1b[" << i + 1 << ";85H";
+            cout << "*********************************" << endl;
+            std::cout << "\x1b[" << i + 2 << ";85H";
+            cout << "* information Monstre aveugle "<< i+1<< " * " << endl;
+            std::cout << "\x1b[" << i  + 3 << ";85H";
+            cout << "* Point de vie : " << pointDeVie() << "            *" << endl;
+            std::cout << "\x1b[" << i + 4 << ";85H";
+            cout << "* Ponit de force : " << pointDeForce() << "          *" << endl;
+            std::cout << "\x1b[" << i  + 5 << ";85H";
+            cout << "*********************************" << endl;
         }
 }

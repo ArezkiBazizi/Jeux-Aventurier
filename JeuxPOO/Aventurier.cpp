@@ -22,10 +22,13 @@ string Aventurier::type() const
 void Aventurier::afficheInfoAventurier()
 {
     cout << endl;
-    cout << "information Aventurier" << endl;
-    cout << " Point de vie : " << pointDeVie() << endl;
-    cout << " Ponit de force : " << pointDeForce() << endl;
-    cout << " Bourse : " << bourseDePieces() << endl;
+    cout << endl;
+    cout << "**************************" << endl;
+    cout << "* information Aventurier *" << endl;
+    cout << "* Point de vie : " << pointDeVie()<<"     *" << endl;
+    cout << "* Ponit de force : " << pointDeForce() << "   *" << endl;
+    cout << "* Bourse : " << bourseDePieces() << "             *" << endl;
+    cout << "**************************" << endl;
 
 
 }

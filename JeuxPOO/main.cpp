@@ -32,6 +32,7 @@ int main() {
             switch (choice)
             {
             case 1:
+                T.litTerrain();
                 Game{ T };
                 break;
             case 0:
