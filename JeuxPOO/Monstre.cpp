@@ -68,7 +68,7 @@ void MonstreV::afficheInfoMonstre(int i) const {
         std::cout << "\x1b[" << i * 5 + 1 << ";50H";
         cout << "********************************" << endl;
         std::cout << "\x1b[" << i * 5 + 2 << ";50H";
-        cout << "* information Monstre voyant "<<i+1<<" *" << endl;
+        cout << "* information monstre voyant "<<i+1<<" *" << endl;
         std::cout << "\x1b[" << i * 5 + 3 << ";50H";
         cout << "* Point de vie : " << pointDeVie() << "           *" << endl;
         std::cout << "\x1b[" << i * 5 + 4 << ";50H";
@@ -285,12 +285,13 @@ bool Monstre::distance(const Personnage& perso, int dist) const {
 
 void MonstreA::afficheInfoMonstre(int i) const
 {
+
         if (estVivant())
         {
             std::cout << "\x1b[" << i + 1 << ";85H";
             cout << "*********************************" << endl;
             std::cout << "\x1b[" << i + 2 << ";85H";
-            cout << "* information Monstre aveugle "<< i+1<< " * " << endl;
+            cout << "* information monstre aveugle "<< i+1<< " * " << endl;
             std::cout << "\x1b[" << i  + 3 << ";85H";
             cout << "* Point de vie : " << pointDeVie() << "            *" << endl;
             std::cout << "\x1b[" << i + 4 << ";85H";

@@ -24,9 +24,11 @@ void Aventurier::afficheInfoAventurier()
     cout << endl;
     cout << endl;
     cout << "**************************" << endl;
-    cout << "* information Aventurier *" << endl;
+    cout << "* Information Aventurier *" << endl;
     cout << "* Point de vie : " << pointDeVie()<<"     *" << endl;
-    cout << "* Ponit de force : " << pointDeForce() << "   *" << endl;
+    cout << "* Point de force : " << pointDeForce() << "   *" << endl;
+    cout << "* Solidite epee : " << tabEquipement()[1]->pointDeSolidite() << "    *" << endl;
+    cout << "* Solidite armure : " << tabEquipement()[0]->pointDeSolidite() << "  *" << endl;
     cout << "* Bourse : " << bourseDePieces() << "             *" << endl;
     cout << "**************************" << endl;
 

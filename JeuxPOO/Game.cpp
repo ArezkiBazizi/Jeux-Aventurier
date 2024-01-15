@@ -6,13 +6,13 @@ Game::Game(Terrain& Ter)
 
     system("cls");
     bool d_partieEnCours{ true };
-   
-   
-   
+
+
+
 
     Ter.afficheTerrain();
 
-  
+
 
     Aventurier* a = Ter.trouverAventurier();
     vector<MonstreV*> mv = Ter.trouverMonstreV();
@@ -23,56 +23,61 @@ Game::Game(Terrain& Ter)
     Ter.afficheTerrain();
     while (a->estVivant() && d_partieEnCours) {
 
-             a->afficheInfoAventurier();
+        a->afficheInfoAventurier();
 
-            for (int i = 0; i < mv.size(); i++)
+        for (int i = 0; i < mv.size(); i++)
+        {
+            if (mv[i]->estVivant())
             {
-                if(mv[i]->distance(*a,3))
+                if (mv[i]->distance(*a, 1))
                     mv[i]->afficheInfoMonstre(i);
-
+            }
                 mv[i]->trouverAventurier(Ter);
+            
+        }
 
-            }
-
-            for (int i = 0; i < ma.size(); i++)
+        for (int i = 0; i < ma.size(); i++)
+        {
+            if (ma[i]->estVivant())
             {
-                if (ma[i]->distance(*a, 3));
-                    ma[i]->afficheInfoMonstre(i);
+                if (ma[i]->distance(*a, 1))
+                     ma[i]->afficheInfoMonstre(i);
 
+            }
                 ma[i]->deplaceAveugle(Ter);
+            
+        }
+        a->deplacerA(Ter);
+
+
+        if (a->estSortie()) {
+            if (amul->etatAmullette())
+            {
+                system("cls");
+                d_partieEnCours = false;
+                cout << endl;
+                cout << "________________________________________" << endl;
+                cout << "|                                       |" << endl;
+                cout << "|       BRAVO ! Vous avez gagne         |" << endl;
+                cout << "|                                       |" << endl;
+                cout << "|_______________________________________|" << endl;
+
+                system("pause > null");
+            }
+            else {
+                system("cls");
+                d_partieEnCours = false;
+                cout << endl;
+                cout << "________________________________________" << endl;
+                cout << "|                                       |" << endl;
+                cout << "|     PERDU ! Vous avez oublier         |" << endl;
+                cout << "|      de recuperer l'amullette         |" << endl;
+                cout << "|_______________________________________|" << endl;
+
+                system("pause > null");
 
             }
-            a->deplacerA(Ter);
-
-
-            if (a->estSortie()){
-                if (amul->etatAmullette())
-                {
-                    system("cls");
-                    d_partieEnCours = false;
-                    cout << endl;
-                    cout << "________________________________________" << endl;
-                    cout << "|                                       |" << endl;
-                    cout << "|       BRAVO ! Vous avez gagne         |" << endl;
-                    cout << "|                                       |" << endl;
-                    cout << "|_______________________________________|" << endl;
-
-                    system("pause > null");
-                }
-                else {
-                    system("cls");
-                    d_partieEnCours = false;
-                    cout << endl;
-                    cout << "________________________________________" << endl;
-                    cout << "|                                       |" << endl;
-                    cout << "|     PERDU ! Vous avez oublier         |" << endl;
-                    cout << "|      de recuperer l'amullette         |" << endl;
-                    cout << "|_______________________________________|" << endl;
-
-                    system("pause > null");
-
-                }
-            }
+        }
     }
 
     if (!a->estVivant() && d_partieEnCours)
