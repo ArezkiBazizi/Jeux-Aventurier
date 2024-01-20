@@ -25,6 +25,7 @@ Voici un exemple d'affichage du terrain :
 <img width="332" alt="Screenshot 2024-01-20 175617" src="https://github.com/ArezkiBazizi/Jeux-Aventurier/assets/144291687/4dbe24b7-3c22-4000-842c-b6d68295904f">
 
 
+
 Commandes disponibles dans le jeu :
 
 W : Déplacer le personnage vers le haut.
