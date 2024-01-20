@@ -21,7 +21,7 @@ Explorez le terrain, affrontez des monstres, améliorez vos personnages et déco
 Exemple d'utilisation
 Voici un exemple d'utilisation pour vous aider à démarrer :
 
-Exemple de l'affichage du terrain 
+#Exemple de l'affichage du terrain 
 //////////////////////////////////////////////
 /############################################/
 /#......A...................................#/
@@ -40,6 +40,7 @@ Exemple de l'affichage du terrain
 /#..........................................#/
 /#############+##############################/
 //////////////////////////////////////////////
+
 
 Voici les commandes disponibles dans le jeu :
 
