@@ -1,5 +1,5 @@
 Jeu de Terrain en C++
-Ce projet est un jeu de terrain basé sur des classes C++ qui simule un environnement de jeu. Les joueurs peuvent interagir avec le terrain en déplaçant des personnages, en combattant des monstres et en collectant des objets afin de sortir du château.
+Ce projet est un jeu de terrain basé sur des classes C++ qui simule un environnement de jeu. Les joueurs peuvent interagir avec le terrain en déplaçant un aventurier, dans un chateau en ruine, en combattant des monstres et en collectant des objets afin de sortir du château.
 
 Fonctionnalités:
 
