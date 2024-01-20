@@ -2,7 +2,7 @@ Ce projet est un jeu de terrain basé sur des classes C++ qui simule un environn
 
 Fonctionnalités:
 
-Terrain : Le terrain est généré avec une taille spécifiée et contient diverses cases telles que des cases vides, des murs, des pièces et des positions spéciales.
+Terrain : Le terrain est créer, charger ou modifier avec une taille spécifiée et contient diverses cases telles que des cases vides, des murs, des pièces et des positions spéciales, choisi par default ou par le joueur lui meme.
 
 Aventurier : Les joueurs peuvent contrôler un aventurier. L'aventurier a des points de vie, des points de force, une position, et des équipements tels qu'une épée et une armure.
 
